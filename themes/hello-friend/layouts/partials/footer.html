@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="footer__inner">
+    {{ if $.Site.Copyright }}
+      <div class="copyright copyright--user">{{ $.Site.Copyright | safeHTML }}</div>
+      {{ else }}
+      {{ partial "logo.html" . }}
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    {{ end }}
+  </div>
+</footer>
+
+<script src="{{ "assets/main.js" | absURL }}"></script>
+<script src="{{ "assets/prism.js" | absURL }}"></script>
+
+{{- partial "extended_footer.html" . }}

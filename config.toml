@@ -1,4 +1,4 @@
-baseurl      = "blog.ehmiiz.tech"
+baseurl      = "https://fancyblogacc.z16.web.core.windows.net/"
 title        = "Ehmiiz.Tech - A book blog"
 languageCode = "en-us"
 theme        = "hello-friend"

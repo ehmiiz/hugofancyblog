@@ -1,5 +1,5 @@
 ---
-title: "AI Superpowers"
+title: "Book Review: AI Superpowers"
 date: 2021-02-07T11:48:14+01:00
 draft: true
 ---

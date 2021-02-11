@@ -1,5 +1,5 @@
 ---
-title: "LOTR: The Return of the King"
+title: "Book Review: LOTR, The Return of the King"
 date: 2021-02-07T12:49:02+01:00
 draft: true
 ---

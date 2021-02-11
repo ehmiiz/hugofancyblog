@@ -1,5 +1,5 @@
 ---
-title: "LOTR: The Fellowship of the Ring"
+title: "Book Review: LOTR, The Fellowship of the Ring"
 date: 2021-02-07T12:51:50+01:00
 draft: false
 ---

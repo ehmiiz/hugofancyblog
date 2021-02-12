@@ -1,4 +1,4 @@
-baseurl      = "blog.ehmiiz.tech"
+baseurl      = "https://polite-bay-0fed77903.azurestaticapps.net"
 title        = "Ehmiiz.Tech - A book blog"
 languageCode = "en-us"
 theme        = "hello-friend"

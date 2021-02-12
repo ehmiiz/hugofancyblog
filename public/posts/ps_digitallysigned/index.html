@@ -3,7 +3,7 @@
   <head>
     
       <title>
-        PowerShell: Digitally signed.. ::
+        PowerShell Solution: Script not digitally signed. ::
         Welcome!
       </title>
     
@@ -11,53 +11,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="asd Insert guide here! "
+  content="“.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker nontheless. It&amp;rsquo;s more of a security feature then an error.
+Simple solution if you&amp;rsquo;re running this script from another service, or as a Azure Runbook, before executing the Invoke-Command:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy."
 />
 <meta
   name="keywords"
   content=""
 />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://fancyblogacc.z16.web.core.windows.net/posts/ps_digitallysigned/" />
+<link rel="canonical" href="https://polite-bay-0fed77903.azurestaticapps.net/posts/ps_digitallysigned/" />
 
 
 
 
 
-<link rel="stylesheet" href="https://fancyblogacc.z16.web.core.windows.net/assets/style.css" />
+<link rel="stylesheet" href="https://polite-bay-0fed77903.azurestaticapps.net/assets/style.css" />
 
-<link rel="stylesheet" href="https://fancyblogacc.z16.web.core.windows.net/style.css" />
+<link rel="stylesheet" href="https://polite-bay-0fed77903.azurestaticapps.net/style.css" />
 
 
 <link
   rel="apple-touch-icon-precomposed"
   sizes="144x144"
-  href="https://fancyblogacc.z16.web.core.windows.net/img/apple-touch-icon-144-precomposed.png"
+  href="https://polite-bay-0fed77903.azurestaticapps.net/img/apple-touch-icon-144-precomposed.png"
 />
-<link rel="shortcut icon" href="https://fancyblogacc.z16.web.core.windows.net/img/favicon.png" />
+<link rel="shortcut icon" href="https://polite-bay-0fed77903.azurestaticapps.net/img/favicon.png" />
 
 
-<link href="https://fancyblogacc.z16.web.core.windows.net/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="https://fancyblogacc.z16.web.core.windows.net/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="https://fancyblogacc.z16.web.core.windows.net/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="https://fancyblogacc.z16.web.core.windows.net/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="https://fancyblogacc.z16.web.core.windows.net/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
-<link href="https://fancyblogacc.z16.web.core.windows.net/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://fancyblogacc.z16.web.core.windows.net/"/>
+<meta name="twitter:image" content="https://polite-bay-0fed77903.azurestaticapps.net"/>
 
-<meta name="twitter:title" content="PowerShell: Digitally signed.."/>
-<meta name="twitter:description" content="asd Insert guide here! "/>
+<meta name="twitter:title" content="PowerShell Solution: Script not digitally signed."/>
+<meta name="twitter:description" content="“.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker nontheless. It&rsquo;s more of a security feature then an error.
+Simple solution if you&rsquo;re running this script from another service, or as a Azure Runbook, before executing the Invoke-Command:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy."/>
 
 
 
-<meta property="og:title" content="PowerShell: Digitally signed.." />
-<meta property="og:description" content="asd Insert guide here! " />
+<meta property="og:title" content="PowerShell Solution: Script not digitally signed." />
+<meta property="og:description" content="“.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker nontheless. It&rsquo;s more of a security feature then an error.
+Simple solution if you&rsquo;re running this script from another service, or as a Azure Runbook, before executing the Invoke-Command:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fancyblogacc.z16.web.core.windows.net/posts/ps_digitallysigned/" />
-<meta property="og:image" content="https://fancyblogacc.z16.web.core.windows.net/"/>
+<meta property="og:url" content="https://polite-bay-0fed77903.azurestaticapps.net/posts/ps_digitallysigned/" />
+<meta property="og:image" content="https://polite-bay-0fed77903.azurestaticapps.net"/>
 <meta property="article:published_time" content="2021-02-11T08:23:11+01:00" />
 <meta property="article:modified_time" content="2021-02-11T08:23:11+01:00" /><meta property="og:site_name" content="Welcome!" />
 
@@ -161,7 +170,7 @@
   
 
   <div class="post">
-    <h1 class="post-title">PowerShell: Digitally signed..</h1>
+    <h1 class="post-title">PowerShell Solution: Script not digitally signed.</h1>
     <div class="post-meta">
       
         <span class="post-date">
@@ -185,8 +194,16 @@
 
     <div class="post-content">
       
-      <h1 id="asd">asd</h1>
-<h1 id="insert-guide-here">Insert guide here!</h1>
+      <h2 id="ps1-is-not-digitally-signed-the-script-will-not-execute-on-the-system">“.ps1 is not digitally signed. The script will not execute on the system.”</h2>
+<p>This error is clearly not really a typical error, but can be a blocker nontheless. It&rsquo;s more of a security feature then an error.</p>
+<p>Simple solution if you&rsquo;re running this script from another service, or as a Azure Runbook, before executing the Invoke-Command:<br>
+<code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></p>
+<p>This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy.</p>
+<p>Another solution would be if you&rsquo;re executing the script from your own user:<br>
+<code>Set-ExecutionPolicy RemoteSigned</code></p>
+<p>Further documentation regarding Set-ExecutionPolicy may be found <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)?redirectedfrom=MSDN">here</a>.</p>
+<p>Original blog-post that helped me solve this issue was found here: <a href="https://caiomsouza.medium.com/">here</a>.</p>
+<h1 id="happy-coding">Happy coding!</h1>
 
     </div>
     
@@ -229,8 +246,8 @@
   </div>
 </footer>
 
-<script src="https://fancyblogacc.z16.web.core.windows.net/assets/main.js"></script>
-<script src="https://fancyblogacc.z16.web.core.windows.net/assets/prism.js"></script>
+<script src="https://polite-bay-0fed77903.azurestaticapps.net/assets/main.js"></script>
+<script src="https://polite-bay-0fed77903.azurestaticapps.net/assets/prism.js"></script>
 
 
       

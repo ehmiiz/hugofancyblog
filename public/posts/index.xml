@@ -5,21 +5,44 @@
     
     
     
-    <link>https://fancyblogacc.z16.web.core.windows.net/posts/</link>
+    <link>https://polite-bay-0fed77903.azurestaticapps.net/posts/</link>
     <description>Recent content in Posts on Welcome!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Feb 2021 08:23:11 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 11 Feb 2021 08:23:11 +0100</lastBuildDate>
     
-	<atom:link href="https://fancyblogacc.z16.web.core.windows.net/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://polite-bay-0fed77903.azurestaticapps.net/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>PowerShell Solution: Script not digitally signed.</title>
+      <link>https://polite-bay-0fed77903.azurestaticapps.net/posts/ps_digitallysigned/</link>
+      <pubDate>Thu, 11 Feb 2021 08:23:11 +0100</pubDate>
+      
+      <guid>https://polite-bay-0fed77903.azurestaticapps.net/posts/ps_digitallysigned/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          “.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker nontheless. It&amp;rsquo;s more of a security feature then an error.
+Simple solution if you&amp;rsquo;re running this script from another service, or as a Azure Runbook, before executing the Invoke-Command:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy.
+          
+        
+        </description>
+    </item>
+    
+    <item>
       <title>Book review: Life 3.0</title>
-      <link>https://fancyblogacc.z16.web.core.windows.net/posts/life-3.0/</link>
+      <link>https://polite-bay-0fed77903.azurestaticapps.net/posts/life-3.0/</link>
       <pubDate>Mon, 08 Feb 2021 08:23:11 +0100</pubDate>
       
-      <guid>https://fancyblogacc.z16.web.core.windows.net/posts/life-3.0/</guid>
+      <guid>https://polite-bay-0fed77903.azurestaticapps.net/posts/life-3.0/</guid>
       <description>
         
           
@@ -37,10 +60,10 @@ It’s author, Max Tegmark, got me very interested in the subject and he does so
     
     <item>
       <title>Book Review: LOTR, The Fellowship of the Ring</title>
-      <link>https://fancyblogacc.z16.web.core.windows.net/posts/lotr-for/</link>
+      <link>https://polite-bay-0fed77903.azurestaticapps.net/posts/lotr-for/</link>
       <pubDate>Sun, 07 Feb 2021 12:51:50 +0100</pubDate>
       
-      <guid>https://fancyblogacc.z16.web.core.windows.net/posts/lotr-for/</guid>
+      <guid>https://polite-bay-0fed77903.azurestaticapps.net/posts/lotr-for/</guid>
       <description>
         
           
@@ -58,10 +81,10 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
     
     <item>
       <title>Book Review: The Hobbit</title>
-      <link>https://fancyblogacc.z16.web.core.windows.net/posts/hobbit/</link>
+      <link>https://polite-bay-0fed77903.azurestaticapps.net/posts/hobbit/</link>
       <pubDate>Sun, 07 Feb 2021 12:39:23 +0100</pubDate>
       
-      <guid>https://fancyblogacc.z16.web.core.windows.net/posts/hobbit/</guid>
+      <guid>https://polite-bay-0fed77903.azurestaticapps.net/posts/hobbit/</guid>
       <description>
         
           

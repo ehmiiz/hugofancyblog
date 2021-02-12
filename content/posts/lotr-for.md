@@ -10,7 +10,7 @@ draft: false
   attrlink="https://www.amazon.com/Fellowship-Ring-Being-First-Rings/dp/0547928211/"
 >}}
 
-# *Ring to rule them all, one Ring to find them*
+# One ring to rule them all, one Ring to find them*
 #### *One Ring to bring them all and in the darkness bind them*
   
 Sometimes when I read books, I get a feeling to just read faster, not pay attention to detail, to get to the point of the story. While reading Lord of the rings, I forgot about that feeling completely. 

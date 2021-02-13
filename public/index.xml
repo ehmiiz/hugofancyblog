@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Welcome!</title>
+    <title>blog.ehmiiz.tech</title>
     
     
     
-    <link>https://polite-bay-0fed77903.azurestaticapps.net/</link>
-    <description>Recent content on Welcome!</description>
+    <link>https://blog.ehmiiz.tech/</link>
+    <description>Recent content on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 11 Feb 2021 08:23:11 +0100</lastBuildDate>
     
-	<atom:link href="https://polite-bay-0fed77903.azurestaticapps.net/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PowerShell Solution: Script not digitally signed.</title>
-      <link>https://polite-bay-0fed77903.azurestaticapps.net/powershell-solution-script-not-digitally-signed./</link>
+      <link>https://blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed./</link>
       <pubDate>Thu, 11 Feb 2021 08:23:11 +0100</pubDate>
       
-      <guid>https://polite-bay-0fed77903.azurestaticapps.net/powershell-solution-script-not-digitally-signed./</guid>
+      <guid>https://blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed./</guid>
       <description>
         
           
@@ -39,10 +39,10 @@ This will allow the powershell session process itself to bypass the Exec policy,
     
     <item>
       <title>Book review: Life 3.0</title>
-      <link>https://polite-bay-0fed77903.azurestaticapps.net/book-review-life-3.0/</link>
+      <link>https://blog.ehmiiz.tech/book-review-life-3.0/</link>
       <pubDate>Mon, 08 Feb 2021 08:23:11 +0100</pubDate>
       
-      <guid>https://polite-bay-0fed77903.azurestaticapps.net/book-review-life-3.0/</guid>
+      <guid>https://blog.ehmiiz.tech/book-review-life-3.0/</guid>
       <description>
         
           
@@ -60,10 +60,10 @@ It’s author, Max Tegmark, got me very interested in the subject and he does so
     
     <item>
       <title>Book Review: LOTR, The Fellowship of the Ring</title>
-      <link>https://polite-bay-0fed77903.azurestaticapps.net/book-review-lotr-the-fellowship-of-the-ring/</link>
+      <link>https://blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</link>
       <pubDate>Sun, 07 Feb 2021 12:51:50 +0100</pubDate>
       
-      <guid>https://polite-bay-0fed77903.azurestaticapps.net/book-review-lotr-the-fellowship-of-the-ring/</guid>
+      <guid>https://blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</guid>
       <description>
         
           
@@ -81,10 +81,10 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
     
     <item>
       <title>Book Review: The Hobbit</title>
-      <link>https://polite-bay-0fed77903.azurestaticapps.net/book-review-the-hobbit/</link>
+      <link>https://blog.ehmiiz.tech/book-review-the-hobbit/</link>
       <pubDate>Sun, 07 Feb 2021 12:39:23 +0100</pubDate>
       
-      <guid>https://polite-bay-0fed77903.azurestaticapps.net/book-review-the-hobbit/</guid>
+      <guid>https://blog.ehmiiz.tech/book-review-the-hobbit/</guid>
       <description>
         
           
@@ -101,10 +101,10 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
     
     <item>
       <title>About Ehmiiz.tech</title>
-      <link>https://polite-bay-0fed77903.azurestaticapps.net/about/</link>
+      <link>https://blog.ehmiiz.tech/about/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://polite-bay-0fed77903.azurestaticapps.net/about/</guid>
+      <guid>https://blog.ehmiiz.tech/about/</guid>
       <description>
         
           
@@ -122,10 +122,10 @@ Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look ba
     
     <item>
       <title>Up and Coming</title>
-      <link>https://polite-bay-0fed77903.azurestaticapps.net/coming/</link>
+      <link>https://blog.ehmiiz.tech/coming/</link>
       <pubDate>Sun, 01 Mar 2020 07:13:37 +0100</pubDate>
       
-      <guid>https://polite-bay-0fed77903.azurestaticapps.net/coming/</guid>
+      <guid>https://blog.ehmiiz.tech/coming/</guid>
       <description>
         
           

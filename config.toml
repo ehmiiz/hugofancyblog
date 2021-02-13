@@ -1,9 +1,9 @@
-baseurl      = "https://polite-bay-0fed77903.azurestaticapps.net"
+baseurl      = "https://blog.ehmiiz.tech"
 title        = "Ehmiiz.Tech - A book blog"
 languageCode = "en-us"
 theme        = "hello-friend"
 paginate     = 10
-
+disqusShortname = "ehmiiz"
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -32,7 +32,7 @@ paginate     = 10
 
 [languages]
   [languages.en]
-    title = "Welcome!"
+    title = "blog.ehmiiz.tech"
     subtitle = ""
     keywords = ""
 

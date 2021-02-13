@@ -29,12 +29,10 @@
 <link rel="stylesheet" href="https://polite-bay-0fed77903.azurestaticapps.net/style.css" />
 
 
-<link
-  rel="apple-touch-icon-precomposed"
-  sizes="144x144"
-  href="https://polite-bay-0fed77903.azurestaticapps.net/img/apple-touch-icon-144-precomposed.png"
-/>
-<link rel="shortcut icon" href="https://polite-bay-0fed77903.azurestaticapps.net/img/favicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 
 
 <link href="https://polite-bay-0fed77903.azurestaticapps.net/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
@@ -171,7 +169,7 @@
   <div class="posts">
     
     <div class="post on-list">
-      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/posts/ps_digitallysigned/">PowerShell Solution: Script not digitally signed.</a></h1>
+      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/powershell-solution-script-not-digitally-signed./">PowerShell Solution: Script not digitally signed.</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
@@ -193,20 +191,20 @@
       <div class="post-content">
         
           
-            “.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker nontheless. It&rsquo;s more of a security feature then an error.
-Simple solution if you&rsquo;re running this script from another service, or as a Azure Runbook, before executing the Invoke-Command:
+            “.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker, nonetheless. It&rsquo;s more of a security feature than an error.
+Simple solution if you&rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy.
           
         
       </div>
       
-        <div><a class="read-more button" href="/posts/ps_digitallysigned/">Read more →</a></div>
+        <div><a class="read-more button" href="/powershell-solution-script-not-digitally-signed./">Read more →</a></div>
       
     </div>
     
     <div class="post on-list">
-      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/posts/life-3.0/">Book review: Life 3.0</a></h1>
+      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/book-review-life-3.0/">Book review: Life 3.0</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
@@ -234,12 +232,12 @@ It’s author, Max Tegmark, got me very interested in the subject and he does so
         
       </div>
       
-        <div><a class="read-more button" href="/posts/life-3.0/">Read more →</a></div>
+        <div><a class="read-more button" href="/book-review-life-3.0/">Read more →</a></div>
       
     </div>
     
     <div class="post on-list">
-      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/posts/lotr-for/">Book Review: LOTR, The Fellowship of the Ring</a></h1>
+      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/book-review-lotr-the-fellowship-of-the-ring/">Book Review: LOTR, The Fellowship of the Ring</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
@@ -267,12 +265,12 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
         
       </div>
       
-        <div><a class="read-more button" href="/posts/lotr-for/">Read more →</a></div>
+        <div><a class="read-more button" href="/book-review-lotr-the-fellowship-of-the-ring/">Read more →</a></div>
       
     </div>
     
     <div class="post on-list">
-      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/posts/hobbit/">Book Review: The Hobbit</a></h1>
+      <h1 class="post-title"><a href="https://polite-bay-0fed77903.azurestaticapps.net/book-review-the-hobbit/">Book Review: The Hobbit</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
@@ -299,7 +297,7 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
         
       </div>
       
-        <div><a class="read-more button" href="/posts/hobbit/">Read more →</a></div>
+        <div><a class="read-more button" href="/book-review-the-hobbit/">Read more →</a></div>
       
     </div>
     

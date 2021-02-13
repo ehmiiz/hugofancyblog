@@ -4,6 +4,7 @@ languageCode = "en-us"
 theme        = "hello-friend"
 paginate     = 10
 
+
 [params]
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
@@ -56,3 +57,16 @@ paginate     = 10
     identifier = "coming"
     name       = "Coming"
     url        = "/coming"
+
+[permalinks]
+  posts = "/:title"
+
+ [[params.social]]
+    name = "twitter"
+    url  = "https://twitter.com/ehmiiz"
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/ehmiiz"
+  [[params.social]]
+    name = "linkedin"
+    url  = "https://www.linkedin.com/in/emil-larsson-224552ba/"

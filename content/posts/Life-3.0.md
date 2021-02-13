@@ -2,6 +2,7 @@
 title: "Book review: Life 3.0"
 date: 2021-02-08T08:23:11+01:00
 draft: false
+comments: true
 ---
 # Life 3.0, Being human in the age of AI
 {{< figure

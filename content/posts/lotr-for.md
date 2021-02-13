@@ -2,6 +2,7 @@
 title: "Book Review: LOTR, The Fellowship of the Ring"
 date: 2021-02-07T12:51:50+01:00
 draft: false
+comments: true
 ---
 {{< figure
   src="https://images-na.ssl-images-amazon.com/images/I/91jBdaRVqML.jpg"

@@ -2,6 +2,7 @@
 title: "Up and Coming"
 date: 2020-03-01T07:13:37+01:00
 draft: false
+comments: true
 ---
 {{< figure
   src="https://i.imgur.com/30MC3nh.jpg"

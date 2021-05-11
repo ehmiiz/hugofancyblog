@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+  content="My history with Password Generators Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source of knowledge for other people, hence this post :)
 My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&amp;rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts."
 />
 <meta
@@ -48,13 +48,13 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <meta name="twitter:image" content="https://blog.ehmiiz.tech"/>
 
 <meta name="twitter:title" content="PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7"/>
-<meta name="twitter:description" content="Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+<meta name="twitter:description" content="My history with Password Generators Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source of knowledge for other people, hence this post :)
 My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts."/>
 
 
 
 <meta property="og:title" content="PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7" />
-<meta property="og:description" content="Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+<meta property="og:description" content="My history with Password Generators Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source of knowledge for other people, hence this post :)
 My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/" />
@@ -186,57 +186,70 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 
     <div class="post-content">
       
-      <h2 id="creating-a-password-generator">Creating a Password generator</h2>
-<p>Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)</p>
+      <h2 id="my-history-with-password-generators">My history with Password Generators</h2>
+<p>Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source of knowledge for other people, hence this post :)</p>
 <p>My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts.</p>
-<p>However the first version was based on a dotnet class method, Adam Bertram does a great job covering how to wrap this in a module: <a href="https://adamtheautomator.com/random-password-generator/">[System.Web.Security.Membership]::GeneratePassword</a></p>
+<p>However the first version was based on a dotnet class method called: <a href="https://adamtheautomator.com/random-password-generator/">[System.Web.Security.Membership]::GeneratePassword</a></p>
+<p>Adam Bertram does a great job covering how to wrap this in a module, click the class name to read his post about it.</p>
 <p>The class does bring a dependency on the the specific dotnet class, and for me, this approach started to bring errors in Powershell cores early versions.</p>
-<h2 id="updated-version">Updated version</h2>
+<h2 id="new-attempt-without-dependencies">New attempt without dependencies</h2>
 <p>This is my attempt at creating my own password generator <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">Get-GeneratedPassword.ps1</a>.</p>
+<p>The script can be found on my <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">GitHub PS repo</a></p>
 <p><img src="https://i.imgur.com/fvwI0bb.png" alt="Displaying the cmdlet" title="Get-GeneratedPassword"></p>
+<p>Read the comment based help, or load the function and run:</p>
+<p><code>Get-Help Get-GeneratedPassword</code></p>
 <h3 id="my-requirements-was-the-following">My Requirements was the following</h3>
 <ul>
-<li>Cover <a href="https://i.imgur.com/fvwI0bb.png">AD complexity rules</a> (in 99,9%)</li>
+<li>Cover <a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements">AD complexity rules</a> (in 99,9%)</li>
 <li>String output, for simplicity</li>
 <li>X-platform</li>
 <li>No dependencies outside of Powershell 7</li>
 </ul>
-<h3 id="the-base">The base</h3>
+<h3 id="begin">Begin</h3>
 <p>The function starts of by enforcing some of the requirements using ValidateRange, and a default value for the <code>-Amount</code> parameter<br>
 <code>[ValidateRange(6, 30)] [int32]$PwLength</code></p>
 <p>Since AD&rsquo;s complexity rule is enforcing at least 6 chars, this range checks that requirement box.</p>
 <p><code>[int32]$Amount = 1</code></p>
 <p>The default value solves the issue of just running the cmdlet without the <code>-Amount</code> parameter</p>
-<p>Next up is the whole idea behind the script, instead of using a dotnet class, or some other dependency, I&rsquo;ll just generate my own string of chars to pick from:</p>
+<p>Next up is the whole idea behind the script, instead of using a dotnet class, I&rsquo;ll just generate my own string of chars to pick from:</p>
 <p><code>$pwdvalues = &quot;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</code></p>
 <p>By using a <a href="https://devblogs.microsoft.com/scripting/powershell-looping-understanding-and-using-dountil/">do-until loop</a>, I can simply abuse Get-Random:<br>
 <code>$PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join ''</code></p>
 <p>until my desired count of complex passwords are achieved by validating them through some regex validations:</p>
 <p><code>$PasswordGenerated -match &quot;[-!@#$%^&amp;*_{}()?]&quot; -and</code></p>
-<p><code>$PasswordGenerated -match &quot;[A-Z]&quot; -and</code></p>
-<p><code>$PasswordGenerated -match &quot;[a-z]&quot; -and</code></p>
+<p><code>$PasswordGenerated -match &quot;(?-i)[A-Z]&quot; -and</code></p>
+<p><code>$PasswordGenerated -match &quot;(?-i)[a-z]&quot; -and</code></p>
 <p><code>$PasswordGenerated -match &quot;[0-9]&quot;</code></p>
 <p>This validation is critical for only getting the complex passwords for output</p>
+<p>The &ldquo;(?-i)&rdquo; part is needed since PowerShell by default is case-insensitive, this definition solves that part, and we need this since we really do care about the match being case-sensitive. <a href="https://ninmonkeys.com/blog/2020/11/21/using-case-sensitive-regular-expressions-in-powershell-tips/">This blog post by Jake Bolton</a> covers the problem in detail.</p>
 <p>Since all we do here is randomly grabbing strings and joining them, we&rsquo;re only working with a string object. Making the script fast and the output very simple, and since the output is just a simple string, it can be easily turned into a .txt file or used within <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.1">ConvertTo-SecureString</a></p>
 <h3 id="lastly">Lastly</h3>
 <p>This is a quite simple and short function, and I&rsquo;m sure it wont cover all my password generating needs for the future, but hopefully for some time at least.</p>
-<p>I hope this post got you thinking about regex validation, do-while loops, and string manipulation in Powershell!</p>
-<p>Feel free to visit my github to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here&rsquo;s the current version from the time of writing this:</p>
+<p>I hope this post got you thinking &amp; curious about:</p>
+<ul>
+<li>regex validation</li>
+<li>do-while loops</li>
+<li>string manipulation</li>
+<li>case sensitivity</li>
+<li>self-made functions</li>
+</ul>
+<p>in Powershell!</p>
+<p>Feel free to visit my <a href="https://github.com/ehmiiz/PowerShell/">github</a> to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here&rsquo;s the current version from the time of writing this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
 <span style="color:#66d9ef">function</span> Get-GeneratedPassword {
 <span style="color:#75715e">&lt;#
 </span><span style="color:#75715e"></span><span style="color:#e6db74">.SYNOPSIS</span><span style="color:#75715e">
 </span><span style="color:#75715e">    Cross-platform password generator
 </span><span style="color:#75715e"></span><span style="color:#e6db74">.DESCRIPTION</span><span style="color:#75715e">
-</span><span style="color:#75715e">    Get-GeneratedPassword is using a Get-Random, a string and regex
-</span><span style="color:#75715e">    validation to ensure that the password meets the complexity level
+</span><span style="color:#75715e">    Get-GeneratedPassword is using a Get-Random, a string and regex 
+</span><span style="color:#75715e">    validation to ensure that the password meets the complexity level 
 </span><span style="color:#75715e">    enforced by default in ActiveDirectory
 </span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
 </span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 10 -Amount 10
 </span><span style="color:#75715e">    Generates 10 passwords with the length set to 10
 </span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
 </span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 12 | clip
-</span><span style="color:#75715e">    Only supported in Windows. Will generate a password with 12 as length
+</span><span style="color:#75715e">    Only supported in Windows. Will generate a password with 12 as length 
 </span><span style="color:#75715e">    and clip the result to clipboard
 </span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
 </span><span style="color:#75715e">    PS C:\&gt; $user = &#34;emil&#34;; $pw = ConvertTo-SecureString -String (Get-GeneratedPassword 12) -AsPlainText
@@ -259,7 +272,7 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
     [<span style="color:#66d9ef">CmdletBinding</span>()]
     <span style="color:#66d9ef">Param</span>
     (
-
+        
         [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $true,
             <span style="color:#66d9ef">ValueFromPipelineByPropertyName</span> = $true,
             <span style="color:#66d9ef">Position</span> = 0)]
@@ -274,17 +287,17 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
     }
     <span style="color:#66d9ef">Process</span> {
 
-        $pwdvalues = <span style="color:#e6db74">&#34;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#34;</span>
+        $PwdValues = <span style="color:#e6db74">&#34;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#34;</span>
 
         <span style="color:#66d9ef">do</span> {
 
-            $PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join <span style="color:#e6db74">&#39;&#39;</span>
+            $PasswordGenerated = ($PwdValues.ToCharArray() | Sort-Object { Get-Random })[1..$PwLength] -join <span style="color:#e6db74">&#39;&#39;</span>
 
             <span style="color:#75715e"># Regex rules, contains any of the special AND 0-9 AND upper/lower</span>
             <span style="color:#66d9ef">if</span> (
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[-!@#$%^&amp;*_{}()?]&#34;</span> <span style="color:#f92672">-and</span>
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[A-Z]&#34;</span> <span style="color:#f92672">-and</span>
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[a-z]&#34;</span> <span style="color:#f92672">-and</span>
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[-!@#$%^&amp;*_{}()?]&#34;</span> <span style="color:#f92672">-and</span> 
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;(?-i)[A-Z]&#34;</span> <span style="color:#f92672">-and</span> 
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;(?-i)[a-z]&#34;</span> <span style="color:#f92672">-and</span> 
                 $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[0-9]&#34;</span>
             ) {
                 <span style="color:#75715e"># Add to pw array</span>
@@ -301,32 +314,12 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
     }
 }
 </code></pre></div><h3 id="happy-coding">Happy coding</h3>
+<h3 id="emil">/Emil</h3>
 
     </div>
     
 
     
-      
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-blog-ehmiiz-tech" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       
     
   </div>

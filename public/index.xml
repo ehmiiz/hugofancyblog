@@ -28,7 +28,7 @@
         
         
         
-          Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+          My history with Password Generators Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source of knowledge for other people, hence this post :)
 My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&amp;rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts.
           
         

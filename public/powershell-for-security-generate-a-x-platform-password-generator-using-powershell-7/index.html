@@ -193,10 +193,11 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <p>The class does bring a dependency on the the specific dotnet class, and for me, this approach started to bring errors in Powershell cores early versions.</p>
 <h2 id="updated-version">Updated version</h2>
 <p>This is my attempt at creating my own password generator <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">Get-GeneratedPassword.ps1</a>.</p>
+<p><img src="https://i.imgur.com/fvwI0bb.png" alt="Displaying the cmdlet" title="Get-GeneratedPassword"></p>
 <h3 id="my-requirements-was-the-following">My Requirements was the following</h3>
 <ul>
-<li>Cover AD Default complexity rules</li>
-<li>Useable in other scripts</li>
+<li>Cover <a href="https://i.imgur.com/fvwI0bb.png">AD complexity rules</a> (in 99,9%)</li>
+<li>String output, for simplicity</li>
 <li>X-platform</li>
 <li>No dependencies outside of Powershell 7</li>
 </ul>
@@ -220,8 +221,54 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <h3 id="lastly">Lastly</h3>
 <p>This is a quite simple and short function, and I&rsquo;m sure it wont cover all my password generating needs for the future, but hopefully for some time at least.</p>
 <p>I hope this post got you thinking about regex validation, do-while loops, and string manipulation in Powershell!</p>
-<p>Feel free to visit my github to steal, fork or improve my pwd-gen yourself.</p>
-<h3 id="happy-coding">Happy coding</h3>
+<p>Feel free to visit my github to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here&rsquo;s the current version from the time of writing this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
+<span style="color:#66d9ef">function</span> Get-GeneratedPassword {
+    [<span style="color:#66d9ef">CmdletBinding</span>()]
+    <span style="color:#66d9ef">Param</span>
+    (
+
+        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $true,
+            <span style="color:#66d9ef">ValueFromPipelineByPropertyName</span> = $true,
+            <span style="color:#66d9ef">Position</span> = 0)]
+        [<span style="color:#66d9ef">ValidateRange</span>(6, 30)]
+        <span style="color:#66d9ef">[int32]</span>$PwLength,
+        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $false)]
+        <span style="color:#66d9ef">[int32]</span>$Amount = 1
+    )
+
+    <span style="color:#66d9ef">Begin</span> {
+        $Password = @()
+    }
+    <span style="color:#66d9ef">Process</span> {
+
+        $pwdvalues = <span style="color:#e6db74">&#34;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#34;</span>
+
+        <span style="color:#66d9ef">do</span> {
+
+            $PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join <span style="color:#e6db74">&#39;&#39;</span>
+
+            <span style="color:#75715e"># Regex rules, contains any of the special AND 0-9 AND upper/lower</span>
+            <span style="color:#66d9ef">if</span> (
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[-!@#$%^&amp;*_{}()?]&#34;</span> <span style="color:#f92672">-and</span>
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[A-Z]&#34;</span> <span style="color:#f92672">-and</span>
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[a-z]&#34;</span> <span style="color:#f92672">-and</span>
+                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[0-9]&#34;</span>
+            ) {
+                <span style="color:#75715e"># Add to pw array</span>
+                $Password += $PasswordGenerated
+            }
+            <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">Continue</span>
+            }
+        }
+        <span style="color:#66d9ef">until</span> ($Password.count <span style="color:#f92672">-eq</span> $Amount)
+    }
+    <span style="color:#66d9ef">End</span> {
+        $Password
+    }
+}
+</code></pre></div><h3 id="happy-coding">Happy coding</h3>
 
     </div>
     

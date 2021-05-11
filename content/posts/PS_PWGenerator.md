@@ -22,10 +22,12 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 
 This is my attempt at creating my own password generator [Get-GeneratedPassword.ps1](https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1).  
 
+![Displaying the cmdlet](https://i.imgur.com/fvwI0bb.png "Get-GeneratedPassword")
+
 ### My Requirements was the following
 
-* Cover AD Default complexity rules
-* Useable in other scripts
+* Cover [AD complexity rules](https://i.imgur.com/fvwI0bb.png) (in 99,9%)
+* String output, for simplicity
 * X-platform
 * No dependencies outside of Powershell 7
 
@@ -68,6 +70,87 @@ This is a quite simple and short function, and I'm sure it wont cover all my pas
 
 I hope this post got you thinking about regex validation, do-while loops, and string manipulation in Powershell!
 
-Feel free to visit my github to steal, fork or improve my pwd-gen yourself.
+Feel free to visit my github to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here's the current version from the time of writing this:  
+
+```powershell
+
+function Get-GeneratedPassword {
+<#
+.SYNOPSIS
+    Cross-platform password generator
+.DESCRIPTION
+    Get-GeneratedPassword is using a Get-Random, a string and regex
+    validation to ensure that the password meets the complexity level
+    enforced by default in ActiveDirectory
+.EXAMPLE
+    PS C:\> Get-GeneratedPassword -PwLength 10 -Amount 10
+    Generates 10 passwords with the length set to 10
+.EXAMPLE
+    PS C:\> Get-GeneratedPassword -PwLength 12 | clip
+    Only supported in Windows. Will generate a password with 12 as length
+    and clip the result to clipboard
+.EXAMPLE
+    PS C:\> $user = "emil"; $pw = ConvertTo-SecureString -String (Get-GeneratedPassword 12) -AsPlainText
+    PS C:\> $creds = $user,$pw
+    Creates a CredentialObject that can be passed in to user generating cmdlets
+.EXAMPLE
+    PS C:\> Get-GeneratedPassword -PwLength 8 -Amount 100 | Out-File C:\Temp\PW.txt
+    Generates 100 passwords to a textfile stored in C:\Temp\PW.txt
+.INPUTS
+    PwLengt as int32
+.OUTPUTS
+    Outputs randomized password as string(s)
+.NOTES
+    Purpose :   Designed to meet AD Complexity rules & be crossplatform (Windows, Linux)
+    Author  :   Emil.t.Larsson@gmail.com
+    Date    :   2021-05-11
+    OS      :   Win10, Ubuntu 20
+    Version :   1.0.0
+#>
+    [CmdletBinding()]
+    Param
+    (
+
+        [Parameter(Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true,
+            Position = 0)]
+        [ValidateRange(6, 30)]
+        [int32]$PwLength,
+        [Parameter(Mandatory = $false)]
+        [int32]$Amount = 1
+    )
+
+    Begin {
+        $Password = @()
+    }
+    Process {
+
+        $pwdvalues = "-!@#$%^&*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+        do {
+
+            $PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join ''
+
+            # Regex rules, contains any of the special AND 0-9 AND upper/lower
+            if (
+                $PasswordGenerated -match "[-!@#$%^&*_{}()?]" -and
+                $PasswordGenerated -match "[A-Z]" -and
+                $PasswordGenerated -match "[a-z]" -and
+                $PasswordGenerated -match "[0-9]"
+            ) {
+                # Add to pw array
+                $Password += $PasswordGenerated
+            }
+            else {
+                Continue
+            }
+        }
+        until ($Password.count -eq $Amount)
+    }
+    End {
+        $Password
+    }
+}
+```
 
 ### Happy coding

@@ -186,7 +186,7 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 
     <div class="post-content">
       
-      <h1 id="creating-a-password-generator">Creating a Password generator</h1>
+      <h2 id="creating-a-password-generator">Creating a Password generator</h2>
 <p>Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)</p>
 <p>My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts.</p>
 <p>However the first version was based on a dotnet class method, Adam Bertram does a great job covering how to wrap this in a module: <a href="https://adamtheautomator.com/random-password-generator/">[System.Web.Security.Membership]::GeneratePassword</a></p>
@@ -219,7 +219,7 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <p>Since all we do here is randomly grabbing strings and joining them, we&rsquo;re only working with a string object. Making the script fast and the output very simple, and since the output is just a simple string, it can be easily turned into a .txt file or used within <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.1">ConvertTo-SecureString</a></p>
 <h3 id="lastly">Lastly</h3>
 <p>This is a quite simple and short function, and I&rsquo;m sure it wont cover all my password generating needs for the future, but hopefully for some time at least.</p>
-<p>I hope this post got your thinking about regex validation, do-while loops, and string manipulation in Powershell!</p>
+<p>I hope this post got you thinking about regex validation, do-while loops, and string manipulation in Powershell!</p>
 <p>Feel free to visit my github to steal, fork or improve my pwd-gen yourself.</p>
 <h3 id="happy-coding">Happy coding</h3>
 

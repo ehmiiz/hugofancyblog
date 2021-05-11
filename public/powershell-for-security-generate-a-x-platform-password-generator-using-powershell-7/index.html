@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7 ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&amp;rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="https://blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7"/>
+<meta name="twitter:description" content="Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts."/>
+
+
+
+<meta property="og:title" content="PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7" />
+<meta property="og:description" content="Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/" />
+<meta property="og:image" content="https://blog.ehmiiz.tech"/>
+<meta property="article:published_time" content="2021-05-10T14:58:11+01:00" />
+<meta property="article:modified_time" content="2021-05-10T14:58:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Blog</a></li>
+        
+      
+        
+          <li><a href="/coming">Coming</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/posts">Blog</a></li>
+      
+    
+      
+        <li><a href="/coming">Coming</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021-05-10
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <h1 id="creating-a-password-generator">Creating a Password generator</h1>
+<p>Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)</p>
+<p>My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts.</p>
+<p>However the first version was based on a dotnet class method, Adam Bertram does a great job covering how to wrap this in a module: <a href="https://adamtheautomator.com/random-password-generator/">[System.Web.Security.Membership]::GeneratePassword</a></p>
+<p>The class does bring a dependency on the the specific dotnet class, and for me, this approach started to bring errors in Powershell cores early versions.</p>
+<h2 id="updated-version">Updated version</h2>
+<p>This is my attempt at creating my own password generator <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">Get-GeneratedPassword.ps1</a>.</p>
+<h3 id="my-requirements-was-the-following">My Requirements was the following</h3>
+<ul>
+<li>Cover AD Default complexity rules</li>
+<li>Useable in other scripts</li>
+<li>X-platform</li>
+<li>No dependencies outside of Powershell 7</li>
+</ul>
+<h3 id="the-base">The base</h3>
+<p>The function starts of by enforcing some of the requirements using ValidateRange, and a default value for the <code>-Amount</code> parameter<br>
+<code>[ValidateRange(6, 30)] [int32]$PwLength</code></p>
+<p>Since AD&rsquo;s complexity rule is enforcing at least 6 chars, this range checks that requirement box.</p>
+<p><code>[int32]$Amount = 1</code></p>
+<p>The default value solves the issue of just running the cmdlet without the <code>-Amount</code> parameter</p>
+<p>Next up is the whole idea behind the script, instead of using a dotnet class, or some other dependency, I&rsquo;ll just generate my own string of chars to pick from:</p>
+<p><code>$pwdvalues = &quot;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</code></p>
+<p>By using a <a href="https://devblogs.microsoft.com/scripting/powershell-looping-understanding-and-using-dountil/">do-until loop</a>, I can simply abuse Get-Random:<br>
+<code>$PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join ''</code></p>
+<p>until my desired count of complex passwords are achieved by validating them through some regex validations:</p>
+<p><code>$PasswordGenerated -match &quot;[-!@#$%^&amp;*_{}()?]&quot; -and</code></p>
+<p><code>$PasswordGenerated -match &quot;[A-Z]&quot; -and</code></p>
+<p><code>$PasswordGenerated -match &quot;[a-z]&quot; -and</code></p>
+<p><code>$PasswordGenerated -match &quot;[0-9]&quot;</code></p>
+<p>This validation is critical for only getting the complex passwords for output</p>
+<p>Since all we do here is randomly grabbing strings and joining them, we&rsquo;re only working with a string object. Making the script fast and the output very simple, and since the output is just a simple string, it can be easily turned into a .txt file or used within <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.1">ConvertTo-SecureString</a></p>
+<h3 id="lastly">Lastly</h3>
+<p>This is a quite simple and short function, and I&rsquo;m sure it wont cover all my password generating needs for the future, but hopefully for some time at least.</p>
+<p>I hope this post got your thinking about regex validation, do-while loops, and string manipulation in Powershell!</p>
+<p>Feel free to visit my github to steal, fork or improve my pwd-gen yourself.</p>
+<h3 id="happy-coding">Happy coding</h3>
+
+    </div>
+    
+
+    
+      
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-ehmiiz-tech" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.ehmiiz.tech/assets/main.js"></script>
+<script src="https://blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

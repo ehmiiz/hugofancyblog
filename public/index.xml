@@ -9,10 +9,31 @@
     <description>Recent content on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Apr 2021 08:23:11 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 10 May 2021 14:58:11 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7</title>
+      <link>https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</link>
+      <pubDate>Mon, 10 May 2021 14:58:11 +0100</pubDate>
+      
+      <guid>https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Creating a Password generator Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source for knowledge for other scripters, hence this post :)
+My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&amp;rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts.
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>PowerShell for Security: Get Important AD Answers from this module.</title>

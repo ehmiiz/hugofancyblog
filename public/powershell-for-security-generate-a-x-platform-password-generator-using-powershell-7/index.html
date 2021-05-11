@@ -224,6 +224,38 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <p>Feel free to visit my github to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here&rsquo;s the current version from the time of writing this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
 <span style="color:#66d9ef">function</span> Get-GeneratedPassword {
+<span style="color:#75715e">&lt;#
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.SYNOPSIS</span><span style="color:#75715e">
+</span><span style="color:#75715e">    Cross-platform password generator
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.DESCRIPTION</span><span style="color:#75715e">
+</span><span style="color:#75715e">    Get-GeneratedPassword is using a Get-Random, a string and regex
+</span><span style="color:#75715e">    validation to ensure that the password meets the complexity level
+</span><span style="color:#75715e">    enforced by default in ActiveDirectory
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 10 -Amount 10
+</span><span style="color:#75715e">    Generates 10 passwords with the length set to 10
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 12 | clip
+</span><span style="color:#75715e">    Only supported in Windows. Will generate a password with 12 as length
+</span><span style="color:#75715e">    and clip the result to clipboard
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span><span style="color:#75715e">    PS C:\&gt; $user = &#34;emil&#34;; $pw = ConvertTo-SecureString -String (Get-GeneratedPassword 12) -AsPlainText
+</span><span style="color:#75715e">    PS C:\&gt; $creds = $user,$pw
+</span><span style="color:#75715e">    Creates a CredentialObject that can be passed in to user generating cmdlets
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 8 -Amount 100 | Out-File C:\Temp\PW.txt
+</span><span style="color:#75715e">    Generates 100 passwords to a textfile stored in C:\Temp\PW.txt
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.INPUTS</span><span style="color:#75715e">
+</span><span style="color:#75715e">    PwLengt as int32
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.OUTPUTS</span><span style="color:#75715e">
+</span><span style="color:#75715e">    Outputs randomized password as string(s)
+</span><span style="color:#75715e"></span><span style="color:#e6db74">.NOTES</span><span style="color:#75715e">
+</span><span style="color:#75715e">    Purpose :   Designed to meet AD Complexity rules &amp; be crossplatform (Windows, Linux)
+</span><span style="color:#75715e">    Author  :   Emil.t.Larsson@gmail.com
+</span><span style="color:#75715e">    Date    :   2021-05-11
+</span><span style="color:#75715e">    OS      :   Win10, Ubuntu 20
+</span><span style="color:#75715e">    Version :   1.0.0
+</span><span style="color:#75715e">#&gt;</span>
     [<span style="color:#66d9ef">CmdletBinding</span>()]
     <span style="color:#66d9ef">Param</span>
     (

@@ -9,10 +9,32 @@
     <description>Recent content in Posts on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Feb 2021 08:23:11 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Apr 2021 08:23:11 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.ehmiiz.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PowerShell for Security: Get Important AD Answers from this module.</title>
+      <link>https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module./</link>
+      <pubDate>Sun, 25 Apr 2021 08:23:11 +0100</pubDate>
+      
+      <guid>https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module./</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Questions to AD Engineers I started to work on a new module that I call ADSEC.
+Its purpose is to answer the critical AD security related questions below:
+ Who can replicate secrets (password hashes) from an Active Directory domain? Who can change security permissions on the AdminSDHolder object? Who can change the membership of the Domain Admins security group? Who can reset an Active Directory privileged user account&amp;rsquo;s password? Who can disable the use of Smartcards on an Active Directory user account?
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>PowerShell Solution: Script not digitally signed.</title>

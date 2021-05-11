@@ -3,7 +3,7 @@
   <head>
     
       <title>
-        About Ehmiiz.tech ::
+        PowerShell for Security: Get Important AD Answers from this module. ::
         blog.ehmiiz.tech
       </title>
     
@@ -11,15 +11,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Hi, and welcome to my blog! I&amp;rsquo;m a 28 year old guy who&amp;rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&amp;rsquo;ve read.
-Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing  Contact You can mail me at: emil@ehmiiz.tech"
+  content="Questions to AD Engineers I started to work on a new module that I call ADSEC.
+Its purpose is to answer the critical AD security related questions below:
+ Who can replicate secrets (password hashes) from an Active Directory domain? Who can change security permissions on the AdminSDHolder object? Who can change the membership of the Domain Admins security group? Who can reset an Active Directory privileged user account&amp;rsquo;s password? Who can disable the use of Smartcards on an Active Directory user account?"
 />
 <meta
   name="keywords"
   content=""
 />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://blog.ehmiiz.tech/about/" />
+<link rel="canonical" href="https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module./" />
 
 
 
@@ -47,20 +48,22 @@ Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look ba
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://blog.ehmiiz.tech"/>
 
-<meta name="twitter:title" content="About Ehmiiz.tech"/>
-<meta name="twitter:description" content="Hi, and welcome to my blog! I&rsquo;m a 28 year old guy who&rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&rsquo;ve read.
-Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing  Contact You can mail me at: emil@ehmiiz.tech"/>
+<meta name="twitter:title" content="PowerShell for Security: Get Important AD Answers from this module."/>
+<meta name="twitter:description" content="Questions to AD Engineers I started to work on a new module that I call ADSEC.
+Its purpose is to answer the critical AD security related questions below:
+ Who can replicate secrets (password hashes) from an Active Directory domain? Who can change security permissions on the AdminSDHolder object? Who can change the membership of the Domain Admins security group? Who can reset an Active Directory privileged user account&rsquo;s password? Who can disable the use of Smartcards on an Active Directory user account?"/>
 
 
 
-<meta property="og:title" content="About Ehmiiz.tech" />
-<meta property="og:description" content="Hi, and welcome to my blog! I&rsquo;m a 28 year old guy who&rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&rsquo;ve read.
-Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing  Contact You can mail me at: emil@ehmiiz.tech" />
+<meta property="og:title" content="PowerShell for Security: Get Important AD Answers from this module." />
+<meta property="og:description" content="Questions to AD Engineers I started to work on a new module that I call ADSEC.
+Its purpose is to answer the critical AD security related questions below:
+ Who can replicate secrets (password hashes) from an Active Directory domain? Who can change security permissions on the AdminSDHolder object? Who can change the membership of the Domain Admins security group? Who can reset an Active Directory privileged user account&rsquo;s password? Who can disable the use of Smartcards on an Active Directory user account?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ehmiiz.tech/about/" />
+<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module./" />
 <meta property="og:image" content="https://blog.ehmiiz.tech"/>
-<meta property="article:published_time" content="2021-02-07T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-07T00:00:00+00:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+<meta property="article:published_time" content="2021-04-25T08:23:11+01:00" />
+<meta property="article:modified_time" content="2021-04-25T08:23:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
 
 
 
@@ -162,13 +165,15 @@ Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look ba
   
 
   <div class="post">
-    <h1 class="post-title">About Ehmiiz.tech</h1>
+    <h1 class="post-title">PowerShell for Security: Get Important AD Answers from this module.</h1>
     <div class="post-meta">
       
         <span class="post-date">
-          2021-02-07
+          2021-04-25
         </span>
 
+        
+          
         
       
 
@@ -184,26 +189,18 @@ Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look ba
 
     <div class="post-content">
       
-      
-  <figure class="left" >
-    <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/119750409_3350008431746808_3252006457725559522_o.jpg?_nc_cat=102&amp;ccb=2&amp;_nc_sid=730e14&amp;_nc_ohc=E5CZ7StBVwgAX_U7BL_&amp;_nc_ht=scontent-arn2-1.xx&amp;oh=201d698515a99199d58169c3c72fff1d&amp;oe=6047F4C3"   />
-    
-  </figure>
-
-
-<h1 id="hi-and-welcome-to-my-blog">Hi, and welcome to my blog!</h1>
-<p>I&rsquo;m a 28 year old guy who&rsquo;s writing this blog mostly to see how blogs can be built using <a href="https://github.com/ehmiiz/hugofancyblog/">github</a> and <a href="https://gohugo.io/">hugo</a>! And to remember what books I&rsquo;ve read.</p>
-<h1 id="goals-of-this-blog">Goals of this blog</h1>
+      <h1 id="questions-to-ad-engineers">Questions to AD Engineers</h1>
+<p>I started to work on a new module that I call <a href="https://github.com/ehmiiz/PowerShell/tree/master/ADSEC">ADSEC</a>.<br>
+Its purpose is to answer the critical AD security related questions below:</p>
 <ul>
-<li>Simplicity</li>
-<li>Curiosity</li>
-<li>Positivity</li>
-<li>Digital bookshelf to look back on for myself</li>
-<li>Knowledge sharing</li>
+<li>Who can replicate secrets (password hashes) from an Active Directory domain?</li>
+<li>Who can change security permissions on the AdminSDHolder object?</li>
+<li>Who can change the membership of the Domain Admins security group?</li>
+<li>Who can reset an Active Directory privileged user account&rsquo;s password?</li>
+<li>Who can disable the use of Smartcards on an Active Directory user account?</li>
 </ul>
-<h1 id="contact">Contact</h1>
-<p>You can mail me at:
-<a href="mailto:emil@ehmiiz.tech">emil@ehmiiz.tech</a></p>
+<p>The module will contain 5 different cmdlets, and they will display the data needed to answer all of the above.</p>
+<h3 id="happy-coding">Happy coding!</h3>
 
     </div>
     

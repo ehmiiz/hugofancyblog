@@ -9,10 +9,31 @@
     <description>Recent content on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 May 2021 14:58:11 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 12 May 2021 14:56:09 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PowerShell Solution: Automate GPO creations</title>
+      <link>https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</link>
+      <pubDate>Wed, 12 May 2021 14:56:09 +0200</pubDate>
+      
+      <guid>https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          The headache of setting up recurring GPO&amp;rsquo;s I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
+The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP&amp;rsquo;s, true/false), in an automated fasion?
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7</title>

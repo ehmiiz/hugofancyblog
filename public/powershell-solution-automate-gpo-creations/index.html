@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        PowerShell Solution: Automate GPO creations ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="The headache of setting up recurring GPO&amp;rsquo;s I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
+The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP&amp;rsquo;s, true/false), in an automated fasion?"
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="https://blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="PowerShell Solution: Automate GPO creations"/>
+<meta name="twitter:description" content="The headache of setting up recurring GPO&rsquo;s I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
+The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP&rsquo;s, true/false), in an automated fasion?"/>
+
+
+
+<meta property="og:title" content="PowerShell Solution: Automate GPO creations" />
+<meta property="og:description" content="The headache of setting up recurring GPO&rsquo;s I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
+The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP&rsquo;s, true/false), in an automated fasion?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/" /><meta property="og:image" content="https://blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-12T14:56:09&#43;02:00" />
+<meta property="article:modified_time" content="2021-05-12T14:56:09&#43;02:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/posts">Blog</a></li>
+        
+      
+        
+          <li><a href="/coming">Coming</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/posts">Blog</a></li>
+      
+    
+      
+        <li><a href="/coming">Coming</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">PowerShell Solution: Automate GPO creations</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021-05-12
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <h2 id="the-headache-of-setting-up-recurring-gpos">The headache of setting up recurring GPO&rsquo;s</h2>
+<p>I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.</p>
+<p>The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP&rsquo;s, true/false), in an automated fasion?</p>
+<p>The best answer to this question is; You probably shouldn&rsquo;t.</p>
+<p>If the GPO planning is done carefully, you should not find yourself having this problem - since why would we want 10-100-1000 different GPOs doing basically the same thing? If we could use WMI filters, script-based, logically acting GPOs, the world would be a wonderful place.</p>
+<h2 id="reality-hits-you-hard-bro">Reality hits you hard, bro</h2>
+<p>Let&rsquo;s be real, you either did the GPO planning yourself back in the 90&rsquo;s, or someones (probably awesome) dad did it. And he probably had a tight schedule, IT was probably understaffed already back then, and frankly, all companies might not have a <a href="https://en.wikipedia.org/wiki/Mark_Russinovich">Mark Russinovich</a>-kind of guy, implementing flawless, scalable GPO plans for your organization.</p>
+<p>Sadly the facts listed above does not help you in any way what so ever. Hopefully the rest of this blog post can.</p>
+<h2 id="technical-bits">Technical bits</h2>
+<p>PowerShell and GPO&rsquo;s go quite nicly hand in hand, thankfully. Now starts the technical fun stuff. The following is what we need to solve:</p>
+<p>Have a script that allows you to input a specific condition (City name, Group name, Computer name, yada yada), and have this script:</p>
+<ul>
+<li>
+<p>Create a New GPO</p>
+</li>
+<li>
+<p>Set the specific GPO settings you need</p>
+</li>
+<li>
+<p>Link the GPO to the specific OU(s)</p>
+</li>
+</ul>
+<p>But how? GPO&rsquo;s are all XML and you really need GPMC to get the exact settings right, and I would rather not edit XML files in SYSVOL, what if I mess something up?</p>
+<p>I&rsquo;m glad you asked! Here&rsquo;s the kicker:</p>
+<p>Since we&rsquo;re trying to automate the creation of a recurring GPO, there&rsquo;s already a GPO in place that does almost the exact thing you need. All we need to do is;</p>
+<ol>
+<li>
+<p>Create a similar GPO (disabled) alternatively use the production GPO (the one that someones dad created, aka DADGPO (tm) )</p>
+</li>
+<li>
+<p>Backup this GPO to a safe(er) area (not sysvol)</p>
+</li>
+<li>
+<p>Commit XML edits to change the desired condition</p>
+</li>
+<li>
+<p>Create a new Blank GPO</p>
+</li>
+<li>
+<p>Use Import-GPO&rsquo;s ID parameter, and input the edited GPO</p>
+</li>
+<li>
+<p>Link the GPO to desired new OU</p>
+</li>
+<li>
+<p>(optional) Be excited and tell everyone that you&rsquo;ve just automated a process of EDITING AND CREATING new GPOs</p>
+</li>
+</ol>
+<p>This process solves two big issues, firstly it allows you to just edit the recurring GPO once, this would otherwise be a recurring task.</p>
+<p>Secondly, it solves the issue with editing GPO&rsquo;s in production, since you should&rsquo;t tamper with XML files in a production sysvol. Instead the edits you do are directly done to the backup file that&rsquo;s outside of sysvol.</p>
+<h2 id="let-us-see-some-code-already">Let us see some code already</h2>
+<p>This function lets you input</p>
+<ol>
+<li>
+<p>Name of the new GPO</p>
+</li>
+<li>
+<p>Group name (DelegationGrouo) of the AD group you want to edit within the GPO settings</p>
+</li>
+<li>
+<p>Domain name in case of multi-domain forest</p>
+</li>
+</ol>
+<p>Takes the input, and outputs a new GPO with the updated AD Group provided:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">function</span> New-AdminPolicyGPO {
+    <span style="color:#66d9ef">param</span> (
+        $Name,
+        $DelegationGroup,
+        $Domain
+    )
+    <span style="color:#66d9ef">Begin</span> {
+
+        <span style="color:#75715e"># Insert whatever validation checks you need</span>
+
+        <span style="color:#66d9ef">if</span> (Get-GPO $Name -ErrorAction SilentlyContinue) {
+            Write-Warning <span style="color:#e6db74">&#34;GPO already exists&#34;</span>
+            <span style="color:#66d9ef">Break</span>
+        }
+    
+        <span style="color:#66d9ef">if</span> (Get-ADGroup $DelegationGroup) {
+            $DelegationGroup = Get-ADGroup $DelegationGroup
+        }
+        <span style="color:#66d9ef">else</span> {
+            Write-Warning <span style="color:#e6db74">&#34;ADGroup not identified&#34;</span>
+            <span style="color:#66d9ef">Break</span>
+        }
+    
+
+    }
+    <span style="color:#66d9ef">Process</span> {
+    
+    <span style="color:#75715e">&lt;#
+</span><span style="color:#75715e">        RootGPOs GUID needs to be changed to the DADGPO guid
+</span><span style="color:#75715e">        An easy way of getting GUID is to just run: 
+</span><span style="color:#75715e">        Get-GPO -All | ? DisplayName -Like &#34;Name of gpo&#34;
+</span><span style="color:#75715e">    #&gt;</span>
+
+        $RootGPO = Get-GPO -Guid <span style="color:#e6db74">&#34;D4DGP0-GU1D-D4DGP0-GU1D-D4DGP0-GU1D&#34;</span>
+
+        <span style="color:#75715e"># Create blank GPO and store it in a variable</span>
+        New-GPO $Name
+        $GPO = Get-GPO $Name
+
+
+        <span style="color:#75715e">#Create path for backup gpo</span>
+        $BackUpPath = <span style="color:#e6db74">&#34;$env:LOCALAPPDATA\BackupGPO\&#34;</span>
+        <span style="color:#66d9ef">if</span> (Test-Path $BackUpPath) {
+            $BackedupGPO = Backup-GPO -Guid $RootGPO.Guid -Path BackUpPath
+        }
+        <span style="color:#66d9ef">else</span> {
+            New-Item -Path $BackUpPath -ItemType Directory
+            $BackedupGPO = Backup-GPO -Guid $RootGPO.Guid -Path $BackUpPath
+        }
+
+        <span style="color:#75715e">#Store XML file of backup gpo in variable</span>
+        $SuperLongAndFunString = <span style="color:#e6db74">&#34;$BackUpPath{</span>$($BackedupGPO.ID.GUID)<span style="color:#e6db74">}\DomainSysvol\gpo\Machine\Preferences\Groups\Groups.xml&#34;</span>
+        <span style="color:#66d9ef">if</span> (Test-Path $SuperLongAndFunString) {
+            <span style="color:#66d9ef">try</span> {
+                <span style="color:#75715e"># Play around with this part until Set-Content</span>
+                <span style="color:#75715e"># changes the desired GPO setting</span>
+
+                $xml = Get-Content $SuperLongAndFunString
+
+                $xml = $xml.Replace(<span style="color:#e6db74">&#39;&#34;Domain\ADGroupName&#34; action=&#34;ADD&#34; sid=&#34;Whatever the SID is&#34;&#39;</span>, <span style="color:#e6db74">&#34;&#34;&#34;$Domain\$
+</span><span style="color:#e6db74">                ($DelegationGroup.Name)&#34;&#34; action=</span>$(<span style="color:#e6db74">&#39;&#34;ADD&#34;&#39;</span>)<span style="color:#e6db74"> sid=&#34;&#34;</span>$($DelegationGroup.sid)<span style="color:#e6db74">&#34;&#34;&#34;</span> ) <span style="color:#75715e">#Edit XML</span>
+                
+                Set-Content $SuperLongAndFunString -Value $xml -Verbose
+                
+                Import-GPO -BackupId $BackedupGPO.Id -Path $BackedupGPO.BackupDirectory -TargetName $GPO.DisplayName
+            }
+            <span style="color:#66d9ef">catch</span> {
+                $Error[0]
+                <span style="color:#66d9ef">Break</span>
+            }
+        }
+        <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">Break</span> <span style="color:#75715e">#Can&#39;t locate GPO from backup</span>
+        }
+    }
+}
+</code></pre></div><h2 id="lastly">Lastly</h2>
+<p>This function serves as a base for you to use, and the point here is really to demonstrate the process of how you could tackle this problem. I would suggest playing around with get/set-content to get the desired outcome of the GPO settings in a lab env before even thinking about implementation to production.</p>
+<p>In many cases, GPO setting changes are XML changes. PowerShell lets you configure anything within an XML file. The key to doing so is to understand the specific setting, so you can manipulate the backed up GPO&rsquo;s XML in your favor.</p>
+<h3 id="happy-coding">Happy coding</h3>
+<h3 id="emil">/Emil</h3>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.ehmiiz.tech/assets/main.js"></script>
+<script src="https://blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

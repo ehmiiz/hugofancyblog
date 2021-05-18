@@ -1,12 +1,12 @@
 ---
-title: "PowerShell for Infra-As-Code: Automate GPO creations"
+title: "PowerShell Solution: Automate GPO creations"
 date: 2021-05-12T14:56:09+02:00
 draft: false
 ---
 
 ## The headache of setting up recurring GPO's
 
-I was faced with an issue not too long ago, and I spent quite some time trying to come up with an automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
+I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
 
 The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP's, true/false), in an automated fasion?
 

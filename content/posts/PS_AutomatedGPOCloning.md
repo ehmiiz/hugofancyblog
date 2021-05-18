@@ -1,7 +1,7 @@
 ---
 title: "PowerShell for Infra-As-Code: Automate GPO creations"
 date: 2021-05-12T14:56:09+02:00
-draft: true
+draft: false
 ---
 
 ## The headache of setting up recurring GPO's

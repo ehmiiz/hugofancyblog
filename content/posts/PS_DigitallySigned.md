@@ -1,6 +1,6 @@
 --- 
 
-title: "PowerShell Solution: Script not digitally signed." 
+title: "PowerShell Solution: Script not digitally signed" 
 
 date: 2021-02-11T08:23:11+01:00 
 
@@ -27,16 +27,10 @@ This will allow the powershell session process itself to bypass the Exec policy,
 
 Another solution would be if you're executing the script from your own user:   
 
-`Set-ExecutionPolicy RemoteSigned` 
-
-  
+`Set-ExecutionPolicy RemoteSigned`
 
 Further documentation regarding Set-ExecutionPolicy may be found [here](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)?redirectedfrom=MSDN). 
 
-  
-
 Original blogpost that helped me solve this issue was found here: [here](https://caiomsouza.medium.com/). 
-
   
-
-# Happy coding! 
+##  Happy coding

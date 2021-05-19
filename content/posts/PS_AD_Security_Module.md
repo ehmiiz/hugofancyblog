@@ -1,6 +1,6 @@
 --- 
 
-title: "PowerShell for Security: Get Important AD Answers from this module." 
+title: "PowerShell for Security: Get Important AD Answers from this module" 
 
 date: 2021-04-25T08:23:11+01:00 
 

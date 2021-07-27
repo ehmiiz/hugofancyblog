@@ -55,9 +55,9 @@ disqusShortname = "https-blog-ehmiiz-tech"
     name       = "About"
     url        = "/about"
   [[menu.main]]
-    identifier = "coming"
-    name       = "Coming"
-    url        = "/coming"
+    identifier = "cv"
+    name       = "CV"
+    url        = "/cv"
 
 [permalinks]
   posts = "/:title"

@@ -1,8 +1,8 @@
 ---
-title: "Up and Coming"
-date: 2020-03-01T07:13:37+01:00
+title: "CV - Emil Larsson"
+date: 2021-07-26T07:13:37+01:00
 draft: false
-comments: true
+comments: false
 ---
 {{< figure
   src="https://i.imgur.com/30MC3nh.jpg"

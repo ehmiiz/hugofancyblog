@@ -1,5 +1,5 @@
 ---
-title: "👨‍💻 CV - Emil Larsson 👨‍💻"
+title: "CV, Emil Larsson 👨‍💻"
 date: 2021-07-25T07:13:37+01:00
 draft: false
 comments: false
@@ -9,9 +9,12 @@ comments: false
   caption="Working from home since early 2020."
   >}}
 
-## IT Automation, Identity, Security - Engineer 🐱‍👤  
+## Titles 🧙
+* IT Automation Engineer
+* Identity and Access management Engineer
+* Security Operator
 
-Above are some of the titles I feel comfortable calling myself, allthough I've been working with identity and access management & IT automation for most of my career, I always view security as first priority in
+Above are some of the titles I feel comfortable calling myself, allthough I've been working with identity and access management & IT automation for most of my career, I always view security as first priority in everything I do.
 
 ## Skills 🤹🏽
 
@@ -20,16 +23,17 @@ This is an list of skills that I posses besides general deep IT knowledge and un
 * PowerShell
 * ActiveDirectory On-Premis, AD DS, AD CS, AD FS
 * Azure ActiveDirectory, Automation, Functions
+* APIs & Webhooks
 * DHCP & DNS
 * SSO, SAML / OAuth Authentication
 * Git
 * TCP / IP
 * Linux
-* Software Development
+* Software & Web Development
 
 ## Experiance & Accomplishments ✔️
 
-All my prior work has been in 10k+ plus companies  
+All my prior work has been in 10k-15k+ plus companies  
 View my LinkedIn page for further information
 * 2nd and 3rd level IT-Operator, 2012-2014
 * Identity and Access Ops - 2014 - 2018
@@ -46,11 +50,9 @@ Continuous improvements on all my areas and specifically focus more on Secure IA
 
 ## Contacts ☎️
 
-+46 0723061454
++46 0723061454, emil.t.larsson@gmail.com
 
-emil.t.larsson@gmail.com
-
-## Misc ⚙️
+## Personal 🏡
 
 - A father and engaged  
 - I've had dogs my whole life and currently have a Finnish Lapphund

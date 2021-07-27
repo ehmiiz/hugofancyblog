@@ -15,6 +15,28 @@
     
     
     <item>
+      <title>CV - Emil Larsson</title>
+      <link>https://blog.ehmiiz.tech/cv/</link>
+      <pubDate>Sun, 25 Jul 2021 07:13:37 +0100</pubDate>
+      
+      <guid>https://blog.ehmiiz.tech/cv/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Working from home since early 2020.IT Automation, Identity, Security, Infrastructure - Engineer Some of the titles I feel comfortable calling myself, allthough I&amp;rsquo;ve been working with identity for most of my career.
+Skills This is an list of skills that I posses, in order high knowledge to medium knowledge
+ PowerShell ActiveDirectory On-Premis Microsoft DHCP Azure ActiveDirectory Azure Automation SSO, SAML / OAuth Authentication Git TCP / IP Linux  Experiance All my prior work has been in 10k+ plus companies
+          
+        
+        </description>
+    </item>
+    
+    <item>
       <title>PowerShell Solution: Automate GPO creations</title>
       <link>https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</link>
       <pubDate>Wed, 12 May 2021 14:56:09 +0200</pubDate>
@@ -179,27 +201,6 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
         
           Hi, and welcome to my blog I&amp;rsquo;m a 28 year old guy who&amp;rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&amp;rsquo;ve read.
 Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing Get more .md experiance  Contact You can mail me at: emil@ehmiiz.tech
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>Up and Coming</title>
-      <link>https://blog.ehmiiz.tech/coming/</link>
-      <pubDate>Sun, 01 Mar 2020 07:13:37 +0100</pubDate>
-      
-      <guid>https://blog.ehmiiz.tech/coming/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Up &amp;amp; Coming ReviwsA list of books I&amp;rsquo;ve read starting from 2020-03-01. The books in this list will all be getting reviews in the &amp;ldquo;Posts&amp;rdquo; section of the blog sooner or later.
-2020  The Hobbit Lord of the rings, fellowship of the ring Life 3.0 AI Superpowers Code: Hidden language of hard/software Weapon of math destruction AI Our final invention Headspace guide to meditation Hit refresh Lord of the rings, two towers Shell of an idea How to find a wolf in Siberia Lord of the rings, return of the king The Silmarillion  2021  Dinosaur training vol1 The Children of Húrin Beren and Luthien The fall of Gondolin Reclaim  
           
         
         </description>

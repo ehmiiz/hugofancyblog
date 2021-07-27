@@ -1,7 +1,7 @@
 ---
 title: "CV - Emil Larsson"
 date: 2021-07-25T07:13:37+01:00
-draft: true
+draft: false
 comments: false
 ---
 {{< figure

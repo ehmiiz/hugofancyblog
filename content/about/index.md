@@ -11,7 +11,7 @@ comments: true
 
 I'm a 28 year old guy who's writing this blog mostly to see how blogs can be built using [github](https://github.com/ehmiiz/hugofancyblog/) and [hugo](https://gohugo.io/)! And to remember what books I've read.
 
-## Goals of this blog
+### Goals of this blog
 
 * Simplicity
 * Curiosity
@@ -20,7 +20,38 @@ I'm a 28 year old guy who's writing this blog mostly to see how blogs can be bui
 * Knowledge sharing
 * Get more .md experiance
 
-## Contact
+### Contact
 
 You can mail me at:
 emil@ehmiiz.tech
+
+### Coming up
+
+This is a list of books I've read starting from 2020-03-01. The books in this list will all be getting reviews in the "Blog" section of the site sooner or later.
+
+#### 2020
+* The Hobbit ✔️
+* Lord of the rings, fellowship of the ring ✔️
+* Life 3.0 ✔️
+* AI Superpowers
+* Code: Hidden language of hard/software
+* Weapon of math destruction
+* AI Our final invention
+* Headspace guide to meditation
+* Hit refresh
+* Lord of the rings, two towers
+* Shell of an idea
+* How to find a wolf in Siberia
+* Lord of the rings, return of the king
+* The Silmarillion
+#### 2021
+* Dinosaur training vol1
+* The Children of Húrin
+* Beren and Luthien
+* The fall of Gondolin
+* Zero Day: A Jeff Aiken Novel
+* The Four Agreements: A Practical Guide to Personal Freedom
+* Animal Farm by Geroge Orwell
+* Stark som en björn och snabb som en örn
+* The Complete Guide to Fasting (Currently reading)
+* Ready Player One (Currently reading)

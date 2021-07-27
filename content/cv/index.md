@@ -18,7 +18,7 @@ Above are some of the titles I feel comfortable calling myself, allthough I've b
 
 ## Skills 🤹🏽
 
-This is an list of skills that I posses besides general deep IT knowledge and understanding. The list is in order high knowledge to medium knowledge
+This is a list of skills that I posses besides general deep IT knowledge and understanding. The list is in order high knowledge to medium knowledge
 
 * PowerShell
 * ActiveDirectory On-Premis, AD DS, AD CS, AD FS
@@ -37,7 +37,7 @@ All my prior work has been in 10k-15k+ plus companies
 View my LinkedIn page for further information
 * 2nd and 3rd level IT-Operator, 2012-2014
 * Identity and Access Ops - 2014 - 2018
-* Identity And Access Engineer - 2018-2022  
+* Identity And Access Engineer - 2018-2021  
 * Successfully supported large organizations by myself in terms of IAM  
 * Multiple AD Migration projects  
 * Securing and defending multiple AD Forest environments for years

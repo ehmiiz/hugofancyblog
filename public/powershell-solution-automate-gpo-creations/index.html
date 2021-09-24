@@ -57,10 +57,10 @@ The problem I was trying to solve was the following; How do we script the task o
 <meta property="og:description" content="The headache of setting up recurring GPO&rsquo;s I was faced with an issue not too long ago, and I spent quite some time trying to come up with an @automated solution to the problem. I thought that some hypothetical sysadmin might find themselves in a similar situation in the future, and this might save the hypothetical person some time.
 The problem I was trying to solve was the following; How do we script the task of creating a new GPO with the same base settings but with different conditions (Strings (AD Groups, Hostnames), IP&rsquo;s, true/false), in an automated fasion?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/" />
-<meta property="og:image" content="https://blog.ehmiiz.tech"/>
+<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/" /><meta property="og:image" content="https://blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-12T14:56:09+02:00" />
 <meta property="article:modified_time" content="2021-05-12T14:56:09+02:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
 
 
 
@@ -250,7 +250,7 @@ The problem I was trying to solve was the following; How do we script the task o
 </li>
 </ol>
 <p>Takes the input, and outputs a new GPO with the updated AD Group provided:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">function</span> New-AdminPolicyGPO {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">function</span> New-AdminPolicyGPO {
     <span style="color:#66d9ef">param</span> (
         $Name,
         $DelegationGroup,
@@ -369,6 +369,12 @@ The problem I was trying to solve was the following; How do we script the task o
           <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
         >
       </div>
+
+      <div id="statique">
+        <script defer="" src="statique.js"></script>
+        <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
     
   </div>
 </footer>

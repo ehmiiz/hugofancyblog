@@ -57,10 +57,10 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <meta property="og:description" content="My history with Password Generators Password generators can be very simple and fun to build, and I thought that publishing my own history with creating them can be a good source of knowledge for other people, hence this post :)
 My first version of Get-GeneratedPassword was created in Powershell 3.0, and at that point I didn&rsquo;t have that many requirements, the usecase for the function was basically to stash it in my $profile to quickly set new passwords for various AD accounts." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/" />
-<meta property="og:image" content="https://blog.ehmiiz.tech"/>
+<meta property="og:url" content="https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/" /><meta property="og:image" content="https://blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-10T14:58:11+01:00" />
 <meta property="article:modified_time" content="2021-05-10T14:58:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
 
 
 
@@ -207,7 +207,7 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 </ul>
 <h3 id="begin">Begin</h3>
 <p>The function starts of by enforcing some of the requirements using ValidateRange, and a default value for the <code>-Amount</code> parameter<br>
-<code>[ValidateRange(6, 30)] [int32]$PwLength</code></p>
+<code>[ValidateRange(6, 30)] [int32]$PwLength</code></p>
 <p>Since AD&rsquo;s complexity rule is enforcing at least 6 chars, this range checks that requirement box.</p>
 <p><code>[int32]$Amount = 1</code></p>
 <p>The default value solves the issue of just running the cmdlet without the <code>-Amount</code> parameter</p>
@@ -235,7 +235,7 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 </ul>
 <p>in Powershell!</p>
 <p>Feel free to visit my <a href="https://github.com/ehmiiz/PowerShell/">github</a> to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here&rsquo;s the current version from the time of writing this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
 <span style="color:#66d9ef">function</span> Get-GeneratedPassword {
 <span style="color:#75715e">&lt;#
 </span><span style="color:#75715e"></span><span style="color:#e6db74">.SYNOPSIS</span><span style="color:#75715e">
@@ -353,6 +353,12 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
           <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
         >
       </div>
+
+      <div id="statique">
+        <script defer="" src="statique.js"></script>
+        <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
     
   </div>
 </footer>

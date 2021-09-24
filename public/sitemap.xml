@@ -1,72 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://blog.ehmiiz.tech/cv/</loc>
     <lastmod>2021-07-25T07:13:37+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/</loc>
     <lastmod>2021-05-12T14:56:09+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/posts/</loc>
     <lastmod>2021-05-12T14:56:09+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</loc>
     <lastmod>2021-05-12T14:56:09+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</loc>
     <lastmod>2021-05-10T14:58:11+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module/</loc>
     <lastmod>2021-04-25T08:23:11+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</loc>
     <lastmod>2021-02-11T08:23:11+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/book-review-life-3.0/</loc>
     <lastmod>2021-02-08T08:23:11+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</loc>
     <lastmod>2021-02-07T12:51:50+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/book-review-the-hobbit/</loc>
     <lastmod>2021-02-07T12:39:23+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/about/</loc>
     <lastmod>2021-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/blog/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/series/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.ehmiiz.tech/tags/</loc>
   </url>
-  
 </urlset>

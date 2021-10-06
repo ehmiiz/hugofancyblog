@@ -14,15 +14,16 @@ comments: false
 * Identity and Access management Engineer
 * Security Operator
 
-Above are some of the titles I feel comfortable calling myself, allthough I've been working with identity and access management & IT automation for most of my career, I always view security as first priority in everything I do.
+Above are some of the titles I feel comfortable calling myself, although I've been working with identity and access management & IT automation for most of my career, I always view security as a priority in everything I do.
 
 ## Skills 🤹🏽
 
-This is a list of skills that I posses besides general deep IT knowledge and understanding. The list is in order high knowledge to medium knowledge
+This is a list of skills that I possess besides general deep IT knowledge and understanding. The list is in order high knowledge to medium knowledge
 
 * PowerShell
-* ActiveDirectory On-Premis, AD DS, AD CS, AD FS
+* Active Directory On-Premis, AD DS, AD CS, AD FS
 * Azure ActiveDirectory, Automation, Functions
+* AD Connect, Conditional Access, Log Analytics
 * APIs & Webhooks
 * DHCP & DNS
 * SSO, SAML / OAuth Authentication
@@ -31,9 +32,9 @@ This is a list of skills that I posses besides general deep IT knowledge and und
 * Linux
 * Software & Web Development
 
-## Experiance & Accomplishments ✔️
+## Experience & Accomplishments ✔️
 
-All my prior work has been in 10k-15k+ plus companies  
+All my prior work has been in 10k-15k+ plus organizations 
 View my LinkedIn page for further information
 * 2nd and 3rd level IT-Operator, 2012-2014
 * Identity and Access Ops - 2014 - 2018
@@ -41,7 +42,7 @@ View my LinkedIn page for further information
 * Successfully supported large organizations by myself in terms of IAM  
 * Multiple AD Migration projects  
 * Securing and defending multiple AD Forest environments for years
-* Automated IT operations for multiple companies with significant and provable results
+* Automated IT operations for multiple companies with significant and provable and data-driven results
 
 ## Goals 🥅
 
@@ -50,7 +51,7 @@ Continuous improvements on all my areas and specifically focus more on Secure IA
 
 ## Contacts ☎️
 
-+46 0723061454, emil.t.larsson@gmail.com
++46 0723061454, emil.t.larsson@outlook.com
 
 ## Personal 🏡
 
@@ -58,10 +59,10 @@ Continuous improvements on all my areas and specifically focus more on Secure IA
 - I've had dogs my whole life and currently have a Finnish Lapphund
 - I'm a house owner
 - I love both hardware and software
-- I love nature and have been a sportsfishermen as far back as I can remember
-- I've competed in Strongman events and i've been doing strength training since 2015
+- I love nature and have been a sport fishermen for as long as I can remember
+- I've competed in Strongman events and I've been doing strength training since 2015
 - I'm a gamer
-- I'm a hoby Software developer (python, c#, PowerShell)
+- I'm a hoby Software developer (C#, PowerShell)
 - I love to read books
 - I love self improvement
 - I am currently employed

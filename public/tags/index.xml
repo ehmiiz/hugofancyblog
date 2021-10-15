@@ -5,12 +5,12 @@
     
     
     
-    <link>https://blog.ehmiiz.tech/tags/</link>
+    <link>//blog.ehmiiz.tech/tags/</link>
     <description>Recent content in Tags on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://blog.ehmiiz.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//blog.ehmiiz.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

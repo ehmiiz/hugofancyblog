@@ -5,21 +5,21 @@
     
     
     
-    <link>https://blog.ehmiiz.tech/</link>
+    <link>//blog.ehmiiz.tech/</link>
     <description>Recent content on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 May 2021 14:56:09 +0200</lastBuildDate>
     
-	<atom:link href="https://blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CV, Emil Larsson 👨‍💻</title>
-      <link>https://blog.ehmiiz.tech/cv/</link>
+      <link>//blog.ehmiiz.tech/cv/</link>
       <pubDate>Sun, 25 Jul 2021 07:13:37 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/cv/</guid>
+      <guid>//blog.ehmiiz.tech/cv/</guid>
       <description>
         
           
@@ -37,10 +37,10 @@ Skills 🤹🏽 This is a list of skills that I possess besides general deep IT 
     
     <item>
       <title>PowerShell Solution: Automate GPO creations</title>
-      <link>https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</link>
+      <link>//blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</link>
       <pubDate>Wed, 12 May 2021 14:56:09 +0200</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</guid>
       <description>
         
           
@@ -58,10 +58,10 @@ The problem I was trying to solve was the following; How do we script the task o
     
     <item>
       <title>PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7</title>
-      <link>https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</link>
+      <link>//blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</link>
       <pubDate>Mon, 10 May 2021 14:58:11 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</guid>
       <description>
         
           
@@ -79,10 +79,10 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
     
     <item>
       <title>PowerShell for Security: Get Important AD Answers from this module</title>
-      <link>https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module/</link>
+      <link>//blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module/</link>
       <pubDate>Sun, 25 Apr 2021 08:23:11 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module/</guid>
       <description>
         
           
@@ -101,10 +101,10 @@ Its purpose is to answer the critical AD security related questions below:
     
     <item>
       <title>PowerShell Solution: Script not digitally signed</title>
-      <link>https://blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</link>
+      <link>//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</link>
       <pubDate>Thu, 11 Feb 2021 08:23:11 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</guid>
       <description>
         
           
@@ -124,10 +124,10 @@ This will allow the powershell session process itself to bypass the Exec policy,
     
     <item>
       <title>Book review: Life 3.0</title>
-      <link>https://blog.ehmiiz.tech/book-review-life-3.0/</link>
+      <link>//blog.ehmiiz.tech/book-review-life-3.0/</link>
       <pubDate>Mon, 08 Feb 2021 08:23:11 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/book-review-life-3.0/</guid>
+      <guid>//blog.ehmiiz.tech/book-review-life-3.0/</guid>
       <description>
         
           
@@ -145,10 +145,10 @@ It’s author, Max Tegmark, got me very interested in the subject and he does so
     
     <item>
       <title>Book Review: LOTR, The Fellowship of the Ring</title>
-      <link>https://blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</link>
+      <link>//blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</link>
       <pubDate>Sun, 07 Feb 2021 12:51:50 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</guid>
+      <guid>//blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/</guid>
       <description>
         
           
@@ -166,10 +166,10 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
     
     <item>
       <title>Book Review: The Hobbit</title>
-      <link>https://blog.ehmiiz.tech/book-review-the-hobbit/</link>
+      <link>//blog.ehmiiz.tech/book-review-the-hobbit/</link>
       <pubDate>Sun, 07 Feb 2021 12:39:23 +0100</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/book-review-the-hobbit/</guid>
+      <guid>//blog.ehmiiz.tech/book-review-the-hobbit/</guid>
       <description>
         
           
@@ -186,10 +186,10 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
     
     <item>
       <title>About Ehmiiz.tech</title>
-      <link>https://blog.ehmiiz.tech/about/</link>
+      <link>//blog.ehmiiz.tech/about/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.ehmiiz.tech/about/</guid>
+      <guid>//blog.ehmiiz.tech/about/</guid>
       <description>
         
           

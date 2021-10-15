@@ -4,7 +4,6 @@ languageCode = "en-us"
 theme        = "hello-friend"
 paginate     = 10
 
- disqusShortname = "https-blog-ehmiiz-tech"
 
 [params]
   dateform        = "Jan 2, 2006"

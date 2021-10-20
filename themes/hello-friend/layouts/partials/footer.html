@@ -1,9 +1,15 @@
 <footer class="footer">
+  
   <div class="footer__inner">
-    {{ if $.Site.Copyright }}
-      <div class="copyright copyright--user">{{ $.Site.Copyright | safeHTML }}</div>
+    <div id="statique">
+      <script defer="" src="{{ $.Site.BaseURL }}/statique/statique.js"></script>
+      <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    {{ if $.Site.Copyright }} 
+    <div class="copyright copyright--user">{{ $.Site.Copyright | safeHTML }}</div>
       {{ else }}
       {{ partial "logo.html" . }}
+       
       <div class="copyright">
         <span
           >Site created by

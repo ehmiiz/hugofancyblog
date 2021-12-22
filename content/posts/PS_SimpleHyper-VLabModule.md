@@ -9,22 +9,33 @@ comments: false
 
 --- 
 ## Meet [Labmil](https://github.com/ehmiiz/labmil).
-Labmil is a script I made to solve a problem. AutomatedLab is too "Heavy" for my taste, and I need a standard way of generating Hyper-V VMs for labs.
+Labmil is a script I made to serve a specific usecase. When [AutomatedLab](https://automatedlab.org/en/latest/) is overkill, and when you don't want to skip the installation phase of the lab.
 
-## Some design alternatives
-First of, I wanted to try out working with environment variables, so that's a thing in this script. Second, I rely on the user to be able to ForEach stuff for scaling, this was manly a choice from my part because I know I will be it's main user.
+![Displaying the cmdlet](https://i.imgur.com/uBIzjmx.png "Get-GeneratedPassword")
 
-Read the examples in the Github page to understand what I mean with "rely on the user to be able to ForEach stuff".
+## Features
+- Quickly put the Windows Server ISO-file to good use
+- It's a simple script for anyone to modify for personal needs
+- It outputs a customobject
+- Create multiple VM's using PowerShell logic
 
 ## Non-Features
-The script has some Non-Features, meaning it's basically a feature for the script, by not being there.
+The script has a few non-features.
+Non-Features are cool because it makes the script unique and useful in certain senarios.
 
-Non-Features are cool because it makes the script unique in some ways, without any extra effort.
 
-For example;
-
-- It is much more robust, since it's simple enough not to touch the application layer.
-- It only uses 1 parameter after initial run
-- It enables you as an sysadmin/engineer to do the whole set-up (not automating the staging part)
+- Not touching the VMs application layer makes it simple and less prone to error
+- It only has two parameters, and only one of them is mandatory after initial run, adding simplicity
+- It enables you as an sysadmin/engineer to do the whole set-up. Giving you more work to do yourself, meaning more labbing!
 - It's only focus is Hyper-V VMs
 
+## How I like to do my labs
+1. Spin up the VMs you plan on labbing with using New-LabmilVM.ps1
+2. Install the server with wanted settings and partitions
+3. Use Windows Terminal's split-tab functionallity, together with 
+```powershell
+Enter-PSSession -VMName $Name
+```
+To have one tab open with each newly created Lab-VM.
+
+Happy labbing!

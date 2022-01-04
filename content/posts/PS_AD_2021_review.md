@@ -19,6 +19,16 @@ comments: false
 First of all, this [blog-post](https://www.dowst.dev/2021-a-powershell-year-in-review/) inspired me to write something similar, so thanks [@MDowst](https://twitter.com/MDowst/) for sharing.
 
 For myself I've been writing quite a few security focused modules and scripts to help me in my day-to-day life as an IAM Engineer. I've discovered the PowerShell community calls, and found a whole array of inspirational twitter-users to follow.
+
+## 2021: Some cool stuff I found
+- [PSReadLine](https://www.bing.com/search?q=psreadline+predictive+intellisense&cvid=941892197e824c9c996f36910a1dbb04&aqs=edge.0.0.6427j0j1&pglt=163&FORM=ANSPA1&PC=U531) and it's IntelliSense
+- [GPOS](https://github.com/endowdly/GoPS) - a shell navigation module
+- [PoshBot](https://poshbot.readthedocs.io/en/latest/)
+- [PowerShell Community Calls](https://github.com/PowerShell/PowerShell-RFC/tree/master/CommunityCall)
+- [Write-Info](https://github.com/Primycha/Write-Info) - a cool logging module
+- [Windows terminal and it's split-tab functionality](https://docs.microsoft.com/en-us/windows/terminal/panes)
+
+
 ## 2022 exciting stuff
 Some stuff I'm personally excited about:
 - Finish reading [PowerShell Cookbook](https://www.powershellcookbook.com/)

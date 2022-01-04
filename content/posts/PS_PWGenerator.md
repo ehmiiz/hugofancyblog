@@ -22,76 +22,8 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 
 ## New attempt without dependencies
 
-This is my attempt at creating my own password generator [Get-GeneratedPassword.ps1](https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1).  
-
-The script can be found on my [GitHub PS repo](https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1)
-
-![Displaying the cmdlet](https://i.imgur.com/fvwI0bb.png "Get-GeneratedPassword")
-
-Read the comment based help, or load the function and run:
-
- `Get-Help Get-GeneratedPassword`
-
-### My Requirements was the following
-
-* Cover [AD complexity rules](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) (in 99,9%)
-* String output, for simplicity
-* X-platform
-* No dependencies outside of Powershell 7
-
-### Begin
-
-The function starts of by enforcing some of the requirements using ValidateRange, and a default value for the `-Amount` parameter  
-`[ValidateRange(6, 30)]
-[int32]$PwLength`
-
-Since AD's complexity rule is enforcing at least 6 chars, this range checks that requirement box.
-
-`[int32]$Amount = 1`
-
-The default value solves the issue of just running the cmdlet without the `-Amount` parameter
-
-Next up is the whole idea behind the script, instead of using a dotnet class, I'll just generate my own string of chars to pick from:
-
-` $pwdvalues = "-!@#$%^&*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" `
-
-By using a [do-until loop](https://devblogs.microsoft.com/scripting/powershell-looping-understanding-and-using-dountil/), I can simply abuse Get-Random:  
-` $PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join '' `
-
- until my desired count of complex passwords are achieved by validating them through some regex validations:
-
-`$PasswordGenerated -match "[-!@#$%^&*_{}()?]" -and`
-
-` $PasswordGenerated -match "(?-i)[A-Z]" -and `
-
-` $PasswordGenerated -match "(?-i)[a-z]" -and `
-
-` $PasswordGenerated -match "[0-9]" `
-
-This validation is critical for only getting the complex passwords for output
-
-The "(?-i)" part is needed since PowerShell by default is case-insensitive, this definition solves that part, and we need this since we really do care about the match being case-sensitive. [This blog post by Jake Bolton](https://ninmonkeys.com/blog/2020/11/21/using-case-sensitive-regular-expressions-in-powershell-tips/) covers the problem in detail.
-
-Since all we do here is randomly grabbing strings and joining them, we're only working with a string object. Making the script fast and the output very simple, and since the output is just a simple string, it can be easily turned into a .txt file or used within [ConvertTo-SecureString](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.1)
-
-### Lastly
-
-This is a quite simple and short function, and I'm sure it wont cover all my password generating needs for the future, but hopefully for some time at least.
-
-I hope this post got you thinking & curious about:
-
-* regex validation
-* do-while loops
-* string manipulation
-* case sensitivity
-* self-made functions
-
- in Powershell!
-
-Feel free to visit my [github](https://github.com/ehmiiz/PowerShell/) to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here's the current version from the time of writing this:  
-
+This is my attempt at creating my own password generator
 ```powershell
-
 function Get-GeneratedPassword {
 <#
 .SYNOPSIS
@@ -170,6 +102,71 @@ function Get-GeneratedPassword {
     }
 }
 ```
+
+The script can be found on my [GitHub PS repo](https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1)
+
+![Displaying the cmdlet](https://i.imgur.com/fvwI0bb.png "Get-GeneratedPassword")
+
+Read the comment based help, or load the function and run:
+
+ `Get-Help Get-GeneratedPassword`
+
+### My Requirements was the following
+
+* Cover [AD complexity rules](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) (in 99,9%)
+* String output, for simplicity
+* X-platform
+* No dependencies outside of Powershell 7
+
+### Begin
+
+The function starts of by enforcing some of the requirements using ValidateRange, and a default value for the `-Amount` parameter  
+`[ValidateRange(6, 30)]
+[int32]$PwLength`
+
+Since AD's complexity rule is enforcing at least 6 chars, this range checks that requirement box.
+
+`[int32]$Amount = 1`
+
+The default value solves the issue of just running the cmdlet without the `-Amount` parameter
+
+Next up is the whole idea behind the script, instead of using a dotnet class, I'll just generate my own string of chars to pick from:
+
+` $pwdvalues = "-!@#$%^&*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" `
+
+By using a [do-until loop](https://devblogs.microsoft.com/scripting/powershell-looping-understanding-and-using-dountil/), I can simply abuse Get-Random:  
+` $PasswordGenerated = ($pwdvalues.tochararray() | Sort-Object { Get-Random })[1..$PwLength] -join '' `
+
+ until my desired count of complex passwords are achieved by validating them through some regex validations:
+
+`$PasswordGenerated -match "[-!@#$%^&*_{}()?]" -and`
+
+` $PasswordGenerated -match "(?-i)[A-Z]" -and `
+
+` $PasswordGenerated -match "(?-i)[a-z]" -and `
+
+` $PasswordGenerated -match "[0-9]" `
+
+This validation is critical for only getting the complex passwords for output
+
+The "(?-i)" part is needed since PowerShell by default is case-insensitive, this definition solves that part, and we need this since we really do care about the match being case-sensitive. [This blog post by Jake Bolton](https://ninmonkeys.com/blog/2020/11/21/using-case-sensitive-regular-expressions-in-powershell-tips/) covers the problem in detail.
+
+Since all we do here is randomly grabbing strings and joining them, we're only working with a string object. Making the script fast and the output very simple, and since the output is just a simple string, it can be easily turned into a .txt file or used within [ConvertTo-SecureString](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-7.1)
+
+### Lastly
+
+This is a quite simple and short function, and I'm sure it wont cover all my password generating needs for the future, but hopefully for some time at least.
+
+I hope this post got you thinking & curious about:
+
+* regex validation
+* do-while loops
+* string manipulation
+* case sensitivity
+* self-made functions
+
+ in Powershell!
+
 
 ### Happy coding
 

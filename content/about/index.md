@@ -4,7 +4,7 @@ title: "About Ehmiiz.tech"
 comments: true
 ---
 {{< figure
-  src="https://i.imgur.com/ULFXV48.jpg"
+  src="https://i.imgur.com/D1RTx1E.png"
 >}}
 
 ## Hi, and welcome to my blog

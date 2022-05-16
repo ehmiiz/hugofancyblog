@@ -55,8 +55,7 @@ The following is PowerShell Black-Magic, and is's really useful. It saves you th
 Simply view your history, memorize the ID, hit '#' and the ID, followed by a 'tab' and you have it printed ready to be executed in your terminal.
 
 {{< figure
-  src="https://i.imgur.com/fw4C055.png
-"
+  src="https://i.imgur.com/fw4C055.png"
 >}}
 
 

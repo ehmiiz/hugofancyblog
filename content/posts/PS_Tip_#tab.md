@@ -47,11 +47,34 @@ It's that simple. In your current session, each command you enter will be availa
 
 ## But there's more!
 ```powershell
-PS C:\Users\Emil\git > #25<tab>
-PS C:\Users\Emil\git > Write-Host "Tomorrow is monday!!!" -ForegroundColor (Get-Random "Green","Yellow","Blue")
+PS C:\Users\Emil\git> #25<tab>
+PS C:\Users\Emil\git> Write-Host "Tomorrow is monday!!!" -ForegroundColor (Get-Random "Green","Yellow","Blue")
 ```
-The following is PowerShell Black-Magic aka PSReadLine and is really useful, it saves you the trouble of copy-pasting your history. Simply view your history, memorize the ID, hit '#' and the ID, followed by a 'tab' and you have it printed ready to be executed in your terminal.
+The following is PowerShell Black-Magic, and is's really useful. It saves you the trouble of copy-pasting your history.
 
+Simply view your history, memorize the ID, hit '#' and the ID, followed by a 'tab' and you have it printed ready to be executed in your terminal.
+
+{{< figure
+  src="https://i.imgur.com/DqQfrnd.png"
+>}}
+
+{{< figure
+  src="https://i.imgur.com/vI31Kpe.png"
+>}}
+
+
+
+## Help!
+If you've read this far and desire more reading, run the following one-liner
+```powershell
+gcm *-history | % { help $_.name -s }
+```
+To be clear:
+```powershell
+Get-Command *-history | ForEach-Object { Get-Help $_.Name -ShowWindow }
+Get-Help about_history
+```
+Hopefully this was a decent history-lesson for someone!
 
 ### Happy coding
 

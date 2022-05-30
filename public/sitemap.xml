@@ -2,23 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//blog.ehmiiz.tech/cv/</loc>
-    <lastmod>2021-07-25T07:13:37+01:00</lastmod>
-  </url><url>
     <loc>//blog.ehmiiz.tech/</loc>
-    <lastmod>2021-05-12T14:56:09+02:00</lastmod>
+    <lastmod>2022-05-16T08:05:11+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/posts/</loc>
-    <lastmod>2021-05-12T14:56:09+02:00</lastmod>
+    <lastmod>2022-05-16T08:05:11+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/powershell-productivity-tip-working-with-history/</loc>
+    <lastmod>2022-05-16T08:05:11+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/powershell-in-2021-from-my-iam-perspective/</loc>
+    <lastmod>2022-01-04T08:13:11+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/powershell-for-automation-simple-hyper-v-vm-creation-script/</loc>
+    <lastmod>2021-12-21T14:58:11+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/cv/</loc>
+    <lastmod>2021-07-25T07:13:37+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</loc>
     <lastmod>2021-05-12T14:56:09+02:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</loc>
     <lastmod>2021-05-10T14:58:11+01:00</lastmod>
-  </url><url>
-    <loc>//blog.ehmiiz.tech/powershell-for-security-get-important-ad-answers-from-this-module/</loc>
-    <lastmod>2021-04-25T08:23:11+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</loc>
     <lastmod>2021-02-11T08:23:11+01:00</lastmod>

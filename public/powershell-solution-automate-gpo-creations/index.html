@@ -23,11 +23,8 @@ The problem I was trying to solve was the following; How do we script the task o
 
 
 
-<link rel="stylesheet" href="//blog.ehmiiz.tech/statique/statique.css" type="text/css">
-    <script type="text/javascript">
-       var statiqueAuth = 'sv=2020-08-04&spr=https&se=2099-01-01T00%3A00%3A00Z&sr=c&sp=rcl&sig=EJQAJtKg9PKNe5Qxfh1bK28Rot5qf6EJRBfuhPI5Jd8%3D'
-       var statiqueBaseUri = 'https://fancyblogcomments.blob.core.windows.net/comments'
-    </script>
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
 
 
 <link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
@@ -255,83 +252,83 @@ The problem I was trying to solve was the following; How do we script the task o
 </li>
 </ol>
 <p>Takes the input, and outputs a new GPO with the updated AD Group provided:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">function</span> New-AdminPolicyGPO {
-    <span style="color:#66d9ef">param</span> (
-        $Name,
-        $DelegationGroup,
-        $Domain
-    )
-    <span style="color:#66d9ef">Begin</span> {
-
-        <span style="color:#75715e"># Insert whatever validation checks you need</span>
-
-        <span style="color:#66d9ef">if</span> (Get-GPO $Name -ErrorAction SilentlyContinue) {
-            Write-Warning <span style="color:#e6db74">&#34;GPO already exists&#34;</span>
-            <span style="color:#66d9ef">Break</span>
-        }
-    
-        <span style="color:#66d9ef">if</span> (Get-ADGroup $DelegationGroup) {
-            $DelegationGroup = Get-ADGroup $DelegationGroup
-        }
-        <span style="color:#66d9ef">else</span> {
-            Write-Warning <span style="color:#e6db74">&#34;ADGroup not identified&#34;</span>
-            <span style="color:#66d9ef">Break</span>
-        }
-    
-
-    }
-    <span style="color:#66d9ef">Process</span> {
-    
-    <span style="color:#75715e">&lt;#
-</span><span style="color:#75715e">        RootGPOs GUID needs to be changed to the DADGPO guid
-</span><span style="color:#75715e">        An easy way of getting GUID is to just run: 
-</span><span style="color:#75715e">        Get-GPO -All | ? DisplayName -Like &#34;Name of gpo&#34;
-</span><span style="color:#75715e">    #&gt;</span>
-
-        $RootGPO = Get-GPO -Guid <span style="color:#e6db74">&#34;D4DGP0-GU1D-D4DGP0-GU1D-D4DGP0-GU1D&#34;</span>
-
-        <span style="color:#75715e"># Create blank GPO and store it in a variable</span>
-        New-GPO $Name
-        $GPO = Get-GPO $Name
-
-
-        <span style="color:#75715e">#Create path for backup gpo</span>
-        $BackUpPath = <span style="color:#e6db74">&#34;$env:LOCALAPPDATA\BackupGPO\&#34;</span>
-        <span style="color:#66d9ef">if</span> (Test-Path $BackUpPath) {
-            $BackedupGPO = Backup-GPO -Guid $RootGPO.Guid -Path BackUpPath
-        }
-        <span style="color:#66d9ef">else</span> {
-            New-Item -Path $BackUpPath -ItemType Directory
-            $BackedupGPO = Backup-GPO -Guid $RootGPO.Guid -Path $BackUpPath
-        }
-
-        <span style="color:#75715e">#Store XML file of backup gpo in variable</span>
-        $SuperLongAndFunString = <span style="color:#e6db74">&#34;$BackUpPath{</span>$($BackedupGPO.ID.GUID)<span style="color:#e6db74">}\DomainSysvol\gpo\Machine\Preferences\Groups\Groups.xml&#34;</span>
-        <span style="color:#66d9ef">if</span> (Test-Path $SuperLongAndFunString) {
-            <span style="color:#66d9ef">try</span> {
-                <span style="color:#75715e"># Play around with this part until Set-Content</span>
-                <span style="color:#75715e"># changes the desired GPO setting</span>
-
-                $xml = Get-Content $SuperLongAndFunString
-
-                $xml = $xml.Replace(<span style="color:#e6db74">&#39;&#34;Domain\ADGroupName&#34; action=&#34;ADD&#34; sid=&#34;Whatever the SID is&#34;&#39;</span>, <span style="color:#e6db74">&#34;&#34;&#34;$Domain\$
-</span><span style="color:#e6db74">                ($DelegationGroup.Name)&#34;&#34; action=</span>$(<span style="color:#e6db74">&#39;&#34;ADD&#34;&#39;</span>)<span style="color:#e6db74"> sid=&#34;&#34;</span>$($DelegationGroup.sid)<span style="color:#e6db74">&#34;&#34;&#34;</span> ) <span style="color:#75715e">#Edit XML</span>
-                
-                Set-Content $SuperLongAndFunString -Value $xml -Verbose
-                
-                Import-GPO -BackupId $BackedupGPO.Id -Path $BackedupGPO.BackupDirectory -TargetName $GPO.DisplayName
-            }
-            <span style="color:#66d9ef">catch</span> {
-                $Error[0]
-                <span style="color:#66d9ef">Break</span>
-            }
-        }
-        <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">Break</span> <span style="color:#75715e">#Can&#39;t locate GPO from backup</span>
-        }
-    }
-}
-</code></pre></div><h2 id="lastly">Lastly</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> New-AdminPolicyGPO {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">param</span> (
+</span></span><span style="display:flex;"><span>        $Name,
+</span></span><span style="display:flex;"><span>        $DelegationGroup,
+</span></span><span style="display:flex;"><span>        $Domain
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Begin</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Insert whatever validation checks you need</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (Get-GPO $Name -ErrorAction SilentlyContinue) {
+</span></span><span style="display:flex;"><span>            Write-Warning <span style="color:#e6db74">&#34;GPO already exists&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">Break</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (Get-ADGroup $DelegationGroup) {
+</span></span><span style="display:flex;"><span>            $DelegationGroup = Get-ADGroup $DelegationGroup
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            Write-Warning <span style="color:#e6db74">&#34;ADGroup not identified&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">Break</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Process</span> {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;#
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        RootGPOs GUID needs to be changed to the DADGPO guid
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        An easy way of getting GUID is to just run: 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        Get-GPO -All | ? DisplayName -Like &#34;Name of gpo&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    #&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        $RootGPO = Get-GPO -Guid <span style="color:#e6db74">&#34;D4DGP0-GU1D-D4DGP0-GU1D-D4DGP0-GU1D&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Create blank GPO and store it in a variable</span>
+</span></span><span style="display:flex;"><span>        New-GPO $Name
+</span></span><span style="display:flex;"><span>        $GPO = Get-GPO $Name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#Create path for backup gpo</span>
+</span></span><span style="display:flex;"><span>        $BackUpPath = <span style="color:#e6db74">&#34;$env:LOCALAPPDATA\BackupGPO\&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (Test-Path $BackUpPath) {
+</span></span><span style="display:flex;"><span>            $BackedupGPO = Backup-GPO -Guid $RootGPO.Guid -Path BackUpPath
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            New-Item -Path $BackUpPath -ItemType Directory
+</span></span><span style="display:flex;"><span>            $BackedupGPO = Backup-GPO -Guid $RootGPO.Guid -Path $BackUpPath
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#Store XML file of backup gpo in variable</span>
+</span></span><span style="display:flex;"><span>        $SuperLongAndFunString = <span style="color:#e6db74">&#34;$BackUpPath{</span>$($BackedupGPO.ID.GUID)<span style="color:#e6db74">}\DomainSysvol\gpo\Machine\Preferences\Groups\Groups.xml&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (Test-Path $SuperLongAndFunString) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Play around with this part until Set-Content</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># changes the desired GPO setting</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                $xml = Get-Content $SuperLongAndFunString
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                $xml = $xml.Replace(<span style="color:#e6db74">&#39;&#34;Domain\ADGroupName&#34; action=&#34;ADD&#34; sid=&#34;Whatever the SID is&#34;&#39;</span>, <span style="color:#e6db74">&#34;&#34;&#34;$Domain\$
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                ($DelegationGroup.Name)&#34;&#34; action=</span>$(<span style="color:#e6db74">&#39;&#34;ADD&#34;&#39;</span>)<span style="color:#e6db74"> sid=&#34;&#34;</span>$($DelegationGroup.sid)<span style="color:#e6db74">&#34;&#34;&#34;</span> ) <span style="color:#75715e">#Edit XML</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                Set-Content $SuperLongAndFunString -Value $xml -Verbose
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                Import-GPO -BackupId $BackedupGPO.Id -Path $BackedupGPO.BackupDirectory -TargetName $GPO.DisplayName
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>                $Error[0]
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">Break</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">Break</span> <span style="color:#75715e">#Can&#39;t locate GPO from backup</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="lastly">Lastly</h2>
 <p>This function serves as a base for you to use, and the point here is really to demonstrate the process of how you could tackle this problem. I would suggest playing around with get/set-content to get the desired outcome of the GPO settings in a lab env before even thinking about implementation to production.</p>
 <p>In many cases, GPO setting changes are XML changes. PowerShell lets you configure anything within an XML file. The key to doing so is to understand the specific setting, so you can manipulate the backed up GPO&rsquo;s XML in your favor.</p>
 <h3 id="happy-coding">Happy coding</h3>

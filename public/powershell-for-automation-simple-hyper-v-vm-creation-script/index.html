@@ -3,7 +3,7 @@
   <head>
     
       <title>
-        PowerShell Solution: Script not digitally signed ::
+        PowerShell for Automation: Simple Hyper-V VM-Creation script ::
         blog.ehmiiz.tech
       </title>
     
@@ -11,17 +11,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="“.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker, nonetheless. It&amp;rsquo;s more of a security feature than an error.
-Simple solution if you&amp;rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy."
+  content="Meet Labmil. Labmil is a script I made to serve a specific usecase. When AutomatedLab is overkill, and when you don&amp;rsquo;t want to skip the installation phase of the lab.
+Features  Quickly put the Windows Server ISO-file to good use It&amp;rsquo;s a simple script for anyone to modify for personal needs It outputs a customobject Create multiple VM&amp;rsquo;s using PowerShell logic  Non-Features The script has a few non-features. Non-Features are cool because it makes the script unique and useful in certain senarios."
 />
 <meta
   name="keywords"
   content=""
 />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/" />
+<link rel="canonical" href="//blog.ehmiiz.tech/powershell-for-automation-simple-hyper-v-vm-creation-script/" />
 
 
 
@@ -51,23 +49,19 @@ This will allow the powershell session process itself to bypass the Exec policy,
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="//blog.ehmiiz.tech"/>
 
-<meta name="twitter:title" content="PowerShell Solution: Script not digitally signed"/>
-<meta name="twitter:description" content="“.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker, nonetheless. It&rsquo;s more of a security feature than an error.
-Simple solution if you&rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy."/>
+<meta name="twitter:title" content="PowerShell for Automation: Simple Hyper-V VM-Creation script"/>
+<meta name="twitter:description" content="Meet Labmil. Labmil is a script I made to serve a specific usecase. When AutomatedLab is overkill, and when you don&rsquo;t want to skip the installation phase of the lab.
+Features  Quickly put the Windows Server ISO-file to good use It&rsquo;s a simple script for anyone to modify for personal needs It outputs a customobject Create multiple VM&rsquo;s using PowerShell logic  Non-Features The script has a few non-features. Non-Features are cool because it makes the script unique and useful in certain senarios."/>
 
 
 
-<meta property="og:title" content="PowerShell Solution: Script not digitally signed" />
-<meta property="og:description" content="“.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker, nonetheless. It&rsquo;s more of a security feature than an error.
-Simple solution if you&rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy." />
+<meta property="og:title" content="PowerShell for Automation: Simple Hyper-V VM-Creation script" />
+<meta property="og:description" content="Meet Labmil. Labmil is a script I made to serve a specific usecase. When AutomatedLab is overkill, and when you don&rsquo;t want to skip the installation phase of the lab.
+Features  Quickly put the Windows Server ISO-file to good use It&rsquo;s a simple script for anyone to modify for personal needs It outputs a customobject Create multiple VM&rsquo;s using PowerShell logic  Non-Features The script has a few non-features. Non-Features are cool because it makes the script unique and useful in certain senarios." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-02-11T08:23:11+01:00" />
-<meta property="article:modified_time" content="2021-02-11T08:23:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+<meta property="og:url" content="//blog.ehmiiz.tech/powershell-for-automation-simple-hyper-v-vm-creation-script/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-21T14:58:11+01:00" />
+<meta property="article:modified_time" content="2021-12-21T14:58:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
 
 
 
@@ -170,11 +164,11 @@ This will allow the powershell session process itself to bypass the Exec policy,
   
 
   <div class="post">
-    <h1 class="post-title">PowerShell Solution: Script not digitally signed</h1>
+    <h1 class="post-title">PowerShell for Automation: Simple Hyper-V VM-Creation script</h1>
     <div class="post-meta">
       
         <span class="post-date">
-          2021-02-11
+          2021-12-21
         </span>
 
         
@@ -194,24 +188,39 @@ This will allow the powershell session process itself to bypass the Exec policy,
 
     <div class="post-content">
       
-      <h2 id="ps1-is-not-digitally-signed-the-script-will-not-execute-on-the-system">“.ps1 is not digitally signed. The script will not execute on the system.”</h2>
-<p>This error is clearly not really a typical error, but can be a blocker, nonetheless. It&rsquo;s more of a security feature than an error.</p>
-<p>Simple solution if you&rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:</p>
-<p><code>Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</code></p>
-<p>This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy.</p>
-<p>Another solution would be if you&rsquo;re executing the script from your own user:</p>
-<p><code>Set-ExecutionPolicy RemoteSigned</code></p>
-<p>Further documentation regarding Set-ExecutionPolicy may be found <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)?redirectedfrom=MSDN">here</a>.</p>
-<p>Original blogpost that helped me solve this issue was found here: <a href="https://caiomsouza.medium.com/">here</a>.</p>
-<h2 id="happy-coding">Happy coding</h2>
+      <h2 id="meet-labmilhttpsgithubcomehmiizlabmil">Meet <a href="https://github.com/ehmiiz/labmil">Labmil</a>.</h2>
+<p>Labmil is a script I made to serve a specific usecase. When <a href="https://automatedlab.org/en/latest/">AutomatedLab</a> is overkill, and when you don&rsquo;t want to skip the installation phase of the lab.</p>
+<p><img src="https://i.imgur.com/uBIzjmx.png" alt="Displaying the cmdlet" title="Get-GeneratedPassword"></p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Quickly put the Windows Server ISO-file to good use</li>
+<li>It&rsquo;s a simple script for anyone to modify for personal needs</li>
+<li>It outputs a customobject</li>
+<li>Create multiple VM&rsquo;s using PowerShell logic</li>
+</ul>
+<h2 id="non-features">Non-Features</h2>
+<p>The script has a few non-features.
+Non-Features are cool because it makes the script unique and useful in certain senarios.</p>
+<ul>
+<li>Not touching the VMs application layer makes it simple and less prone to error</li>
+<li>It only has two parameters, and only one of them is mandatory after initial run, adding simplicity</li>
+<li>It enables you as an sysadmin/engineer to do the whole set-up. Giving you more work to do yourself, meaning more labbing!</li>
+<li>It&rsquo;s only focus is Hyper-V VMs</li>
+</ul>
+<h2 id="how-i-like-to-do-my-labs">How I like to do my labs</h2>
+<ol>
+<li>Spin up the VMs you plan on labbing with using New-LabmilVM.ps1</li>
+<li>Install the server with wanted settings and partitions</li>
+<li>Use Windows Terminal&rsquo;s split-tab functionallity, together with</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Enter-PSSession -VMName $Name
+</span></span></code></pre></div><p>To have one tab open with each newly created Lab-VM.</p>
+<p>Happy labbing!</p>
 
     </div>
     
 
     
-      
-        
-
       
     
   </div>

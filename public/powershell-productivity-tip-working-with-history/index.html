@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        PowerShell Productivity tip: Working with History ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="One thing I&amp;rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&amp;rsquo;s quite a few ways to do so currently, so I thought i&amp;rsquo;d share some of my favorite ones.
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&amp;gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption)."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//blog.ehmiiz.tech/powershell-productivity-tip-working-with-history/" />
+
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="PowerShell Productivity tip: Working with History"/>
+<meta name="twitter:description" content="One thing I&rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&rsquo;s quite a few ways to do so currently, so I thought i&rsquo;d share some of my favorite ones.
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption)."/>
+
+
+
+<meta property="og:title" content="PowerShell Productivity tip: Working with History" />
+<meta property="og:description" content="One thing I&rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&rsquo;s quite a few ways to do so currently, so I thought i&rsquo;d share some of my favorite ones.
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//blog.ehmiiz.tech/powershell-productivity-tip-working-with-history/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-16T08:05:11+01:00" />
+<meta property="article:modified_time" content="2022-05-16T08:05:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/cv">CV</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">PowerShell Productivity tip: Working with History</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-05-16
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      
+  <figure class="left" >
+    <img src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1317&amp;q=80"   />
+    
+  </figure>
+
+
+<p>One thing I&rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&rsquo;s quite a few ways to do so currently, so I thought i&rsquo;d share some of my favorite ones.</p>
+<h2 id="different-ways-of-viewing-your-history">Different ways of viewing your history</h2>
+<ul>
+<li>To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>h
+</span></span></code></pre></div><ul>
+<li>To view your over-all history in your current environment, PSReadLine is your friend:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>cat (Get-PSReadLineOption).HistorySavePath
+</span></span></code></pre></div><p>Viewing the txt-file of PSReadLines history can be a lifesaver if you work with colleagues that tend to never document their solutions. You could modify the HistorySavePath property of your own output, to view someone else&rsquo;s history on a shared server/computer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>cat (Get-PSReadLineOption).historysavepath.Replace(<span style="color:#e6db74">&#34;$env:USERNAME&#34;</span>,<span style="color:#e6db74">&#34;Your-Colleague-That-Did-Not-Docx-It&#34;</span>)
+</span></span></code></pre></div><h2 id="history-tend-to-repeat-itself">History Tend To Repeat Itself</h2>
+<p>As we all know, we humans always have a need to re-run history. Without being political about it, here&rsquo;s some examples on how you could do this in PowerShell</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>r 25
+</span></span></code></pre></div><p>It&rsquo;s that simple. In your current session, each command you enter will be available in your Get-History (h). Each history entry has an ID. The cmdlet behind the alias r (Invoke-History) will execute your history based on the ID you provide. In the example above, I&rsquo;m executing my 25&rsquo;th command inputed in my terminal.</p>
+
+  <figure class="left" >
+    <img src="https://i.imgur.com/O4y0isj.png"   />
+    
+  </figure>
+
+
+<h2 id="but-theres-more">But there&rsquo;s more!</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\Users\Emil\git&gt; <span style="color:#75715e">#25&lt;tab&gt;</span>
+</span></span><span style="display:flex;"><span>PS C:\Users\Emil\git&gt; Write-Host <span style="color:#e6db74">&#34;Tomorrow is monday!!!&#34;</span> -ForegroundColor (Get-Random <span style="color:#e6db74">&#34;Green&#34;</span>,<span style="color:#e6db74">&#34;Yellow&#34;</span>,<span style="color:#e6db74">&#34;Blue&#34;</span>)
+</span></span></code></pre></div><p>The following is PowerShell Black-Magic, and is&rsquo;s really useful. It saves you the trouble of copy-pasting your history.</p>
+<p>Simply view your history, memorize the ID, hit &lsquo;#&rsquo; and the ID, followed by a &rsquo;tab&rsquo; and you have it printed ready to be executed in your terminal.</p>
+
+  <figure class="left" >
+    <img src="https://i.imgur.com/fw4C055.png"   />
+    
+  </figure>
+
+
+<h2 id="help">Help!</h2>
+<p>If you&rsquo;ve read this far and desire more reading, run the following one-liner</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>gcm *-history | % { help $_.name -s }
+</span></span></code></pre></div><p>To be clear:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Command *-history | ForEach-Object { Get-Help $_.Name -ShowWindow }
+</span></span><span style="display:flex;"><span>Get-Help about_history
+</span></span></code></pre></div><p>Hopefully this was a decent history-lesson for someone!</p>
+<h3 id="happy-coding">Happy coding</h3>
+<h3 id="emilhttpstwittercomehmiiz">/<a href="https://twitter.com/ehmiiz">Emil</a></h3>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  
+  <div class="footer__inner">
+    <div id="statique">
+      <script defer="" src="//blog.ehmiiz.tech/statique/statique.js"></script>
+      <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+       
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+    
+  </div>
+</footer>
+
+<script src="//blog.ehmiiz.tech/assets/main.js"></script>
+<script src="//blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

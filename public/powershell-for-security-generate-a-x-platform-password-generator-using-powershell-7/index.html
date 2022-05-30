@@ -23,11 +23,8 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 
 
 
-<link rel="stylesheet" href="//blog.ehmiiz.tech/statique/statique.css" type="text/css">
-    <script type="text/javascript">
-       var statiqueAuth = 'sv=2020-08-04&spr=https&se=2099-01-01T00%3A00%3A00Z&sr=c&sp=rcl&sig=EJQAJtKg9PKNe5Qxfh1bK28Rot5qf6EJRBfuhPI5Jd8%3D'
-       var statiqueBaseUri = 'https://fancyblogcomments.blob.core.windows.net/comments'
-    </script>
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
 
 
 <link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
@@ -198,8 +195,85 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <p>Adam Bertram does a great job covering how to wrap this in a module, click the class name to read his post about it.</p>
 <p>The class does bring a dependency on the the specific dotnet class, and for me, this approach started to bring errors in Powershell cores early versions.</p>
 <h2 id="new-attempt-without-dependencies">New attempt without dependencies</h2>
-<p>This is my attempt at creating my own password generator <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">Get-GeneratedPassword.ps1</a>.</p>
-<p>The script can be found on my <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">GitHub PS repo</a></p>
+<p>This is my attempt at creating my own password generator</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> Get-GeneratedPassword {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;#
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.SYNOPSIS</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Cross-platform password generator
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.DESCRIPTION</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Get-GeneratedPassword is using a Get-Random, a string and regex 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    validation to ensure that the password meets the complexity level 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    enforced by default in ActiveDirectory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 10 -Amount 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Generates 10 passwords with the length set to 10
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 12 | clip
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Only supported in Windows. Will generate a password with 12 as length 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    and clip the result to clipboard
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    PS C:\&gt; $user = &#34;emil&#34;; $pw = ConvertTo-SecureString -String (Get-GeneratedPassword 12) -AsPlainText
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    PS C:\&gt; $creds = $user,$pw
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Creates a CredentialObject that can be passed in to user generating cmdlets
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 8 -Amount 100 | Out-File C:\Temp\PW.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Generates 100 passwords to a textfile stored in C:\Temp\PW.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.INPUTS</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    PwLengt as int32
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.OUTPUTS</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Outputs randomized password as string(s)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#e6db74">.NOTES</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Purpose :   Designed to meet AD Complexity rules &amp; be crossplatform (Windows, Linux)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Author  :   Emil.t.Larsson@gmail.com
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Date    :   2021-05-11
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    OS      :   Win10, Ubuntu 20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    Version :   1.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;</span>
+</span></span><span style="display:flex;"><span>    [<span style="color:#66d9ef">CmdletBinding</span>()]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Param</span>
+</span></span><span style="display:flex;"><span>    (
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $true,
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">ValueFromPipelineByPropertyName</span> = $true,
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">Position</span> = 0)]
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">ValidateRange</span>(6, 30)]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">[int32]</span>$PwLength,
+</span></span><span style="display:flex;"><span>        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $false)]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">[int32]</span>$Amount = 1
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Begin</span> {
+</span></span><span style="display:flex;"><span>        $Password = @()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Process</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        $PwdValues = <span style="color:#e6db74">&#34;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            $PasswordGenerated = ($PwdValues.ToCharArray() | Sort-Object { Get-Random })[1..$PwLength] -join <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Regex rules, contains any of the special AND 0-9 AND upper/lower</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (
+</span></span><span style="display:flex;"><span>                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[-!@#$%^&amp;*_{}()?]&#34;</span> <span style="color:#f92672">-and</span> 
+</span></span><span style="display:flex;"><span>                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;(?-i)[A-Z]&#34;</span> <span style="color:#f92672">-and</span> 
+</span></span><span style="display:flex;"><span>                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;(?-i)[a-z]&#34;</span> <span style="color:#f92672">-and</span> 
+</span></span><span style="display:flex;"><span>                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[0-9]&#34;</span>
+</span></span><span style="display:flex;"><span>            ) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Add to pw array</span>
+</span></span><span style="display:flex;"><span>                $Password += $PasswordGenerated
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">Continue</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">until</span> ($Password.count <span style="color:#f92672">-eq</span> $Amount)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">End</span> {
+</span></span><span style="display:flex;"><span>        $Password
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The script can be found on my <a href="https://github.com/ehmiiz/PowerShell/blob/master/Get-GeneratedPassword.ps1">GitHub PS repo</a></p>
 <p><img src="https://i.imgur.com/fvwI0bb.png" alt="Displaying the cmdlet" title="Get-GeneratedPassword"></p>
 <p>Read the comment based help, or load the function and run:</p>
 <p><code>Get-Help Get-GeneratedPassword</code></p>
@@ -239,86 +313,7 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
 <li>self-made functions</li>
 </ul>
 <p>in Powershell!</p>
-<p>Feel free to visit my <a href="https://github.com/ehmiiz/PowerShell/">github</a> to steal, fork or improve my pwd-gen yourself. If your too lazy for github, here&rsquo;s the current version from the time of writing this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">
-<span style="color:#66d9ef">function</span> Get-GeneratedPassword {
-<span style="color:#75715e">&lt;#
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.SYNOPSIS</span><span style="color:#75715e">
-</span><span style="color:#75715e">    Cross-platform password generator
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.DESCRIPTION</span><span style="color:#75715e">
-</span><span style="color:#75715e">    Get-GeneratedPassword is using a Get-Random, a string and regex 
-</span><span style="color:#75715e">    validation to ensure that the password meets the complexity level 
-</span><span style="color:#75715e">    enforced by default in ActiveDirectory
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
-</span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 10 -Amount 10
-</span><span style="color:#75715e">    Generates 10 passwords with the length set to 10
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
-</span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 12 | clip
-</span><span style="color:#75715e">    Only supported in Windows. Will generate a password with 12 as length 
-</span><span style="color:#75715e">    and clip the result to clipboard
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
-</span><span style="color:#75715e">    PS C:\&gt; $user = &#34;emil&#34;; $pw = ConvertTo-SecureString -String (Get-GeneratedPassword 12) -AsPlainText
-</span><span style="color:#75715e">    PS C:\&gt; $creds = $user,$pw
-</span><span style="color:#75715e">    Creates a CredentialObject that can be passed in to user generating cmdlets
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.EXAMPLE</span><span style="color:#75715e">
-</span><span style="color:#75715e">    PS C:\&gt; Get-GeneratedPassword -PwLength 8 -Amount 100 | Out-File C:\Temp\PW.txt
-</span><span style="color:#75715e">    Generates 100 passwords to a textfile stored in C:\Temp\PW.txt
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.INPUTS</span><span style="color:#75715e">
-</span><span style="color:#75715e">    PwLengt as int32
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.OUTPUTS</span><span style="color:#75715e">
-</span><span style="color:#75715e">    Outputs randomized password as string(s)
-</span><span style="color:#75715e"></span><span style="color:#e6db74">.NOTES</span><span style="color:#75715e">
-</span><span style="color:#75715e">    Purpose :   Designed to meet AD Complexity rules &amp; be crossplatform (Windows, Linux)
-</span><span style="color:#75715e">    Author  :   Emil.t.Larsson@gmail.com
-</span><span style="color:#75715e">    Date    :   2021-05-11
-</span><span style="color:#75715e">    OS      :   Win10, Ubuntu 20
-</span><span style="color:#75715e">    Version :   1.0.0
-</span><span style="color:#75715e">#&gt;</span>
-    [<span style="color:#66d9ef">CmdletBinding</span>()]
-    <span style="color:#66d9ef">Param</span>
-    (
-        
-        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $true,
-            <span style="color:#66d9ef">ValueFromPipelineByPropertyName</span> = $true,
-            <span style="color:#66d9ef">Position</span> = 0)]
-        [<span style="color:#66d9ef">ValidateRange</span>(6, 30)]
-        <span style="color:#66d9ef">[int32]</span>$PwLength,
-        [<span style="color:#66d9ef">Parameter</span>(<span style="color:#66d9ef">Mandatory</span> = $false)]
-        <span style="color:#66d9ef">[int32]</span>$Amount = 1
-    )
-
-    <span style="color:#66d9ef">Begin</span> {
-        $Password = @()
-    }
-    <span style="color:#66d9ef">Process</span> {
-
-        $PwdValues = <span style="color:#e6db74">&#34;-!@#$%^&amp;*_{}()?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#34;</span>
-
-        <span style="color:#66d9ef">do</span> {
-
-            $PasswordGenerated = ($PwdValues.ToCharArray() | Sort-Object { Get-Random })[1..$PwLength] -join <span style="color:#e6db74">&#39;&#39;</span>
-
-            <span style="color:#75715e"># Regex rules, contains any of the special AND 0-9 AND upper/lower</span>
-            <span style="color:#66d9ef">if</span> (
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[-!@#$%^&amp;*_{}()?]&#34;</span> <span style="color:#f92672">-and</span> 
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;(?-i)[A-Z]&#34;</span> <span style="color:#f92672">-and</span> 
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;(?-i)[a-z]&#34;</span> <span style="color:#f92672">-and</span> 
-                $PasswordGenerated <span style="color:#f92672">-match</span> <span style="color:#e6db74">&#34;[0-9]&#34;</span>
-            ) {
-                <span style="color:#75715e"># Add to pw array</span>
-                $Password += $PasswordGenerated
-            }
-            <span style="color:#66d9ef">else</span> {
-                <span style="color:#66d9ef">Continue</span>
-            }
-        }
-        <span style="color:#66d9ef">until</span> ($Password.count <span style="color:#f92672">-eq</span> $Amount)
-    }
-    <span style="color:#66d9ef">End</span> {
-        $Password
-    }
-}
-</code></pre></div><h3 id="happy-coding">Happy coding</h3>
+<h3 id="happy-coding">Happy coding</h3>
 <h3 id="emil">/Emil</h3>
 
     </div>

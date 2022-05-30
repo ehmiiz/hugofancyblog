@@ -56,10 +56,10 @@ This is a list of books I've read starting from 2020-03-01. The books in this li
 * The Complete Guide to Fasting
 * Shell of an idea (Re-read)
 * The LEANGAINS Method
-* Dune
+* Dune by Frank Herbert
 #### 2022
 * The Last Wish: Intoroducing the Witcher
 * Sword of Destiny: Tales of the Witcher
-* Fördelar med ADHD
+* Fördelar ADHD by Anders Hansen
 * Ready Player One
-* Bloof of Elves: Witcher 1
+* Blood of Elves: Witcher 1

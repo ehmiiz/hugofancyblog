@@ -15,6 +15,28 @@
     
     
     <item>
+      <title>About Ehmiiz.tech</title>
+      <link>//blog.ehmiiz.tech/about/</link>
+      <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>//blog.ehmiiz.tech/about/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Hi, and welcome to my blog I&amp;rsquo;m a 29 year old guy who&amp;rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&amp;rsquo;ve read.
+Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing Get more .md experiance  Contact You can mail me at: emil@ehmiiz.tech
+Coming up This is a list of books I&amp;rsquo;ve read starting from 2020-03-01.
+          
+        
+        </description>
+    </item>
+    
+    <item>
       <title>PowerShell Productivity tip: Working with History</title>
       <link>//blog.ehmiiz.tech/powershell-productivity-tip-working-with-history/</link>
       <pubDate>Mon, 16 May 2022 08:05:11 +0100</pubDate>
@@ -221,28 +243,6 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
         
         
           The Hobbit&amp;ldquo;A timeless advanture for all ages&amp;rdquo; This book was surprisingly easy to read, and it’s in my opinion light-years better than the movies. I read the entire book in Swedish, and although it’s only been a year since I read it, I already have an urge to re-read the whole book in English. The translations just don’t cut it for someone who’s interested in the lore of middle earth.
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>About Ehmiiz.tech</title>
-      <link>//blog.ehmiiz.tech/about/</link>
-      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>//blog.ehmiiz.tech/about/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Hi, and welcome to my blog I&amp;rsquo;m a 28 year old guy who&amp;rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&amp;rsquo;ve read.
-Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing Get more .md experiance  Contact You can mail me at: emil@ehmiiz.tech
-Coming up This is a list of books I&amp;rsquo;ve read starting from 2020-03-01.
           
         
         </description>

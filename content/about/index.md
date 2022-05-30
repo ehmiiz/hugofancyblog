@@ -1,5 +1,5 @@
 ---
-date: 2021-02-07
+date: 2022-05-30
 title: "About Ehmiiz.tech"
 comments: true
 ---
@@ -9,7 +9,7 @@ comments: true
 
 ## Hi, and welcome to my blog
 
-I'm a 28 year old guy who's writing this blog mostly to see how blogs can be built using [github](https://github.com/ehmiiz/hugofancyblog/) and [hugo](https://gohugo.io/)! And to remember what books I've read.
+I'm a 29 year old guy who's writing this blog mostly to see how blogs can be built using [github](https://github.com/ehmiiz/hugofancyblog/) and [hugo](https://gohugo.io/)! And to remember what books I've read.
 
 ### Goals of this blog
 
@@ -27,7 +27,7 @@ emil@ehmiiz.tech
 
 ### Coming up
 
-This is a list of books I've read starting from 2020-03-01. The books in this list will all be getting reviews in the "Blog" section of the site sooner or later.
+This is a list of books I've read starting from 2020-03-01. The books in this list might get a review in the Blog section sooner or later.
 
 #### 2020
 * The Hobbit ✔️
@@ -53,5 +53,13 @@ This is a list of books I've read starting from 2020-03-01. The books in this li
 * The Four Agreements: A Practical Guide to Personal Freedom
 * Animal Farm by Geroge Orwell
 * Stark som en björn och snabb som en örn
-* The Complete Guide to Fasting (Currently reading)
-* Ready Player One (Currently reading)
+* The Complete Guide to Fasting
+* Shell of an idea (Re-read)
+* The LEANGAINS Method
+* Dune
+#### 2022
+* The Last Wish: Intoroducing the Witcher
+* Sword of Destiny: Tales of the Witcher
+* Fördelar med ADHD
+* Ready Player One
+* Bloof of Elves: Witcher 1

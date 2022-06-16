@@ -5,9 +5,7 @@ draft: false
 comments: true
 ---
 
-![](./pics/accessdenied_after_removal.png)
-
-# Restoration of Private Key for Encrypting FileSystem in Windows
+![a](/pics/accessdenied_after_removal.png)
 
 ## Problem
 You have encrypted files using the "File > Properties > Advanced > Encrypt content to secure data" feature in Windows, and have lost your certificates in your personal certificate store.

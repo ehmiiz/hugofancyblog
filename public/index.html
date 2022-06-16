@@ -196,8 +196,9 @@
       <div class="post-content">
         
           
-            Restoration of Private Key for Encrypting FileSystem in Windows Problem You have encrypted files using the &ldquo;File &gt; Properties &gt; Advanced &gt; Encrypt content to secure data&rdquo; feature in Windows, and have lost your certificates in your personal certificate store.
+            Problem You have encrypted files using the &ldquo;File &gt; Properties &gt; Advanced &gt; Encrypt content to secure data&rdquo; feature in Windows, and have lost your certificates in your personal certificate store.
 Solution A solution to this problem is to restore the private key used for encrypting your file system (EKU: Encrypting File System 1.3.6.1.4.1.311.10.3.4 ) that was generated upon encrypting your files.
+The private/public keypair to this certificate is stored in your Personal certificate store, but luckily the certificate stores a copy of the public certificate in your localmachine certificate store - this means we can restore the private key and enable decryption as long as the computer has not been reinstalled or lost.
           
         
       </div>

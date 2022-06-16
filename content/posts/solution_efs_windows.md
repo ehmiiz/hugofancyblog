@@ -21,11 +21,11 @@ The private/public keypair to this certificate is stored in your Personal certif
 ### Step-by-step
 1. This file is currently unecrypted. Let's encrypt is using the method discussed
 
-![Secret!](/content/posts//content/posts/pics/file.png)
+![Secret!](/content/posts/pics/file.png)
 
 Rightclick the file > properties > advanced > encrypt content..
 
-![encrypt_gui](/content/posts//content/posts/pics/encrypt_gui.png)
+![encrypt_gui](/content/posts/pics/encrypt_gui.png)
 ![encrypt_file](/content/posts/pics/encrypt_file.png)
 
 I will select 'Ecrypt the file only' in this case
@@ -40,7 +40,7 @@ The lock symbol indicates that the file is successfully encrypted. Under the hoo
 
 Let's verify it's private key:
 
-![private](/content/posts/currentuser_privatekey_true.png)
+![private](/content/posts/pics/currentuser_privatekey_true.png)
 
 Let's verify the localmachine/addressbook certificate:
 

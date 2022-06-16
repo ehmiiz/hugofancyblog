@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Solution: Restore Deleted Private key for EFS Encrypted Files ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Restoration of Private Key for Encrypting FileSystem in Windows Problem You have encrypted files using the &amp;ldquo;File &amp;gt; Properties &amp;gt; Advanced &amp;gt; Encrypt content to secure data&amp;rdquo; feature in Windows, and have lost your certificates in your personal certificate store.
+Solution A solution to this problem is to restore the private key used for encrypting your file system (EKU: Encrypting File System 1.3.6.1.4.1.311.10.3.4 ) that was generated upon encrypting your files."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//blog.ehmiiz.tech/solution-restore-deleted-private-key-for-efs-encrypted-files/" />
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/statique/statique.css" type="text/css">
+    <script type="text/javascript">
+       var statiqueAuth = 'sv=2020-08-04&spr=https&se=2099-01-01T00%3A00%3A00Z&sr=c&sp=rcl&sig=EJQAJtKg9PKNe5Qxfh1bK28Rot5qf6EJRBfuhPI5Jd8%3D'
+       var statiqueBaseUri = 'https://fancyblogcomments.blob.core.windows.net/comments'
+    </script>
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="Solution: Restore Deleted Private key for EFS Encrypted Files"/>
+<meta name="twitter:description" content="Restoration of Private Key for Encrypting FileSystem in Windows Problem You have encrypted files using the &ldquo;File &gt; Properties &gt; Advanced &gt; Encrypt content to secure data&rdquo; feature in Windows, and have lost your certificates in your personal certificate store.
+Solution A solution to this problem is to restore the private key used for encrypting your file system (EKU: Encrypting File System 1.3.6.1.4.1.311.10.3.4 ) that was generated upon encrypting your files."/>
+
+
+
+<meta property="og:title" content="Solution: Restore Deleted Private key for EFS Encrypted Files" />
+<meta property="og:description" content="Restoration of Private Key for Encrypting FileSystem in Windows Problem You have encrypted files using the &ldquo;File &gt; Properties &gt; Advanced &gt; Encrypt content to secure data&rdquo; feature in Windows, and have lost your certificates in your personal certificate store.
+Solution A solution to this problem is to restore the private key used for encrypting your file system (EKU: Encrypting File System 1.3.6.1.4.1.311.10.3.4 ) that was generated upon encrypting your files." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//blog.ehmiiz.tech/solution-restore-deleted-private-key-for-efs-encrypted-files/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-15T12:39:23+01:00" />
+<meta property="article:modified_time" content="2022-06-15T12:39:23+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/cv">CV</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Solution: Restore Deleted Private key for EFS Encrypted Files</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-06-15
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <p><img src="/content/posts/pics/accessdenied_after_removal.png" alt=""></p>
+<h1 id="restoration-of-private-key-for-encrypting-filesystem-in-windows">Restoration of Private Key for Encrypting FileSystem in Windows</h1>
+<h2 id="problem">Problem</h2>
+<p>You have encrypted files using the &ldquo;File &gt; Properties &gt; Advanced &gt; Encrypt content to secure data&rdquo; feature in Windows, and have lost your certificates in your personal certificate store.</p>
+<h2 id="solution">Solution</h2>
+<p>A solution to this problem is to restore the private key used for encrypting your file system (EKU: Encrypting File System 1.3.6.1.4.1.311.10.3.4 ) that was generated upon encrypting your files.</p>
+<p>The private/public keypair to this certificate is stored in your Personal certificate store, but luckily the certificate stores a copy of the public certificate in your localmachine certificate store - this means we can restore the private key and enable decryption as long as the computer has not been reinstalled or lost.</p>
+<h3 id="step-by-step">Step-by-step</h3>
+<ol>
+<li>This file is currently unecrypted. Let&rsquo;s encrypt is using the method discussed</li>
+</ol>
+<p><img src="/content/posts//content/posts/pics/file.png" alt="Secret!"></p>
+<p>Rightclick the file &gt; properties &gt; advanced &gt; encrypt content..</p>
+<p><img src="/content/posts//content/posts/pics/encrypt_gui.png" alt="encrypt_gui">
+<img src="/content/posts/pics/encrypt_file.png" alt="encrypt_file"></p>
+<p>I will select &lsquo;Ecrypt the file only&rsquo; in this case</p>
+<p><img src="/content/posts/pics/lock-icon.png" alt="loc_icon"></p>
+<p>The lock symbol indicates that the file is successfully encrypted. Under the hood, windows generated a self-signed certificate with a private/public keypair in my personal store and a certificate in my localmachine/addressbook only containing a public key.</p>
+<ol start="2">
+<li>Verify the certificates</li>
+</ol>
+<p><img src="/content/posts/pics/currentuser_certstore_cert.png" alt="currentuser_certstore_cert"></p>
+<p>Let&rsquo;s verify it&rsquo;s private key:</p>
+<p><img src="/content/posts/pics/currentuser_privatekey_true.png" alt="private"></p>
+<p>Let&rsquo;s verify the localmachine/addressbook certificate:</p>
+<p><img src="/content/posts/pics/certstore_find_publickey.png" alt="cert_store_public"></p>
+<p><img src="/content/posts/pics/localmachine_privatekey_false.png" alt="cert_store_public_private_key"></p>
+<p>HasPrivateKey: False - tells us this certificate lacks the private key, and is somewhat useless for the decrypting of our file. We will now move on to the issue at hand</p>
+<ol start="3">
+<li>Delete the current users private key to simulate the issue</li>
+</ol>
+<p><img src="/content/posts/pics/delete_currentuser_privatekey_cert.png" alt="delete_currentuser_privatekey_cert"></p>
+<p>Let&rsquo;s try to query the certificate store to verify the lack of this deleted certificate</p>
+<p><img src="/content/posts/pics/after_deleted_privatekey.png" alt="after_deleted_privatekey"></p>
+<p>We are recursivly looking for the certificate in the root of the certificate store, and we only got one hit. Meaning the private/public keypair has been removed, together with the ability to decrypt our file:</p>
+<p><img src="/content/posts/pics/accessdenied_after_removal.png" alt="accessdenied_after_removal"></p>
+<p>The screenshot displays an attempt to move the file, as well as open it with notepad. Both failed due to a &ldquo;lack of access&rdquo;.</p>
+<ol start="4">
+<li>Restoring the certificate using the public key in LocalMachine store</li>
+</ol>
+<p><img src="/content/posts/pics/restore_private_key.png" alt="restore_private_key"></p>
+<p>First, we move into the LocalMachine\AddressBook path in the certificate store, and we verify that it contains our public-key based certificate</p>
+<p>We then utilize certutil to restore the private-key part of that we had before lost:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>certutil -repairstore addressbook <span style="color:#e6db74">&#39;&lt;insert thumbprint&gt;&#39;</span>
+</span></span></code></pre></div><p><img src="/content/posts/pics/privatekey_after_restore_success.png" alt="privatekey_after_restore_success"></p>
+<p>Verify that the PrivateKey was infact restored</p>
+<p>We have now restored the most critical part of the removal, but decryption will still fail, since windows will only query your personal store while the decryption process takes place. This means we will need to export this certificate, together with it&rsquo;s private key - and import it to your personal store.</p>
+<ol start="5">
+<li>Export / Import the key-pair to the Personal Store</li>
+</ol>
+<p><img src="/content/posts/pics/export_privateandpublic_key.png" alt="export_privateandpublic_key"></p>
+<p>Navigate to the mmc snap-in, import the Certificate snap-in, select Local Computer, and navigate to the &lsquo;Other People&rsquo; folder</p>
+<p>Right-click the certificate (this is the same certificate that we displayed in PowerShell after the restore process) All Tasks &gt; Export&hellip;</p>
+<p><img src="/content/posts/pics/private_key_selected.png" alt="private_key_selected"></p>
+<p>Export the private key &gt; Next</p>
+<p><img src="/content/posts/pics/allow_only_current_user.png" alt="allow_only_current_user"></p>
+<p>Use your currently logged on user &gt; Next</p>
+<p><img src="/content/posts/pics/savetopath.png" alt="savetopath"></p>
+<p>Save to path</p>
+<p><img src="/content/posts/pics/import_current_user.png" alt="import_current_user"></p>
+<p>Navigate to the path, right-click &gt; Install PFX, Current User &gt; Next &gt; Next &gt; Next..</p>
+<p><img src="/content/posts/pics/successful_import.png" alt="successful_import"></p>
+<p>We have now moved the key-pair back to the personal store, and can now decrypt files</p>
+<p><img src="/content/posts/pics/successful_decrypt_and_write.png" alt="successful_decrypt_and_write"></p>
+<p>Verifying this by writing to the file, and getting it&rsquo;s content</p>
+<p><img src="/content/posts/pics/successful_open_doubleclick.png" alt="successful_open_doubleclick"></p>
+<p>Double-clicking the file now works as expected</p>
+<h2 id="discussion">Discussion</h2>
+<p>We have now simulated an issue that unaware users can be exposed to, and solved it using PowerShell, the Certificate snap-in in mmc, and certutil.</p>
+<p>Accidential deletion the private/public key-pair in the personal store can be quite common, since IT personel usually perform this, together with a GPUpdate, to re-enroll autoenrollment managed certificates. However, in this case the certificate will not re-enroll itself since it&rsquo;s a self-signed certificate, only used locally for ecryption/decryption.</p>
+<p>This problem be solved in this way for self-signed certificates, I would imagine that it&rsquo;s the most of cases.</p>
+<p>If your Public Key Infrastructure enrolls &ldquo;Encryption File System&rdquo; certificates to domain users, a PKI admin could in theory export the certificate in the CA (as long as the private key is exportable, that is).</p>
+
+    </div>
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  
+  <div class="footer__inner">
+    <div id="statique">
+      <script defer="" src="//blog.ehmiiz.tech/statique/statique.js"></script>
+      <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+       
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+    
+  </div>
+</footer>
+
+<script src="//blog.ehmiiz.tech/assets/main.js"></script>
+<script src="//blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

@@ -2,14 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//blog.ehmiiz.tech/about/</loc>
-    <lastmod>2022-05-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//blog.ehmiiz.tech/</loc>
-    <lastmod>2022-05-16T08:05:11+01:00</lastmod>
+    <lastmod>2022-06-15T12:39:23+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/posts/</loc>
-    <lastmod>2022-05-16T08:05:11+01:00</lastmod>
+    <lastmod>2022-06-15T12:39:23+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/solution-restore-deleted-private-key-for-efs-encrypted-files/</loc>
+    <lastmod>2022-06-15T12:39:23+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/about/</loc>
+    <lastmod>2022-05-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/powershell-productivity-tip-working-with-history/</loc>
     <lastmod>2022-05-16T08:05:11+01:00</lastmod>

@@ -192,7 +192,7 @@ Solution A solution to this problem is to restore the private key used for encry
 
     <div class="post-content">
       
-      <p><img src="/content/posts/pics/accessdenied_after_removal.png" alt=""></p>
+      <p><img src="./pics/accessdenied_after_removal.png" alt=""></p>
 <h1 id="restoration-of-private-key-for-encrypting-filesystem-in-windows">Restoration of Private Key for Encrypting FileSystem in Windows</h1>
 <h2 id="problem">Problem</h2>
 <p>You have encrypted files using the &ldquo;File &gt; Properties &gt; Advanced &gt; Encrypt content to secure data&rdquo; feature in Windows, and have lost your certificates in your personal certificate store.</p>
@@ -203,61 +203,61 @@ Solution A solution to this problem is to restore the private key used for encry
 <ol>
 <li>This file is currently unecrypted. Let&rsquo;s encrypt is using the method discussed</li>
 </ol>
-<p><img src="/content/posts/pics/file.png" alt="Secret!"></p>
+<p><img src="/pics/file.png" alt="Secret!"></p>
 <p>Rightclick the file &gt; properties &gt; advanced &gt; encrypt content..</p>
-<p><img src="/content/posts/pics/encrypt_gui.png" alt="encrypt_gui">
-<img src="/content/posts/pics/encrypt_file.png" alt="encrypt_file"></p>
+<p><img src="/pics/encrypt_gui.png" alt="encrypt_gui">
+<img src="/pics/encrypt_file.png" alt="encrypt_file"></p>
 <p>I will select &lsquo;Ecrypt the file only&rsquo; in this case</p>
-<p><img src="/content/posts/pics/lock-icon.png" alt="loc_icon"></p>
+<p><img src="/pics/lock-icon.png" alt="loc_icon"></p>
 <p>The lock symbol indicates that the file is successfully encrypted. Under the hood, windows generated a self-signed certificate with a private/public keypair in my personal store and a certificate in my localmachine/addressbook only containing a public key.</p>
 <ol start="2">
 <li>Verify the certificates</li>
 </ol>
-<p><img src="/content/posts/pics/currentuser_certstore_cert.png" alt="currentuser_certstore_cert"></p>
+<p><img src="/pics/currentuser_certstore_cert.png" alt="currentuser_certstore_cert"></p>
 <p>Let&rsquo;s verify it&rsquo;s private key:</p>
-<p><img src="/content/posts/pics/currentuser_privatekey_true.png" alt="private"></p>
+<p><img src="/pics/currentuser_privatekey_true.png" alt="private"></p>
 <p>Let&rsquo;s verify the localmachine/addressbook certificate:</p>
-<p><img src="/content/posts/pics/certstore_find_publickey.png" alt="cert_store_public"></p>
-<p><img src="/content/posts/pics/localmachine_privatekey_false.png" alt="cert_store_public_private_key"></p>
+<p><img src="/pics/certstore_find_publickey.png" alt="cert_store_public"></p>
+<p><img src="/pics/localmachine_privatekey_false.png" alt="cert_store_public_private_key"></p>
 <p>HasPrivateKey: False - tells us this certificate lacks the private key, and is somewhat useless for the decrypting of our file. We will now move on to the issue at hand</p>
 <ol start="3">
 <li>Delete the current users private key to simulate the issue</li>
 </ol>
-<p><img src="/content/posts/pics/delete_currentuser_privatekey_cert.png" alt="delete_currentuser_privatekey_cert"></p>
+<p><img src="/pics/delete_currentuser_privatekey_cert.png" alt="delete_currentuser_privatekey_cert"></p>
 <p>Let&rsquo;s try to query the certificate store to verify the lack of this deleted certificate</p>
-<p><img src="/content/posts/pics/after_deleted_privatekey.png" alt="after_deleted_privatekey"></p>
+<p><img src="/pics/after_deleted_privatekey.png" alt="after_deleted_privatekey"></p>
 <p>We are recursivly looking for the certificate in the root of the certificate store, and we only got one hit. Meaning the private/public keypair has been removed, together with the ability to decrypt our file:</p>
-<p><img src="/content/posts/pics/accessdenied_after_removal.png" alt="accessdenied_after_removal"></p>
+<p><img src="/pics/accessdenied_after_removal.png" alt="accessdenied_after_removal"></p>
 <p>The screenshot displays an attempt to move the file, as well as open it with notepad. Both failed due to a &ldquo;lack of access&rdquo;.</p>
 <ol start="4">
 <li>Restoring the certificate using the public key in LocalMachine store</li>
 </ol>
-<p><img src="/content/posts/pics/restore_private_key.png" alt="restore_private_key"></p>
+<p><img src="/pics/restore_private_key.png" alt="restore_private_key"></p>
 <p>First, we move into the LocalMachine\AddressBook path in the certificate store, and we verify that it contains our public-key based certificate</p>
 <p>We then utilize certutil to restore the private-key part of that we had before lost:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>certutil -repairstore addressbook <span style="color:#e6db74">&#39;&lt;insert thumbprint&gt;&#39;</span>
-</span></span></code></pre></div><p><img src="/content/posts/pics/privatekey_after_restore_success.png" alt="privatekey_after_restore_success"></p>
+</span></span></code></pre></div><p><img src="/pics/privatekey_after_restore_success.png" alt="privatekey_after_restore_success"></p>
 <p>Verify that the PrivateKey was infact restored</p>
 <p>We have now restored the most critical part of the removal, but decryption will still fail, since windows will only query your personal store while the decryption process takes place. This means we will need to export this certificate, together with it&rsquo;s private key - and import it to your personal store.</p>
 <ol start="5">
 <li>Export / Import the key-pair to the Personal Store</li>
 </ol>
-<p><img src="/content/posts/pics/export_privateandpublic_key.png" alt="export_privateandpublic_key"></p>
+<p><img src="/pics/export_privateandpublic_key.png" alt="export_privateandpublic_key"></p>
 <p>Navigate to the mmc snap-in, import the Certificate snap-in, select Local Computer, and navigate to the &lsquo;Other People&rsquo; folder</p>
 <p>Right-click the certificate (this is the same certificate that we displayed in PowerShell after the restore process) All Tasks &gt; Export&hellip;</p>
-<p><img src="/content/posts/pics/private_key_selected.png" alt="private_key_selected"></p>
+<p><img src="/pics/private_key_selected.png" alt="private_key_selected"></p>
 <p>Export the private key &gt; Next</p>
-<p><img src="/content/posts/pics/allow_only_current_user.png" alt="allow_only_current_user"></p>
+<p><img src="/pics/allow_only_current_user.png" alt="allow_only_current_user"></p>
 <p>Use your currently logged on user &gt; Next</p>
-<p><img src="/content/posts/pics/savetopath.png" alt="savetopath"></p>
+<p><img src="/pics/savetopath.png" alt="savetopath"></p>
 <p>Save to path</p>
-<p><img src="/content/posts/pics/import_current_user.png" alt="import_current_user"></p>
+<p><img src="/pics/import_current_user.png" alt="import_current_user"></p>
 <p>Navigate to the path, right-click &gt; Install PFX, Current User &gt; Next &gt; Next &gt; Next..</p>
-<p><img src="/content/posts/pics/successful_import.png" alt="successful_import"></p>
+<p><img src="/pics/successful_import.png" alt="successful_import"></p>
 <p>We have now moved the key-pair back to the personal store, and can now decrypt files</p>
-<p><img src="/content/posts/pics/successful_decrypt_and_write.png" alt="successful_decrypt_and_write"></p>
+<p><img src="/pics/successful_decrypt_and_write.png" alt="successful_decrypt_and_write"></p>
 <p>Verifying this by writing to the file, and getting it&rsquo;s content</p>
-<p><img src="/content/posts/pics/successful_open_doubleclick.png" alt="successful_open_doubleclick"></p>
+<p><img src="/pics/successful_open_doubleclick.png" alt="successful_open_doubleclick"></p>
 <p>Double-clicking the file now works as expected</p>
 <h2 id="discussion">Discussion</h2>
 <p>We have now simulated an issue that unaware users can be exposed to, and solved it using PowerShell, the Certificate snap-in in mmc, and certutil.</p>

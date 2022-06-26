@@ -14,7 +14,7 @@ You have encrypted files using the "File > Properties > Advanced > Encrypt conte
 ## Solution
 A solution to this problem is to restore the private key used for encrypting your file system (EKU: Encrypting File System 1.3.6.1.4.1.311.10.3.4 ) that was generated upon encrypting your files.
 
-The private/public keypair to this certificate is stored in your Personal certificate store, but luckily the certificate stores a copy of the public certificate in your localmachine certificate store - this means we can restore the private key and enable decryption as long as the computer has not been reinstalled or lost.
+The keypair to this certificate is stored in your Personal certificate store, luckily a copy of the public key is stored in your LocalMachine certificate store. This means we can restore the private key and enable decryption as long as the computer has not been reinstalled or lost.
 
 ### Step-by-step
 1. This file is currently unecrypted. Let's encrypt is using the method discussed

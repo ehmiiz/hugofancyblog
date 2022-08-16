@@ -9,10 +9,32 @@
     <description>Recent content in Posts on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 14:58:11 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 15 Aug 2022 14:58:11 +0100</lastBuildDate>
     
 	<atom:link href="//blog.ehmiiz.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PowerShell: C# for PowerShell Modules</title>
+      <link>//blog.ehmiiz.tech/powershell-c#-for-powershell-modules/</link>
+      <pubDate>Mon, 15 Aug 2022 14:58:11 +0100</pubDate>
+      
+      <guid>//blog.ehmiiz.tech/powershell-c#-for-powershell-modules/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          My journey into C# so far I&amp;rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn has always in a way been C#, reason being it&amp;rsquo;s easy to pick up if you already know PowerShell.
+Some content I&amp;rsquo;ve devoured to increase my C# knowledge are:
+C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp;amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>PowerShell for Security: Porting a 1.6M-downloads dotnet package to a binary PowerShell Cmdlet</title>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.101.0" />
+	<meta name="generator" content="Hugo 0.100.2" />
     
       <title>
         blog.ehmiiz.tech
@@ -174,7 +174,74 @@
   <div class="posts">
     
     <div class="post on-list">
-      <h1 class="post-title"><a href="//blog.ehmiiz.tech/powershell-c#-for-powershell-modules/">PowerShell: C# for PowerShell Modules</a></h1>
+      <h1 class="post-title"><a href="//blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/">PowerShell for Security: Continuous post of AD Weaknesses</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2022-10-05
+          </span>
+
+          
+        
+
+        
+
+        
+      </div>
+
+      
+
+      
+
+      <div class="post-content">
+        
+          
+            Idea behind this post Working with Active Directory for a living, you tend to pick up a thing or two about unsecure features, AD legacy &ldquo;ideas&rdquo; that does not make sense anymore, and the ever growing list of vulnerabilities being generated from the ADDS, ADCS &amp; ADFS suite.
+This post will serve as a way of remembering, learning and sharing with other AD admins about the things I&rsquo;ve been working on in terms of defending Active Directory.
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/powershell-for-security-continuous-post-of-ad-weaknesses/">Read more →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="//blog.ehmiiz.tech/powershell-solution-agpm-unable-to-take-control-of-a-gpo/">PowerShell Solution: AGPM unable to take control of a GPO</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2022-09-08
+          </span>
+
+          
+        
+
+        
+
+        
+      </div>
+
+      
+
+      
+
+      <div class="post-content">
+        
+          
+            Problem If you enjoy the principle of least privileges, version control and doing big infrastructural changes in a safe manner, Advanced Group Policy Management or AGPM, is an amazing tool.
+AGPM itself has a few years on its back, and as we tend to get easier and easier tech now days, legacy systems mean complexity.
+When combined with new sysadmins that has not been introduced to the concept of AGPM, uncontrolled GPOs might become a problem and the built in error messages are sadly not the greatest.
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/powershell-solution-agpm-unable-to-take-control-of-a-gpo/">Read more →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/">PowerShell: C Sharp for PowerShell Modules</a></h1>
       <div class="post-meta">
         
           <span class="post-date">
@@ -196,14 +263,14 @@
       <div class="post-content">
         
           
-            My journey into C# so far I&rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn has always in a way been C#, reason being it&rsquo;s easy to pick up if you already know PowerShell.
+            My journey into C# so far I&rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn for me has always been C#, reason being it&rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.
 Some content I&rsquo;ve devoured to increase my C# knowledge are:
 C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:
           
         
       </div>
       
-        <div><a class="read-more button" href="/powershell-c#-for-powershell-modules/">Read more →</a></div>
+        <div><a class="read-more button" href="/powershell-c-sharp-for-powershell-modules/">Read more →</a></div>
       
     </div>
     
@@ -438,74 +505,6 @@ My first version of Get-GeneratedPassword was created in Powershell 3.0, and at 
       </div>
       
         <div><a class="read-more button" href="/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/">Read more →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/">PowerShell Solution: Script not digitally signed</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2021-02-11
-          </span>
-
-          
-        
-
-        
-
-        
-      </div>
-
-      
-
-      
-
-      <div class="post-content">
-        
-          
-            “.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker, nonetheless. It&rsquo;s more of a security feature than an error.
-Simple solution if you&rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy.
-          
-        
-      </div>
-      
-        <div><a class="read-more button" href="/powershell-solution-script-not-digitally-signed/">Read more →</a></div>
-      
-    </div>
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="//blog.ehmiiz.tech/book-review-life-3.0/">Book review: Life 3.0</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2021-02-08
-          </span>
-
-          
-        
-
-        
-
-        
-      </div>
-
-      
-
-      
-
-      <div class="post-content">
-        
-          
-            Life 3.0, Being human in the age of AI Life 3.0 by Max TegmarkFirst book on AI Personally, this was the first time reading a book about AI. And as a tech-savvy sysadmin who loves video games, sci-fi and great stories, it got me hooked.
-It’s author, Max Tegmark, got me very interested in the subject and he does so by being naturally curious, super-nerdy in a fun way, and just all-round knowledgeable in tech, he’s a professor after all!
-          
-        
-      </div>
-      
-        <div><a class="read-more button" href="/book-review-life-3.0/">Read more →</a></div>
       
     </div>
     

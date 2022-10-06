@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        PowerShell for Security: Continuous post of AD Weaknesses ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Idea behind this post Working with Active Directory for a living, you tend to pick up a thing or two about unsecure features, AD legacy &amp;ldquo;ideas&amp;rdquo; that does not make sense anymore, and the ever growing list of vulnerabilities being generated from the ADDS, ADCS &amp;amp; ADFS suite.
+This post will serve as a way of remembering, learning and sharing with other AD admins about the things I&amp;rsquo;ve been working on in terms of defending Active Directory."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/" />
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/statique/statique.css" type="text/css">
+    <script type="text/javascript">
+       var statiqueAuth = 'sv=2020-08-04&spr=https&se=2099-01-01T00%3A00%3A00Z&sr=c&sp=rcl&sig=EJQAJtKg9PKNe5Qxfh1bK28Rot5qf6EJRBfuhPI5Jd8%3D'
+       var statiqueBaseUri = 'https://fancyblogcomments.blob.core.windows.net/comments'
+    </script>
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="PowerShell for Security: Continuous post of AD Weaknesses"/>
+<meta name="twitter:description" content="Idea behind this post Working with Active Directory for a living, you tend to pick up a thing or two about unsecure features, AD legacy &ldquo;ideas&rdquo; that does not make sense anymore, and the ever growing list of vulnerabilities being generated from the ADDS, ADCS &amp; ADFS suite.
+This post will serve as a way of remembering, learning and sharing with other AD admins about the things I&rsquo;ve been working on in terms of defending Active Directory."/>
+
+
+
+<meta property="og:title" content="PowerShell for Security: Continuous post of AD Weaknesses" />
+<meta property="og:description" content="Idea behind this post Working with Active Directory for a living, you tend to pick up a thing or two about unsecure features, AD legacy &ldquo;ideas&rdquo; that does not make sense anymore, and the ever growing list of vulnerabilities being generated from the ADDS, ADCS &amp; ADFS suite.
+This post will serve as a way of remembering, learning and sharing with other AD admins about the things I&rsquo;ve been working on in terms of defending Active Directory." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-05T08:23:11+01:00" />
+<meta property="article:modified_time" content="2022-10-05T08:23:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/cv">CV</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">PowerShell for Security: Continuous post of AD Weaknesses</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-10-05
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <h2 id="idea-behind-this-post">Idea behind this post</h2>
+<p>Working with Active Directory for a living, you tend to pick up a thing or two about unsecure features, AD legacy &ldquo;ideas&rdquo; that does not make sense anymore, and the ever growing list of vulnerabilities being generated from the ADDS, ADCS &amp; ADFS suite.</p>
+<p>This post will serve as a way of remembering, learning and sharing with other AD admins about the things I&rsquo;ve been working on in terms of defending Active Directory.</p>
+<p>Each vulnerability section will consist of three parts:</p>
+<ul>
+<li>Problem</li>
+<li>Mitigation</li>
+<li>Script</li>
+</ul>
+<p>This post is personal and ever changing. It&rsquo;s only purpose is to help others. Never run code from an untrusted source, always read the code and try it in a lab before running it in production.</p>
+<h2 id="0-reason-behind-this-post">0. Reason behind this post</h2>
+<h3 id="problem">Problem:</h3>
+<p>A friend of mine was curious about AD security, and while out on lunch, I realized that what I&rsquo;ve experianced over the past 7+ years working as an AD admin could not be covered over one lunch.</p>
+<h3 id="solution">Solution:</h3>
+<p>This blog will be the solution, I will simply share this post.</p>
+<h3 id="script">Script:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#e6db74">&#39;url&#39;</span> | Set-Clipboard
+</span></span></code></pre></div><h2 id="1-clear-text-passwords-in-sysvol-kb2962486">1. Clear-text passwords in Sysvol (KB2962486)</h2>
+<h3 id="problem-1">Problem:</h3>
+<p>Group policies are (partly) stored in the domain wide share named Sysvol.
+Sysvol is a share that every domain user has read access to. A feature of group policy preferences (GPP), is the ability to store credentials in a policy, thus making use of the permissions of said account in an effective way.</p>
+<p>The only problem is that the credentials are encrypted using a AES key, that&rsquo;s publically avalible <a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-gppref/2c15cbf0-f086-4c74-8b70-1f2fa45dd4be?redirectedfrom=MSDN">here.</a></p>
+<h3 id="solution-1">Solution:</h3>
+<p>Patch your Domain Controllers so that admins cannot store credentials in sysvol: <a href="https://support.microsoft.com/en-us/topic/ms14-025-vulnerability-in-group-policy-preferences-could-allow-elevation-of-privilege-may-13-2014-60734e15-af79-26ca-ea53-8cd617073c30">MS14-025: Vulnerability in Group Policy Preferences could allow elevation of privilege</a></p>
+<h3 id="script-1">Script:</h3>
+<p>This is a simple script that will match the cpassword row of the xml file, telling you what policy you need to fix:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Get domain</span>
+</span></span><span style="display:flex;"><span>$DomainName = Get-ADDomain | Select-Object -ExpandProperty DNSRoot
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build path</span>
+</span></span><span style="display:flex;"><span>$DomainSYSVOLShareScan = <span style="color:#e6db74">&#34;\\$domainname\SYSVOL\$domainname\Policies\&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check path recursivly for match</span>
+</span></span><span style="display:flex;"><span>Get-ChildItem $DomainSYSVOLShareScan -Filter *.xml -Recurse | % {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Select-String -Path $_.FullName -Pattern <span style="color:#e6db74">&#34;Cpassword&#34;</span>) {
+</span></span><span style="display:flex;"><span>        $_.FullName
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="happy-coding">Happy coding</h3>
+
+    </div>
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  
+  <div class="footer__inner">
+    <div id="statique">
+      <script defer="" src="//blog.ehmiiz.tech/statique/statique.js"></script>
+      <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+       
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+    
+  </div>
+</footer>
+
+<script src="//blog.ehmiiz.tech/assets/main.js"></script>
+<script src="//blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

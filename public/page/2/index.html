@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.101.0" />
+	<meta name="generator" content="Hugo 0.100.2" />
     
       <title>
         blog.ehmiiz.tech
@@ -172,6 +172,74 @@
   
 
   <div class="posts">
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/">PowerShell Solution: Script not digitally signed</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2021-02-11
+          </span>
+
+          
+        
+
+        
+
+        
+      </div>
+
+      
+
+      
+
+      <div class="post-content">
+        
+          
+            “.ps1 is not digitally signed. The script will not execute on the system.” This error is clearly not really a typical error, but can be a blocker, nonetheless. It&rsquo;s more of a security feature than an error.
+Simple solution if you&rsquo;re running this script from another service, or as an Azure Runbook, before executing the Invoke-Command:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+This will allow the powershell session process itself to bypass the Exec policy, and after termination the next powershell process has the default user or system policy.
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/powershell-solution-script-not-digitally-signed/">Read more →</a></div>
+      
+    </div>
+    
+    <div class="post on-list">
+      <h1 class="post-title"><a href="//blog.ehmiiz.tech/book-review-life-3.0/">Book review: Life 3.0</a></h1>
+      <div class="post-meta">
+        
+          <span class="post-date">
+            2021-02-08
+          </span>
+
+          
+        
+
+        
+
+        
+      </div>
+
+      
+
+      
+
+      <div class="post-content">
+        
+          
+            Life 3.0, Being human in the age of AI Life 3.0 by Max TegmarkFirst book on AI Personally, this was the first time reading a book about AI. And as a tech-savvy sysadmin who loves video games, sci-fi and great stories, it got me hooked.
+It’s author, Max Tegmark, got me very interested in the subject and he does so by being naturally curious, super-nerdy in a fun way, and just all-round knowledgeable in tech, he’s a professor after all!
+          
+        
+      </div>
+      
+        <div><a class="read-more button" href="/book-review-life-3.0/">Read more →</a></div>
+      
+    </div>
     
     <div class="post on-list">
       <h1 class="post-title"><a href="//blog.ehmiiz.tech/book-review-lotr-the-fellowship-of-the-ring/">Book Review: LOTR, The Fellowship of the Ring</a></h1>

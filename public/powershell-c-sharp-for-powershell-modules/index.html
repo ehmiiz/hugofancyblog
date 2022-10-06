@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        PowerShell: C Sharp for PowerShell Modules ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="My journey into C# so far I&amp;rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn for me has always been C#, reason being it&amp;rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.
+Some content I&amp;rsquo;ve devoured to increase my C# knowledge are:
+C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp;amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:"
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/" />
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/statique/statique.css" type="text/css">
+    <script type="text/javascript">
+       var statiqueAuth = 'sv=2020-08-04&spr=https&se=2099-01-01T00%3A00%3A00Z&sr=c&sp=rcl&sig=EJQAJtKg9PKNe5Qxfh1bK28Rot5qf6EJRBfuhPI5Jd8%3D'
+       var statiqueBaseUri = 'https://fancyblogcomments.blob.core.windows.net/comments'
+    </script>
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="PowerShell: C Sharp for PowerShell Modules"/>
+<meta name="twitter:description" content="My journey into C# so far I&rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn for me has always been C#, reason being it&rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.
+Some content I&rsquo;ve devoured to increase my C# knowledge are:
+C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:"/>
+
+
+
+<meta property="og:title" content="PowerShell: C Sharp for PowerShell Modules" />
+<meta property="og:description" content="My journey into C# so far I&rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn for me has always been C#, reason being it&rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.
+Some content I&rsquo;ve devoured to increase my C# knowledge are:
+C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-15T14:58:11+01:00" />
+<meta property="article:modified_time" content="2022-08-15T14:58:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/cv">CV</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">PowerShell: C Sharp for PowerShell Modules</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-08-15
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      
+  <figure class="left" >
+    <img src="/pics/stack_books.jpg"   />
+    
+  </figure>
+
+
+<h2 id="my-journey-into-c-so-far">My journey into C# so far</h2>
+<p>I&rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest.
+The natural next language to learn for me has always been C#, reason being it&rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.</p>
+<p>Some content I&rsquo;ve devoured to increase my C# knowledge are:</p>
+<ul>
+<li>C# Fundamentals course on PluralSight by Scott Allen</li>
+<li>PowerShell to C# And Back, Book by Deepak Dhami &amp; Prateek Singh</li>
+</ul>
+<p>Various YouTube content and talks on building PowerShell Binary Modules using C#:</p>
+<ul>
+<li>Building Cross Platform PowerShell Modules by Adam Driscoll</li>
+<li>Writing Compiled PowerShell Cmdlets by Thomas Rayner</li>
+</ul>
+<p>The above lists are things I&rsquo;ve went through and I can honestly recommend.</p>
+<h2 id="whats-to-come">What&rsquo;s to come</h2>
+<p>I plan to further increase my knowledge with the books:</p>
+<ul>
+<li>The C# Player&rsquo;s Guide, Book by RB Whitaker</li>
+<li>C# In Depth, Book by Jon Skeet</li>
+</ul>
+<p>As well as writing more modules and other C# related projects.</p>
+<h2 id="the-process-of-wrapping-a-binary-module-using-a-nuget-package">The process of wrapping a binary module using a nuget package</h2>
+<ol>
+<li>
+<p>Install a modern version of the dotnet cli together with a dotnet sdk suitable for that version</p>
+</li>
+<li>
+<p>Init an empty git repo for the new code to live in</p>
+</li>
+<li>
+<p>Navigate to the folder; dotnet new classlib. This will generate a dotnet class library, once compiled it will generate a DLL file that will be our module</p>
+</li>
+<li>
+<p>In the csproj file, to make the module compatible with Win PowerShell &amp; PowerShell, we set the TargetFramework to &ldquo;netstandard2.0&rdquo;</p>
+</li>
+<li>
+<p>Remove ImplicitUsings and Nullable Enabled. These are language features we do not need</p>
+</li>
+<li>
+<p>dotnet add package PowerShell Standard.Library</p>
+</li>
+<li>
+<p>dotnet add package thenugetpackage</p>
+</li>
+<li>
+<p>dotnet publish. We have now added the packages needed to start wrapping the nuget package into a PowerShell module</p>
+</li>
+<li>
+<p>To follow the official PowerShell repos naming standard, all the cmdlets are to be named: VerbNounCommand.cs</p>
+</li>
+</ol>
+<p>The following source code is commented to help one with a PowerShell background to understand it easier:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Csharp" data-lang="Csharp"><span style="display:flex;"><span><span style="color:#75715e">// Usings, similar to Import-Module</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Management.Automation;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> PasswordGenerator;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> PasswordGenerator
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// VerbsCommon contains a list of approved common verbs, the string Password is the Noun of the cmdlet</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [Cmdlet(VerbsCommon.New,&#34;Password&#34;)]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Cmdletname : PSCmdlet, similar to Function Name {}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GetGeneratedPasswordCommand</span> : PSCmdlet
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// [Parameter], default value is 16. If Get &gt; Default, if set &gt; set the value of the param</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> <span style="color:#ae81ff">_</span>pwLengthDefault = <span style="color:#ae81ff">16</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Parameter]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [ValidateRange(4,128)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Int32 Length
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>pwLengthDefault;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span>pwLengthDefault = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> <span style="color:#ae81ff">_</span>amountDefault = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Parameter]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Int32 Amount
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">get</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">_</span>amountDefault;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">set</span>
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">_</span>amountDefault = <span style="color:#66d9ef">value</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Switch parameters, they turn true if specified</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Parameter]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchParameter IncludeSpecial { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Parameter]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchParameter IncludeNumeric { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Parameter]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchParameter IncludeUppercase { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Parameter]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> SwitchParameter IncludeLowercase { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> ProcessRecord()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// for loop, same concept as in PowerShell</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i = <span style="color:#ae81ff">0</span>; i &lt; Amount; i++)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (!IncludeLowercase &amp; !IncludeUppercase &amp; IncludeSpecial &amp; IncludeNumeric)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeSpecial().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password); 
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (IncludeNumeric &amp; !IncludeSpecial &amp; !IncludeUppercase &amp; !IncludeLowercase)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (IncludeSpecial &amp; !IncludeNumeric &amp; !IncludeUppercase &amp; !IncludeLowercase)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeSpecial();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password); 
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeNumeric &amp; !IncludeSpecial &amp; IncludeUppercase &amp; IncludeLowercase)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeUppercase();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeNumeric &amp; !IncludeSpecial &amp; !IncludeLowercase &amp; IncludeUppercase)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeUppercase();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeNumeric &amp; !IncludeSpecial &amp; !IncludeUppercase &amp; IncludeLowercase)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeNumeric &amp; IncludeLowercase &amp; IncludeUppercase &amp; IncludeSpecial)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeUppercase().IncludeSpecial();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeNumeric &amp; IncludeLowercase &amp; IncludeUppercase &amp; IncludeNumeric)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeUppercase().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeNumeric &amp; !IncludeUppercase &amp; IncludeSpecial &amp; IncludeLowercase)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeSpecial();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeSpecial &amp; !IncludeUppercase &amp; IncludeLowercase &amp; IncludeNumeric)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeLowercase &amp; !IncludeNumeric &amp; IncludeUppercase &amp; IncludeSpecial)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeUppercase().IncludeSpecial();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeLowercase &amp; !IncludeSpecial &amp; IncludeUppercase &amp; IncludeNumeric)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeUppercase().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password); 
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeUppercase &amp; IncludeLowercase &amp; IncludeNumeric &amp; IncludeSpecial)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeSpecial().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password); 
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (!IncludeLowercase &amp; IncludeUppercase &amp; IncludeNumeric &amp; IncludeSpecial)
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeUppercase().IncludeSpecial().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password); 
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> pwd = <span style="color:#66d9ef">new</span> Password(Length).IncludeLowercase().IncludeUppercase().IncludeSpecial().IncludeNumeric();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> password = pwd.Next();
+</span></span><span style="display:flex;"><span>                    WriteObject(password); 
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The rest is a matter of figuring out how the package works, and what it supports.
+Make sure to try to get all the functionality of the package out in the PowerShell module. Obviously it might require you to make more cmdlets.</p>
+<p>Next blog will be how I published my module to the PowerShell Gallery. Using Git, Github, PSGallery and PlatyPS.</p>
+<p>Stay tuned!</p>
+<h3 id="happy-coding">Happy coding</h3>
+<h3 id="emil">/Emil</h3>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  
+  <div class="footer__inner">
+    <div id="statique">
+      <script defer="" src="//blog.ehmiiz.tech/statique/statique.js"></script>
+      <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+       
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+    
+  </div>
+</footer>
+
+<script src="//blog.ehmiiz.tech/assets/main.js"></script>
+<script src="//blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

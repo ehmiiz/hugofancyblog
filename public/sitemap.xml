@@ -3,12 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//blog.ehmiiz.tech/</loc>
-    <lastmod>2022-08-15T14:58:11+01:00</lastmod>
+    <lastmod>2022-10-05T08:23:11+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/posts/</loc>
-    <lastmod>2022-08-15T14:58:11+01:00</lastmod>
+    <lastmod>2022-10-05T08:23:11+01:00</lastmod>
   </url><url>
-    <loc>//blog.ehmiiz.tech/powershell-c#-for-powershell-modules/</loc>
+    <loc>//blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/</loc>
+    <lastmod>2022-10-05T08:23:11+01:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/powershell-solution-agpm-unable-to-take-control-of-a-gpo/</loc>
+    <lastmod>2022-09-08T14:56:09+02:00</lastmod>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/</loc>
     <lastmod>2022-08-15T14:58:11+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/powershell-for-security-porting-a-1.6m-downloads-dotnet-package-to-a-binary-powershell-cmdlet/</loc>

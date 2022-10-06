@@ -9,17 +9,17 @@
     <description>Recent content on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Aug 2022 14:58:11 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 05 Oct 2022 08:23:11 +0100</lastBuildDate>
     
 	<atom:link href="//blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>PowerShell: C# for PowerShell Modules</title>
-      <link>//blog.ehmiiz.tech/powershell-c#-for-powershell-modules/</link>
-      <pubDate>Mon, 15 Aug 2022 14:58:11 +0100</pubDate>
+      <title>PowerShell for Security: Continuous post of AD Weaknesses</title>
+      <link>//blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/</link>
+      <pubDate>Wed, 05 Oct 2022 08:23:11 +0100</pubDate>
       
-      <guid>//blog.ehmiiz.tech/powershell-c#-for-powershell-modules/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/</guid>
       <description>
         
           
@@ -28,7 +28,50 @@
         
         
         
-          My journey into C# so far I&amp;rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn has always in a way been C#, reason being it&amp;rsquo;s easy to pick up if you already know PowerShell.
+          Idea behind this post Working with Active Directory for a living, you tend to pick up a thing or two about unsecure features, AD legacy &amp;ldquo;ideas&amp;rdquo; that does not make sense anymore, and the ever growing list of vulnerabilities being generated from the ADDS, ADCS &amp;amp; ADFS suite.
+This post will serve as a way of remembering, learning and sharing with other AD admins about the things I&amp;rsquo;ve been working on in terms of defending Active Directory.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>PowerShell Solution: AGPM unable to take control of a GPO</title>
+      <link>//blog.ehmiiz.tech/powershell-solution-agpm-unable-to-take-control-of-a-gpo/</link>
+      <pubDate>Thu, 08 Sep 2022 14:56:09 +0200</pubDate>
+      
+      <guid>//blog.ehmiiz.tech/powershell-solution-agpm-unable-to-take-control-of-a-gpo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Problem If you enjoy the principle of least privileges, version control and doing big infrastructural changes in a safe manner, Advanced Group Policy Management or AGPM, is an amazing tool.
+AGPM itself has a few years on its back, and as we tend to get easier and easier tech now days, legacy systems mean complexity.
+When combined with new sysadmins that has not been introduced to the concept of AGPM, uncontrolled GPOs might become a problem and the built in error messages are sadly not the greatest.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>PowerShell: C Sharp for PowerShell Modules</title>
+      <link>//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/</link>
+      <pubDate>Mon, 15 Aug 2022 14:58:11 +0100</pubDate>
+      
+      <guid>//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          My journey into C# so far I&amp;rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn for me has always been C#, reason being it&amp;rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.
 Some content I&amp;rsquo;ve devoured to increase my C# knowledge are:
 C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp;amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:
           

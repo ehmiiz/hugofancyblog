@@ -4,11 +4,15 @@ date: 2022-09-08T14:56:09+02:00
 draft: false
 ---
 
+{{< figure
+  src="/pics/oldkeyboard.jpg"
+>}}
+
 ## Problem
 
 If you enjoy the principle of least privileges, version control and doing big infrastructural changes in a safe manner, [Advanced Group Policy Management](https://docs.microsoft.com/en-us/microsoft-desktop-optimization-pack/agpm/) or AGPM, is an amazing tool.
 
-AGPM itself has a few years on its back, and as we tend to get easier and easier tech now days, legacy systems mean complexity.
+AGPM itself has a few years on its back, and as we sysadmins tend to get easier and easier systems now days, legacy systems can mean complexity.
 
 When combined with new sysadmins that has not been introduced to the concept of AGPM, uncontrolled GPOs might become a problem and the built in error messages are sadly not the greatest.
 
@@ -45,7 +49,7 @@ The GPC is stored in AD, under "CN=,Policies,CN=System,DC=x,DC=x". Since it's an
 
 Group Policy Template (GPT), is stored in the DC's system volume (sysvol), under the 'policies' subfolder.
 
-The GPT stores the majority of GPO data, it contains a folder structure of files that describes the GPOs functionallity, meaning it stores script files, administrative template-based policies and various other security settings.
+The GPT stores the majority of GPO data, it contains a folder structure of files that describes the GPOs functionality, meaning it stores script files, administrative template-based policies and various other security settings.
 
 ### Replication
 
@@ -110,8 +114,8 @@ Congratulations on having a fully controlled AGPM environment.
 Understanding where a GPO is stored is a nice way of understanding how they work. The reason behind having them stored in separate places most likely goes back to fact that AD is old, and back in the days, size mattered.
 Having the GPT files in the AD database (.dit) would simply mean a huge increase in data for AD. Splitting things up and having the DCs taking a bit of storage was probably a good idea back then. 
 
-
-
+On another note, notice my code in this solution was quite simple. Even thought we did some complex tasks. I was actively not trying to re-invent the wheel, and this is something that gets more important the 'harder' the task becomes. Using "blackbox" modules where we only follow the PowerShell standard way of typing out a cmdlet, can be a great way of achieving complex tasks with speed.
+It's also important that when a "blackbox" module solves something for you, go back and try to dig deeper in what it actually did. I find this a good way of learning things in general.
 
 ### Happy coding
 

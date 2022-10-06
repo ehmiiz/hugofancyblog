@@ -17,7 +17,7 @@ This post will serve as a way of remembering, learning and sharing with other AD
 Each vulnerability section will consist of three parts:
 
 - Problem
-- Mitigation
+- Solution
 - Script
 
 This post is personal and ever changing. It's only purpose is to help others. Never run code from an untrusted source, always read the code and try it in a lab before running it in production.
@@ -32,7 +32,7 @@ This blog will be the solution, I will simply share this post.
 
 ### Script:
 ```powershell
-'url' | Set-Clipboard
+'https://blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/' | Set-Clipboard
 ```
 
 ## 1. Clear-text passwords in Sysvol (KB2962486)

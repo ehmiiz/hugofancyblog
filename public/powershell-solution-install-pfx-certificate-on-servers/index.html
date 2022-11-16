@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        PowerShell Solution: Install PFX certificate on servers ::
+        blog.ehmiiz.tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Problem As you may have guessed, this post will be about installing certificates using PowerShell.
+Every year as someone working with identity topics, I am tasked with renewing certificates across the environment. Many services relies fully on valid certificates in order to function securely.
+One critical service in particular that this scenario will cover is: Active Directory Federation Services, ADFS.
+In most cases, you will have multiple ADFS servers, meaning, if your not automating already, you will need to install the SSL certificate manually (no fun experience on 10&#43; servers)."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//blog.ehmiiz.tech/powershell-solution-install-pfx-certificate-on-servers/" />
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/statique/statique.css" type="text/css">
+    <script type="text/javascript">
+       var statiqueAuth = 'sv=2020-08-04&spr=https&se=2099-01-01T00%3A00%3A00Z&sr=c&sp=rcl&sig=EJQAJtKg9PKNe5Qxfh1bK28Rot5qf6EJRBfuhPI5Jd8%3D'
+       var statiqueBaseUri = 'https://fancyblogcomments.blob.core.windows.net/comments'
+    </script>
+
+
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/assets/style.css" />
+
+<link rel="stylesheet" href="//blog.ehmiiz.tech/style.css" />
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="//blog.ehmiiz.tech/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//blog.ehmiiz.tech"/>
+
+<meta name="twitter:title" content="PowerShell Solution: Install PFX certificate on servers"/>
+<meta name="twitter:description" content="Problem As you may have guessed, this post will be about installing certificates using PowerShell.
+Every year as someone working with identity topics, I am tasked with renewing certificates across the environment. Many services relies fully on valid certificates in order to function securely.
+One critical service in particular that this scenario will cover is: Active Directory Federation Services, ADFS.
+In most cases, you will have multiple ADFS servers, meaning, if your not automating already, you will need to install the SSL certificate manually (no fun experience on 10&#43; servers)."/>
+
+
+
+<meta property="og:title" content="PowerShell Solution: Install PFX certificate on servers" />
+<meta property="og:description" content="Problem As you may have guessed, this post will be about installing certificates using PowerShell.
+Every year as someone working with identity topics, I am tasked with renewing certificates across the environment. Many services relies fully on valid certificates in order to function securely.
+One critical service in particular that this scenario will cover is: Active Directory Federation Services, ADFS.
+In most cases, you will have multiple ADFS servers, meaning, if your not automating already, you will need to install the SSL certificate manually (no fun experience on 10&#43; servers)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//blog.ehmiiz.tech/powershell-solution-install-pfx-certificate-on-servers/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-16T08:13:11+01:00" />
+<meta property="article:modified_time" content="2022-11-16T08:13:11+01:00" /><meta property="og:site_name" content="blog.ehmiiz.tech" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/cv">CV</a></li>
+        
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">PowerShell Solution: Install PFX certificate on servers</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-11-16
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      
+  <figure class="left" >
+    <img src="/pics/Install-ADFSCertOnAllServers.png"   />
+    
+  </figure>
+
+
+<h2 id="problem">Problem</h2>
+<p>As you may have guessed, this post will be about installing certificates using PowerShell.</p>
+<p>Every year as someone working with identity topics, I am tasked with renewing certificates across the environment. Many services relies fully on valid certificates in order to function securely.</p>
+<p>One critical service in particular that this scenario will cover is: <code>Active Directory Federation Services</code>, ADFS.</p>
+<p>In most cases, you will have multiple ADFS servers, meaning, if your not automating already, you will need to install the SSL certificate manually (no fun experience on 10+ servers).</p>
+<p><em>There&rsquo;s more to say regarding specifically ADFS SSL certificates, that this post will not cover, however an installation will be needed in many of those scenarios as well.</em></p>
+<h2 id="solution">Solution</h2>
+<p>This solution covers how one could do this for ADFS servers, however it carries over to other services that requires a valid certificate as well.</p>
+<p>To generate an pfx file out of an external certificate, I recommend using <a href="https://www.digicert.com/support/tools/certificate-utility-for-windows">The Digicert Cert Utility</a> to generate the CSR (Certificate Signing Request) on the root server. Then simply import it using the digicert tool, and export the certificate to a .pfx file.</p>
+<p>Here&rsquo;s an example of how to export an already installed certificate as a PFX file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$PfxPw = (Read-Host -Prompt <span style="color:#e6db74">&#39;Enter a password&#39;</span> -AsSecureString)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Get-ChildItem -Path cert<span style="color:#960050;background-color:#1e0010">:</span>\localMachine\my\&lt;thumbprint&gt; | Export-PfxCertificate -FilePath C:\Cert\ssl_cert.pfx -Password $PfxPw
+</span></span></code></pre></div><p><em>It&rsquo;s important that the certificate gets imported on the server where the CSR was generated, in order to have a valid public/private keypair.</em></p>
+<p>What we need to start out is:</p>
+<ol>
+<li>The ADFS Root server with the pfx certificate exported</li>
+<li>Access to all ADFS servers</li>
+<li>WinRM/PowerShell remoting enabled environment</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Local path to the certificate</span>
+</span></span><span style="display:flex;"><span>$PFXPath = <span style="color:#e6db74">&#39;C:\Cert\ssl_cert.pfx&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Credential object, we only use the password property</span>
+</span></span><span style="display:flex;"><span>$Creds = Get-Credential -UserName <span style="color:#e6db74">&#39;Enter PFX password below&#39;</span> -Message <span style="color:#e6db74">&#39;Enter PFX password below&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Path of the remote server we will copy to</span>
+</span></span><span style="display:flex;"><span>$ServerCertPath = <span style="color:#e6db74">&#34;C:\Cert\&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$InternalServers = <span style="color:#e6db74">&#34;SERVER1&#34;</span>, <span style="color:#e6db74">&#34;SERVER2&#34;</span>, <span style="color:#e6db74">&#34;SERVER3&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($Server <span style="color:#66d9ef">in</span> $InternalServers) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Creates a remote session</span>
+</span></span><span style="display:flex;"><span>    $Session = New-PSSession -ComputerName $Server
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Copies the certificate to the remote session</span>
+</span></span><span style="display:flex;"><span>    Copy-Item -Path $PFXPath -ToSession $Session -Destination $ServerCertPath -Force -Verbose -ErrorAction Stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Imports the pfx certificate using the credentials provided remotely</span>
+</span></span><span style="display:flex;"><span>    Invoke-Command -Session $Session -ScriptBlock {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Import-PfxCertificate -FilePath $using<span style="color:#960050;background-color:#1e0010">:</span>ServerCertPath -CertStoreLocation Cert<span style="color:#960050;background-color:#1e0010">:</span>\LocalMachine\My -Password $using<span style="color:#960050;background-color:#1e0010">:</span>Creds.Password
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="small-talk">Small Talk</h2>
+<p>And just like that, you&rsquo;ve saved truckloads of time every year using PowerShell.</p>
+<p>I highly recommend checking out more cmdlets based from the <a href="https://learn.microsoft.com/en-us/powershell/module/pki/?view=windowsserver2022-ps">pki</a> and <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/?view=powershell-7.3">Microsoft.PowerShell.Security module</a>. The script above displays how one can tackle a .pfx certificate, but using <a href="https://learn.microsoft.com/en-us/powershell/module/pki/import-certificate?view=windowsserver2022-ps">Import-Certificate</a>, you could do similar things with .cer files.</p>
+<p>Also, one could eliminate the need for generating a password with using something like <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.secretmanagement/?view=ps-modules">Microsoft.PowerShell.SecretManagement</a>. This module translates well into a lot of cmdlets in the pki/security module.</p>
+<h3 id="stay-safe--happy-coding">Stay safe &amp; happy coding!</h3>
+<h3 id="emil">/Emil</h3>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  
+  <div class="footer__inner">
+    <div id="statique">
+      <script defer="" src="//blog.ehmiiz.tech/statique/statique.js"></script>
+      <noscript>Please enable JavaScript to load the comments.</noscript>
+    </div>
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >blog.ehmiiz.tech</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+       
+      <div class="copyright">
+        <span
+          >Site created by
+          <a href="https://github.com/ehmiiz" target="_blank" rel="noopener">Emil</a></span
+        >
+      </div>
+    
+    
+  </div>
+</footer>
+
+<script src="//blog.ehmiiz.tech/assets/main.js"></script>
+<script src="//blog.ehmiiz.tech/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

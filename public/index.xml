@@ -9,10 +9,33 @@
     <description>Recent content on blog.ehmiiz.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Oct 2022 08:23:11 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 16 Nov 2022 08:13:11 +0100</lastBuildDate>
     
 	<atom:link href="//blog.ehmiiz.tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PowerShell Solution: Install PFX certificate on servers</title>
+      <link>//blog.ehmiiz.tech/powershell-solution-install-pfx-certificate-on-servers/</link>
+      <pubDate>Wed, 16 Nov 2022 08:13:11 +0100</pubDate>
+      
+      <guid>//blog.ehmiiz.tech/powershell-solution-install-pfx-certificate-on-servers/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Problem As you may have guessed, this post will be about installing certificates using PowerShell.
+Every year as someone working with identity topics, I am tasked with renewing certificates across the environment. Many services relies fully on valid certificates in order to function securely.
+One critical service in particular that this scenario will cover is: Active Directory Federation Services, ADFS.
+In most cases, you will have multiple ADFS servers, meaning, if your not automating already, you will need to install the SSL certificate manually (no fun experience on 10+ servers).
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>PowerShell for Security: Continuous post of AD Weaknesses</title>
@@ -50,7 +73,7 @@ This post will serve as a way of remembering, learning and sharing with other AD
         
         
           Problem If you enjoy the principle of least privileges, version control and doing big infrastructural changes in a safe manner, Advanced Group Policy Management or AGPM, is an amazing tool.
-AGPM itself has a few years on its back, and as we tend to get easier and easier tech now days, legacy systems mean complexity.
+AGPM itself has a few years on its back, and as we sysadmins tend to get easier and easier systems now days, legacy systems can mean complexity.
 When combined with new sysadmins that has not been introduced to the concept of AGPM, uncontrolled GPOs might become a problem and the built in error messages are sadly not the greatest.
           
         

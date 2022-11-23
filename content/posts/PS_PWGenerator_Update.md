@@ -1,9 +1,6 @@
 --- 
-
-title: "PowerShell for Security: Porting a 1.6M-downloads dotnet package to a binary PowerShell Cmdlet" 
-
+title: "PowerShell for Security: PassWord Gen Part 2" 
 date: 2022-07-04T14:58:11+01:00 
-
 draft: false
 comments: false
 

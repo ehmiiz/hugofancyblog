@@ -57,6 +57,10 @@ paginate     = 10
     identifier = "cv"
     name       = "CV"
     url        = "/cv"
+  [[menu.main]]
+    identifier = "list"
+    name       = "List"
+    url        = "/list"
 
 [permalinks]
   posts = "/:title"

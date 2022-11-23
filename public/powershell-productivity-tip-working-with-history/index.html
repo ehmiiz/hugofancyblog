@@ -12,7 +12,7 @@
 <meta
   name="description"
   content="One thing I&amp;rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&amp;rsquo;s quite a few ways to do so currently, so I thought i&amp;rsquo;d share some of my favorite ones.
-Different ways of viewing your history To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&amp;gt; h. Simple as that. h To view your over-all history in your current environment, PSReadLine is your friend: cat (Get-PSReadLineOption)."
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&amp;gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption)."
 />
 <meta
   name="keywords"
@@ -55,13 +55,13 @@ Different ways of viewing your history To view your current sessions history, Po
 
 <meta name="twitter:title" content="PowerShell Productivity tip: Working with History"/>
 <meta name="twitter:description" content="One thing I&rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&rsquo;s quite a few ways to do so currently, so I thought i&rsquo;d share some of my favorite ones.
-Different ways of viewing your history To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that. h To view your over-all history in your current environment, PSReadLine is your friend: cat (Get-PSReadLineOption)."/>
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption)."/>
 
 
 
 <meta property="og:title" content="PowerShell Productivity tip: Working with History" />
 <meta property="og:description" content="One thing I&rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&rsquo;s quite a few ways to do so currently, so I thought i&rsquo;d share some of my favorite ones.
-Different ways of viewing your history To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that. h To view your over-all history in your current environment, PSReadLine is your friend: cat (Get-PSReadLineOption)." />
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="//blog.ehmiiz.tech/powershell-productivity-tip-working-with-history/" /><meta property="og:image" content="//blog.ehmiiz.tech"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-16T08:05:11+01:00" />
@@ -110,6 +110,10 @@ Different ways of viewing your history To view your current sessions history, Po
         
       
         
+          <li><a href="/list">List</a></li>
+        
+      
+        
           <li><a href="/posts">Posts</a></li>
         
       
@@ -124,6 +128,10 @@ Different ways of viewing your history To view your current sessions history, Po
     
       
         <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/list">List</a></li>
       
     
       
@@ -204,17 +212,17 @@ Different ways of viewing your history To view your current sessions history, Po
 <ul>
 <li>To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&gt; h. Simple as that.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>h
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">h
+</code></pre></div><ul>
 <li>To view your over-all history in your current environment, PSReadLine is your friend:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>cat (Get-PSReadLineOption).HistorySavePath
-</span></span></code></pre></div><p>Viewing the txt-file of PSReadLines history can be a lifesaver if you work with colleagues that tend to never document their solutions. You could modify the HistorySavePath property of your own output, to view someone else&rsquo;s history on a shared server/computer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>cat (Get-PSReadLineOption).historysavepath.Replace(<span style="color:#e6db74">&#34;$env:USERNAME&#34;</span>,<span style="color:#e6db74">&#34;Your-Colleague-That-Did-Not-Docx-It&#34;</span>)
-</span></span></code></pre></div><h2 id="history-tend-to-repeat-itself">History Tend To Repeat Itself</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">cat (Get-PSReadLineOption).HistorySavePath
+</code></pre></div><p>Viewing the txt-file of PSReadLines history can be a lifesaver if you work with colleagues that tend to never document their solutions. You could modify the HistorySavePath property of your own output, to view someone else&rsquo;s history on a shared server/computer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">cat (Get-PSReadLineOption).historysavepath.Replace(<span style="color:#e6db74">&#34;$env:USERNAME&#34;</span>,<span style="color:#e6db74">&#34;Your-Colleague-That-Did-Not-Docx-It&#34;</span>)
+</code></pre></div><h2 id="history-tend-to-repeat-itself">History Tend To Repeat Itself</h2>
 <p>As we all know, we humans always have a need to re-run history. Without being political about it, here&rsquo;s some examples on how you could do this in PowerShell</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>r 25
-</span></span></code></pre></div><p>It&rsquo;s that simple. In your current session, each command you enter will be available in your Get-History (h). Each history entry has an ID. The cmdlet behind the alias r (Invoke-History) will execute your history based on the ID you provide. In the example above, I&rsquo;m executing my 25&rsquo;th command inputed in my terminal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">r 25
+</code></pre></div><p>It&rsquo;s that simple. In your current session, each command you enter will be available in your Get-History (h). Each history entry has an ID. The cmdlet behind the alias r (Invoke-History) will execute your history based on the ID you provide. In the example above, I&rsquo;m executing my 25&rsquo;th command inputed in my terminal.</p>
 
   <figure class="left" >
     <img src="https://i.imgur.com/O4y0isj.png"   />
@@ -223,10 +231,10 @@ Different ways of viewing your history To view your current sessions history, Po
 
 
 <h2 id="but-theres-more">But there&rsquo;s more!</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\Users\Emil\git&gt; <span style="color:#75715e">#25&lt;tab&gt;</span>
-</span></span><span style="display:flex;"><span>PS C:\Users\Emil\git&gt; Write-Host <span style="color:#e6db74">&#34;Tomorrow is monday!!!&#34;</span> -ForegroundColor (Get-Random <span style="color:#e6db74">&#34;Green&#34;</span>,<span style="color:#e6db74">&#34;Yellow&#34;</span>,<span style="color:#e6db74">&#34;Blue&#34;</span>)
-</span></span></code></pre></div><p>The following is PowerShell Black-Magic, and is&rsquo;s really useful. It saves you the trouble of copy-pasting your history.</p>
-<p>Simply view your history, memorize the ID, hit &lsquo;#&rsquo; and the ID, followed by a &rsquo;tab&rsquo; and you have it printed ready to be executed in your terminal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\Emil\git&gt; <span style="color:#75715e">#25&lt;tab&gt;</span>
+PS C:\Users\Emil\git&gt; Write-Host <span style="color:#e6db74">&#34;Tomorrow is monday!!!&#34;</span> -ForegroundColor (Get-Random <span style="color:#e6db74">&#34;Green&#34;</span>,<span style="color:#e6db74">&#34;Yellow&#34;</span>,<span style="color:#e6db74">&#34;Blue&#34;</span>)
+</code></pre></div><p>The following is PowerShell Black-Magic, and is&rsquo;s really useful. It saves you the trouble of copy-pasting your history.</p>
+<p>Simply view your history, memorize the ID, hit &lsquo;#&rsquo; and the ID, followed by a &lsquo;tab&rsquo; and you have it printed ready to be executed in your terminal.</p>
 
   <figure class="left" >
     <img src="https://i.imgur.com/fw4C055.png"   />
@@ -236,11 +244,11 @@ Different ways of viewing your history To view your current sessions history, Po
 
 <h2 id="help">Help!</h2>
 <p>If you&rsquo;ve read this far and desire more reading, run the following one-liner</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>gcm *-history | % { help $_.name -s }
-</span></span></code></pre></div><p>To be clear:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Command *-history | ForEach-Object { Get-Help $_.Name -ShowWindow }
-</span></span><span style="display:flex;"><span>Get-Help about_history
-</span></span></code></pre></div><p>Hopefully this was a decent history-lesson for someone!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">gcm *-history | % { help $_.name -s }
+</code></pre></div><p>To be clear:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-Command *-history | ForEach-Object { Get-Help $_.Name -ShowWindow }
+Get-Help about_history
+</code></pre></div><p>Hopefully this was a decent history-lesson for someone!</p>
 <h3 id="happy-coding">Happy coding</h3>
 <h3 id="emilhttpstwittercomehmiiz">/<a href="https://twitter.com/ehmiiz">Emil</a></h3>
 

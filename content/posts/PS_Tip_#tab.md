@@ -1,9 +1,6 @@
 --- 
-
 title: "PowerShell Productivity tip: Working with History" 
-
 date: 2022-05-16T08:05:11+01:00 
-
 draft: false
 comments: false
 

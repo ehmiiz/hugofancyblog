@@ -110,6 +110,10 @@ This post will serve as a way of remembering, learning and sharing with other AD
         
       
         
+          <li><a href="/list">List</a></li>
+        
+      
+        
           <li><a href="/posts">Posts</a></li>
         
       
@@ -124,6 +128,10 @@ This post will serve as a way of remembering, learning and sharing with other AD
     
       
         <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/list">List</a></li>
       
     
       
@@ -208,8 +216,8 @@ This post will serve as a way of remembering, learning and sharing with other AD
 <h3 id="solution">Solution:</h3>
 <p>This blog will be the solution, I will simply share this post.</p>
 <h3 id="script">Script:</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#e6db74">&#39;https://blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/&#39;</span> | Set-Clipboard
-</span></span></code></pre></div><h2 id="1-clear-text-passwords-in-sysvol-kb2962486">1. Clear-text passwords in Sysvol (KB2962486)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#e6db74">&#39;https://blog.ehmiiz.tech/powershell-for-security-continuous-post-of-ad-weaknesses/&#39;</span> | Set-Clipboard
+</code></pre></div><h2 id="1-clear-text-passwords-in-sysvol-kb2962486">1. Clear-text passwords in Sysvol (KB2962486)</h2>
 <h3 id="problem-1">Problem:</h3>
 <p>Group policies are (partly) stored in the domain wide share named Sysvol.
 Sysvol is a share that every domain user has read access to. A feature of group policy preferences (GPP), is the ability to store credentials in a policy, thus making use of the permissions of said account in an effective way.</p>
@@ -218,19 +226,19 @@ Sysvol is a share that every domain user has read access to. A feature of group 
 <p>Patch your Domain Controllers so that admins cannot store credentials in sysvol: <a href="https://support.microsoft.com/en-us/topic/ms14-025-vulnerability-in-group-policy-preferences-could-allow-elevation-of-privilege-may-13-2014-60734e15-af79-26ca-ea53-8cd617073c30">MS14-025: Vulnerability in Group Policy Preferences could allow elevation of privilege</a></p>
 <h3 id="script-1">Script:</h3>
 <p>This is a simple script that will match the cpassword row of the xml file, telling you what policy you need to fix:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># Get domain</span>
-</span></span><span style="display:flex;"><span>$DomainName = Get-ADDomain | Select-Object -ExpandProperty DNSRoot
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Build path</span>
-</span></span><span style="display:flex;"><span>$DomainSYSVOLShareScan = <span style="color:#e6db74">&#34;\\$domainname\SYSVOL\$domainname\Policies\&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check path recursivly for match</span>
-</span></span><span style="display:flex;"><span>Get-ChildItem $DomainSYSVOLShareScan -Filter *.xml -Recurse | % {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Select-String -Path $_.FullName -Pattern <span style="color:#e6db74">&#34;Cpassword&#34;</span>) {
-</span></span><span style="display:flex;"><span>        $_.FullName
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="happy-coding">Happy coding</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Get domain</span>
+$DomainName = Get-ADDomain | Select-Object -ExpandProperty DNSRoot
+
+<span style="color:#75715e"># Build path</span>
+$DomainSYSVOLShareScan = <span style="color:#e6db74">&#34;\\$domainname\SYSVOL\$domainname\Policies\&#34;</span>
+
+<span style="color:#75715e"># Check path recursivly for match</span>
+Get-ChildItem $DomainSYSVOLShareScan -Filter *.xml -Recurse | % {
+    <span style="color:#66d9ef">if</span> (Select-String -Path $_.FullName -Pattern <span style="color:#e6db74">&#34;Cpassword&#34;</span>) {
+        $_.FullName
+    }
+}
+</code></pre></div><h3 id="happy-coding">Happy coding</h3>
 
     </div>
     

@@ -1,9 +1,6 @@
 --- 
-
 title: "PowerShell for Security: Continuous post of AD Weaknesses" 
-
 date: 2022-10-05T08:23:11+01:00 
-
 draft: false
 comments: true
 

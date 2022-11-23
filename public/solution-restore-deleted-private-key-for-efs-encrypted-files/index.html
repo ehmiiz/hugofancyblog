@@ -113,6 +113,10 @@ The keypair to this certificate is stored in your Personal certificate store, lu
         
       
         
+          <li><a href="/list">List</a></li>
+        
+      
+        
           <li><a href="/posts">Posts</a></li>
         
       
@@ -127,6 +131,10 @@ The keypair to this certificate is stored in your Personal certificate store, lu
     
       
         <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/list">List</a></li>
       
     
       
@@ -237,8 +245,8 @@ The keypair to this certificate is stored in your Personal certificate store, lu
 <p><img src="/pics/restore_private_key.png" alt="restore_private_key"></p>
 <p>First, we move into the LocalMachine\AddressBook path in the certificate store, and we verify that it contains our public-key based certificate</p>
 <p>We then utilize certutil to restore the private-key part of that we had before lost:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>certutil -repairstore addressbook <span style="color:#e6db74">&#39;&lt;insert thumbprint&gt;&#39;</span>
-</span></span></code></pre></div><p><img src="/pics/privatekey_after_restore_success.png" alt="privatekey_after_restore_success"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">certutil -repairstore addressbook <span style="color:#e6db74">&#39;&lt;insert thumbprint&gt;&#39;</span>
+</code></pre></div><p><img src="/pics/privatekey_after_restore_success.png" alt="privatekey_after_restore_success"></p>
 <p>Verify that the PrivateKey was infact restored</p>
 <p>We have now restored the most critical part of the removal, but decryption will still fail, since windows will only query your personal store while the decryption process takes place. This means we will need to export this certificate, together with it&rsquo;s private key - and import it to your personal store.</p>
 <ol start="5">

@@ -1,9 +1,6 @@
 --- 
-
 title: "PowerShell Solution: Install PFX certificate on servers"
-
 date: 2022-11-16T08:13:11+01:00 
-
 draft: false
 comments: false
 

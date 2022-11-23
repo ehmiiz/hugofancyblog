@@ -20,7 +20,7 @@
     <loc>//blog.ehmiiz.tech/powershell-c-sharp-for-powershell-modules/</loc>
     <lastmod>2022-08-15T14:58:11+01:00</lastmod>
   </url><url>
-    <loc>//blog.ehmiiz.tech/powershell-for-security-porting-a-1.6m-downloads-dotnet-package-to-a-binary-powershell-cmdlet/</loc>
+    <loc>//blog.ehmiiz.tech/powershell-for-security-password-gen-part-2/</loc>
     <lastmod>2022-07-04T14:58:11+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/solution-restore-deleted-private-key-for-efs-encrypted-files/</loc>
@@ -44,7 +44,7 @@
     <loc>//blog.ehmiiz.tech/powershell-solution-automate-gpo-creations/</loc>
     <lastmod>2021-05-12T14:56:09+02:00</lastmod>
   </url><url>
-    <loc>//blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</loc>
+    <loc>//blog.ehmiiz.tech/powershell-for-security-password-gen-part-1/</loc>
     <lastmod>2021-05-10T14:58:11+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/powershell-solution-script-not-digitally-signed/</loc>
@@ -60,6 +60,8 @@
     <lastmod>2021-02-07T12:39:23+01:00</lastmod>
   </url><url>
     <loc>//blog.ehmiiz.tech/blog/</loc>
+  </url><url>
+    <loc>//blog.ehmiiz.tech/list/</loc>
   </url><url>
     <loc>//blog.ehmiiz.tech/series/</loc>
   </url><url>

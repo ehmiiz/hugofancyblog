@@ -1,9 +1,6 @@
 --- 
-
-title: "PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7" 
-
+title: "PowerShell for Security: PassWord Gen Part 1" 
 date: 2021-05-10T14:58:11+01:00 
-
 draft: false
 comments: false
 

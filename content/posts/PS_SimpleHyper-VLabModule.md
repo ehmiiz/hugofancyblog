@@ -1,9 +1,6 @@
 --- 
-
 title: "PowerShell for Automation: Simple Hyper-V VM-Creation script" 
-
 date: 2021-12-21T14:58:11+01:00 
-
 draft: false
 comments: false
 

@@ -96,18 +96,17 @@ When combined with new sysadmins that has not been introduced to the concept of 
         
           My journey into C# so far I&amp;rsquo;ve always been somewhat interested in programming, and PowerShell scripting and module making has put fire to that interest. The natural next language to learn for me has always been C#, reason being it&amp;rsquo;s easy to pick up if you already know PowerShell and it enables you to create binary PowerShell modules.
 Some content I&amp;rsquo;ve devoured to increase my C# knowledge are:
-C# Fundamentals course on PluralSight by Scott Allen PowerShell to C# And Back, Book by Deepak Dhami &amp;amp; Prateek Singh Various YouTube content and talks on building PowerShell Binary Modules using C#:
           
         
         </description>
     </item>
     
     <item>
-      <title>PowerShell for Security: Porting a 1.6M-downloads dotnet package to a binary PowerShell Cmdlet</title>
-      <link>//blog.ehmiiz.tech/powershell-for-security-porting-a-1.6m-downloads-dotnet-package-to-a-binary-powershell-cmdlet/</link>
+      <title>PowerShell for Security: PassWord Gen Part 2</title>
+      <link>//blog.ehmiiz.tech/powershell-for-security-password-gen-part-2/</link>
       <pubDate>Mon, 04 Jul 2022 14:58:11 +0100</pubDate>
       
-      <guid>//blog.ehmiiz.tech/powershell-for-security-porting-a-1.6m-downloads-dotnet-package-to-a-binary-powershell-cmdlet/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-for-security-password-gen-part-2/</guid>
       <description>
         
           
@@ -161,7 +160,7 @@ The keypair to this certificate is stored in your Personal certificate store, lu
         
         
           Hi, and welcome to my blog I&amp;rsquo;m a 29 year old guy who&amp;rsquo;s writing this blog mostly to see how blogs can be built using github and hugo! And to remember what books I&amp;rsquo;ve read.
-Goals of this blog Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing Get more .md experiance Contact You can mail me at: emil@ehmiiz.tech
+Goals of this blog  Simplicity Curiosity Positivity Digital bookshelf to look back on for myself Knowledge sharing Get more .md experiance  Contact You can mail me at: emil@ehmiiz.tech
 Coming up This is a list of books I&amp;rsquo;ve read starting from 2020-03-01.
           
         
@@ -183,7 +182,7 @@ Coming up This is a list of books I&amp;rsquo;ve read starting from 2020-03-01.
         
         
           One thing I&amp;rsquo;ve always done while hacking along in the terminal is working with my command-line history. There&amp;rsquo;s quite a few ways to do so currently, so I thought i&amp;rsquo;d share some of my favorite ones.
-Different ways of viewing your history To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&amp;gt; h. Simple as that. h To view your over-all history in your current environment, PSReadLine is your friend: cat (Get-PSReadLineOption).
+Different ways of viewing your history  To view your current sessions history, PowerShell creates an alias for the cmdlet Get-History -&amp;gt; h. Simple as that.  h  To view your over-all history in your current environment, PSReadLine is your friend:  cat (Get-PSReadLineOption).
           
         
         </description>
@@ -205,7 +204,7 @@ Different ways of viewing your history To view your current sessions history, Po
         
           2021: From my IAM Perspective First of all, this blog-post inspired me to write something similar, so thanks @MDowst for sharing.
 For myself I&amp;rsquo;ve been writing quite a few security focused modules and scripts to help me in my day-to-day life as an IAM Engineer. I&amp;rsquo;ve discovered the PowerShell community calls, and found a whole array of inspirational twitter-users to follow.
-2021: Some cool stuff I found PSReadLine and it&amp;rsquo;s IntelliSense GoPS - a shell navigation module PoshBot PowerShell Community Calls Write-Info - a cool logging module Windows terminal and it&amp;rsquo;s split-tab functionality 2022 exciting stuff Some stuff I&amp;rsquo;m personally excited about:
+2021: Some cool stuff I found  PSReadLine and it&amp;rsquo;s IntelliSense GoPS - a shell navigation module PoshBot PowerShell Community Calls Write-Info - a cool logging module Windows terminal and it&amp;rsquo;s split-tab functionality  2022 exciting stuff Some stuff I&amp;rsquo;m personally excited about:
           
         
         </description>
@@ -226,7 +225,7 @@ For myself I&amp;rsquo;ve been writing quite a few security focused modules and 
         
         
           Meet Labmil. Labmil is a script I made to serve a specific usecase. When AutomatedLab is overkill, and when you don&amp;rsquo;t want to skip the installation phase of the lab.
-Features Quickly put the Windows Server ISO-file to good use It&amp;rsquo;s a simple script for anyone to modify for personal needs It outputs a customobject Create multiple VM&amp;rsquo;s using PowerShell logic Non-Features The script has a few non-features. Non-Features are cool because it makes the script unique and useful in certain senarios.
+Features  Quickly put the Windows Server ISO-file to good use It&amp;rsquo;s a simple script for anyone to modify for personal needs It outputs a customobject Create multiple VM&amp;rsquo;s using PowerShell logic  Non-Features The script has a few non-features. Non-Features are cool because it makes the script unique and useful in certain senarios.
           
         
         </description>
@@ -246,7 +245,7 @@ Features Quickly put the Windows Server ISO-file to good use It&amp;rsquo;s a si
         
         
         
-          Working from home since early 2020.Titles 🧙 IT Automation Engineer Identity and Access management Engineer Security Operator Above are some of the titles I feel comfortable calling myself, although I&amp;rsquo;ve been working with identity and access management &amp;amp; IT automation for most of my career, I always view security as a priority in everything I do.
+          Working from home since early 2020.  Titles 🧙  IT Automation Engineer Identity and Access management Engineer Security Operator  Above are some of the titles I feel comfortable calling myself, although I&amp;rsquo;ve been working with identity and access management &amp;amp; IT automation for most of my career, I always view security as a priority in everything I do.
 Skills 🤹🏽 This is a list of skills that I possess besides general deep IT knowledge and understanding.
           
         
@@ -275,11 +274,11 @@ The problem I was trying to solve was the following; How do we script the task o
     </item>
     
     <item>
-      <title>PowerShell for Security: Generate a X-Platform Password Generator using Powershell 7</title>
-      <link>//blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</link>
+      <title>PowerShell for Security: PassWord Gen Part 1</title>
+      <link>//blog.ehmiiz.tech/powershell-for-security-password-gen-part-1/</link>
       <pubDate>Mon, 10 May 2021 14:58:11 +0100</pubDate>
       
-      <guid>//blog.ehmiiz.tech/powershell-for-security-generate-a-x-platform-password-generator-using-powershell-7/</guid>
+      <guid>//blog.ehmiiz.tech/powershell-for-security-password-gen-part-1/</guid>
       <description>
         
           
@@ -332,7 +331,7 @@ This will allow the powershell session process itself to bypass the Exec policy,
         
         
         
-          Life 3.0, Being human in the age of AI Life 3.0 by Max TegmarkFirst book on AI Personally, this was the first time reading a book about AI. And as a tech-savvy sysadmin who loves video games, sci-fi and great stories, it got me hooked.
+          Life 3.0, Being human in the age of AI Life 3.0 by Max Tegmark  First book on AI Personally, this was the first time reading a book about AI. And as a tech-savvy sysadmin who loves video games, sci-fi and great stories, it got me hooked.
 It’s author, Max Tegmark, got me very interested in the subject and he does so by being naturally curious, super-nerdy in a fun way, and just all-round knowledgeable in tech, he’s a professor after all!
           
         
@@ -353,7 +352,7 @@ It’s author, Max Tegmark, got me very interested in the subject and he does so
         
         
         
-          LOTR: The Fellowship of the RingOne ring to rule them all, one Ring to find them* One Ring to bring them all and in the darkness bind them Sometimes when I read books, I get a feeling to just read faster, not pay attention to detail, to get to the point of the story. While reading Lord of the rings, I forgot about that feeling completely.
+          LOTR: The Fellowship of the Ring  One ring to rule them all, one Ring to find them* One Ring to bring them all and in the darkness bind them Sometimes when I read books, I get a feeling to just read faster, not pay attention to detail, to get to the point of the story. While reading Lord of the rings, I forgot about that feeling completely.
 I think this says a lot about Tolkien’s ability to pay attention to detail, details that forges the story deeper and deeper the more you read, it’s addictive.
           
         
@@ -374,7 +373,28 @@ I think this says a lot about Tolkien’s ability to pay attention to detail, de
         
         
         
-          The Hobbit&amp;ldquo;A timeless advanture for all ages&amp;rdquo; This book was surprisingly easy to read, and it’s in my opinion light-years better than the movies. I read the entire book in Swedish, and although it’s only been a year since I read it, I already have an urge to re-read the whole book in English. The translations just don’t cut it for someone who’s interested in the lore of middle earth.
+          The Hobbit  &amp;ldquo;A timeless advanture for all ages&amp;rdquo; This book was surprisingly easy to read, and it’s in my opinion light-years better than the movies. I read the entire book in Swedish, and although it’s only been a year since I read it, I already have an urge to re-read the whole book in English. The translations just don’t cut it for someone who’s interested in the lore of middle earth.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>List View</title>
+      <link>//blog.ehmiiz.tech/list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>//blog.ehmiiz.tech/list/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          The script that builds this list can be found here: ehmiiz/Invoke-List.ps1
+  2022-11-16 &amp;mdash;&amp;gt; PowerShell Solution: Install PFX certificate on servers 2022-10-05 &amp;mdash;&amp;gt; PowerShell for Security: Continuous post of AD Weaknesses  2022-09-08 &amp;mdash;&amp;gt; PowerShell Solution: AGPM unable to take control of a GPO 2022-08-15 &amp;mdash;&amp;gt; PowerShell: C Sharp for PowerShell Modules  2022-07-04 &amp;mdash;&amp;gt; PowerShell for Security: PassWord Gen Part 2  2022-06-15 &amp;mdash;&amp;gt; Solution: Restore Deleted Private key for EFS Encrypted Files 2022-05-16 &amp;mdash;&amp;gt; PowerShell Productivity tip: Working with History  2022-01-04 &amp;mdash;&amp;gt; PowerShell in 2021: From my IAM Perspective  2021-12-21 &amp;mdash;&amp;gt; PowerShell for Automation: Simple Hyper-V VM-Creation script  2021-05-12 &amp;mdash;&amp;gt; PowerShell Solution: Automate GPO creations 2021-05-10 &amp;mdash;&amp;gt; PowerShell for Security: PassWord Gen Part 1  2021-02-11 &amp;mdash;&amp;gt; PowerShell Solution: Script not digitally signed  2021-02-08 &amp;mdash;&amp;gt; Book review: Life 3.
           
         
         </description>

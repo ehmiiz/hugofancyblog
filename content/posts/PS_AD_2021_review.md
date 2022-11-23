@@ -1,9 +1,6 @@
 --- 
-
 title: "PowerShell in 2021: From my IAM Perspective" 
-
 date: 2022-01-04T08:13:11+01:00 
-
 draft: false
 comments: false
 

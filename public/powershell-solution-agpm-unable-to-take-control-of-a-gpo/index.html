@@ -113,6 +113,10 @@ When combined with new sysadmins that has not been introduced to the concept of 
         
       
         
+          <li><a href="/list">List</a></li>
+        
+      
+        
           <li><a href="/posts">Posts</a></li>
         
       
@@ -127,6 +131,10 @@ When combined with new sysadmins that has not been introduced to the concept of 
     
       
         <li><a href="/cv">CV</a></li>
+      
+    
+      
+        <li><a href="/list">List</a></li>
       
     
       
@@ -206,8 +214,8 @@ When combined with new sysadmins that has not been introduced to the concept of 
 <p>If you enjoy the principle of least privileges, version control and doing big infrastructural changes in a safe manner, <a href="https://docs.microsoft.com/en-us/microsoft-desktop-optimization-pack/agpm/">Advanced Group Policy Management</a> or AGPM, is an amazing tool.</p>
 <p>AGPM itself has a few years on its back, and as we sysadmins tend to get easier and easier systems now days, legacy systems can mean complexity.</p>
 <p>When combined with new sysadmins that has not been introduced to the concept of AGPM, uncontrolled GPOs might become a problem and the built in error messages are sadly not the greatest.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>(GPMC Error) could not take the ownership of the production GPO. Access is denied. (Exceptions from HRESULT : 0x80070005 (E_ACCESSDENIED)).
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">(GPMC Error) could not take the ownership of the production GPO. Access is denied. (Exceptions from HRESULT : 0x80070005 (E_ACCESSDENIED)).
+</code></pre></div>
   <figure class="left" >
     <img src="/pics/error_code_meme.jpg"   />
     
@@ -236,29 +244,29 @@ The GPC is stored in AD, under &ldquo;CN=,Policies,CN=System,DC=x,DC=x&rdquo;. S
 <p>GPC uses AD replication, and GPT uses DFS-R since its in sysvol. This is important because we will edit the ACLs of both AD and sysvol in order to solve our issue.</p>
 <h3 id="editing-acl-for-gpc">Editing ACL for GPC</h3>
 <p>Editing its ACL requires generating an ActiveDirectoryRights object with the desired access. This can be done multiple ways, <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc771151(v=ws.11)">dsacls</a>, using <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-acl?view=powershell-7.2">Set-ACL</a> to name a few. In this case I had heard of an amazing module from <a href="https://twitter.com/SimonWahlin">Simon Wahlin</a> called <a href="https://www.powershellgallery.com/packages/DSACL/1.0.0">DSACL</a>, so I can simply do the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$ADRights = <span style="color:#e6db74">&#34;CreateChild&#34;</span>, <span style="color:#e6db74">&#34;DeleteChild&#34;</span>, <span style="color:#e6db74">&#34;Self&#34;</span>, <span style="color:#e6db74">&#34;WriteProperty&#34;</span>, <span style="color:#e6db74">&#34;DeleteTree&#34;</span>, <span style="color:#e6db74">&#34;Delete&#34;</span>, <span style="color:#e6db74">&#34;GenericRead&#34;</span>, <span style="color:#e6db74">&#34;WriteDacl&#34;</span>, <span style="color:#e6db74">&#34;WriteOwner&#34;</span>, <span style="color:#e6db74">&#34;AccessSystemSecurity&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Add-DSACLCustom -TargetDN $GPODN -DelegateDN $DelegateDN -ActiveDirectoryRights $ADRights  -InheritanceType Descendents -AccessControlType Allow
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Add-DSACLCustom -TargetDN $GPODN -DelegateDN $DelegateDN -ActiveDirectoryRights $ADRights[0..8] -InheritanceType None -AccessControlType Allow
-</span></span></code></pre></div><p>The &lsquo;TargetDN&rsquo; in this case will be the GPCs distinguishedName, and the DelegateDN will be the distinguishedName of our AGPM service-account.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">$ADRights = <span style="color:#e6db74">&#34;CreateChild&#34;</span>, <span style="color:#e6db74">&#34;DeleteChild&#34;</span>, <span style="color:#e6db74">&#34;Self&#34;</span>, <span style="color:#e6db74">&#34;WriteProperty&#34;</span>, <span style="color:#e6db74">&#34;DeleteTree&#34;</span>, <span style="color:#e6db74">&#34;Delete&#34;</span>, <span style="color:#e6db74">&#34;GenericRead&#34;</span>, <span style="color:#e6db74">&#34;WriteDacl&#34;</span>, <span style="color:#e6db74">&#34;WriteOwner&#34;</span>, <span style="color:#e6db74">&#34;AccessSystemSecurity&#34;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Add-DSACLCustom -TargetDN $GPODN -DelegateDN $DelegateDN -ActiveDirectoryRights $ADRights  -InheritanceType Descendents -AccessControlType Allow
+
+Add-DSACLCustom -TargetDN $GPODN -DelegateDN $DelegateDN -ActiveDirectoryRights $ADRights[0..8] -InheritanceType None -AccessControlType Allow
+</code></pre></div><p>The &lsquo;TargetDN&rsquo; in this case will be the GPCs distinguishedName, and the DelegateDN will be the distinguishedName of our AGPM service-account.
 We run the cmdlet twice to mimic the way AGPM edits the ACL in a controlled GPO. AccessSystemSecurity was not needed in the 2nd ACE and therefore I ended up selecting the first 9 (0..8) ADRights.</p>
 <h3 id="editing-the-acl-for-gpt">Editing the ACL for GPT</h3>
 <p>Since GPT is in sysvol, we now have the task of editing a filesystem ACL. This is different from a directory service ACL. There&rsquo;s many ways of doing this as well, <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cacls">cacls</a>, and <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-acl?view=powershell-7.2">Set-ACL</a> works great. I ended up taking the easy way out and used <a href="https://www.powershellgallery.com/packages/NTFSSecurity/4.2.6">NTFSSecurity</a>, again another killer PowerShell module with 1,1mil downloads as of writing. And that&rsquo;s quite understandable considering this is how one can grant full control on a filesystem:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Add-NTFSAccess -Path <span style="color:#e6db74">&#34;\\DOMAIN\SYSVOL\DOMAIN.TEST\Policies\{</span>$($GPOObject.Id)<span style="color:#e6db74">}&#34;</span> -AccessRights FullControl -Account <span style="color:#e6db74">&#39;DOMAIN\Service-Account-AGPM&#39;</span>
-</span></span></code></pre></div><h3 id="almost-ready-to-solve">Almost ready to solve!</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Add-NTFSAccess -Path <span style="color:#e6db74">&#34;\\DOMAIN\SYSVOL\DOMAIN.TEST\Policies\{</span>$($GPOObject.Id)<span style="color:#e6db74">}&#34;</span> -AccessRights FullControl -Account <span style="color:#e6db74">&#39;DOMAIN\Service-Account-AGPM&#39;</span>
+</code></pre></div><h3 id="almost-ready-to-solve">Almost ready to solve!</h3>
 <p>As we have learned, GPC and GPT is a bit different. Sysvol and AD does replicate, but in different ways. Key take-away is that most likely we need to wait for replication in order for the AGPM server to understand that the rights are in fact in place. This took me around 15m, this could have been avoided had I done the changes on the same server.</p>
 <p>Using the <a href="https://docs.microsoft.com/en-us/powershell/module/agpm/add-controlledgpo?view=win-mdop2-ps">AGPM module</a>, we&rsquo;re now ready to take control of the GPO, since we now have the access to do so.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>Get-Gpo -Name <span style="color:#e6db74">&#34;TheUncontrolledGPO&#34;</span> | Add-ControlledGpo -PassThru
-</span></span></code></pre></div><p>In my case, I had more then 1 uncontrolled GPO, to say the least.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-Gpo -Name <span style="color:#e6db74">&#34;TheUncontrolledGPO&#34;</span> | Add-ControlledGpo -PassThru
+</code></pre></div><p>In my case, I had more then 1 uncontrolled GPO, to say the least.
 Sadly the AGPM module doesn&rsquo;t have something like &lsquo;Get-UncontrolledGPO&rsquo;.</p>
 <p>What I ended up doing was to filter out all uncontrolled GPOs myself using Compare-Object, .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>$ControlledGPOS = Get-ControlledGpo
-</span></span><span style="display:flex;"><span>$UncontrolledGPOS = (Compare-Object $ControlledGPOS.Name (Get-GPO -All).DisplayName).InputObject
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($GPO <span style="color:#66d9ef">in</span> $UncontrolledGPOS) {
-</span></span><span style="display:flex;"><span>    Get-Gpo -Name $GPO | Add-ControlledGpo -PassThru
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>You can of course also navigate within GPMC &gt; ChangeControl &gt; Uncontrolled &gt; select all GPOs, rightclick, Control.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">$ControlledGPOS = Get-ControlledGpo
+$UncontrolledGPOS = (Compare-Object $ControlledGPOS.Name (Get-GPO -All).DisplayName).InputObject
+
+<span style="color:#66d9ef">foreach</span> ($GPO <span style="color:#66d9ef">in</span> $UncontrolledGPOS) {
+    Get-Gpo -Name $GPO | Add-ControlledGpo -PassThru
+}
+</code></pre></div><p>You can of course also navigate within GPMC &gt; ChangeControl &gt; Uncontrolled &gt; select all GPOs, rightclick, Control.</p>
 <p>Congratulations on having a fully controlled AGPM environment.</p>
 <h2 id="discussion">Discussion</h2>
 <p>Understanding where a GPO is stored is a nice way of understanding how they work. The reason behind having them stored in separate places most likely goes back to fact that AD is old, and back in the days, size mattered.

@@ -1,9 +1,6 @@
 --- 
-
 title: "PowerShell: C Sharp for PowerShell Modules" 
-
 date: 2022-08-15T14:58:11+01:00 
-
 draft: false
 comments: false
 
